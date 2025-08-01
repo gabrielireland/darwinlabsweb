@@ -368,40 +368,42 @@
                     <p class="max-w-2xl mx-auto mb-12 text-slate-200 hidden" data-lang="en">Fill out the form below or email us at <a href="mailto:contacto@darwingeospatial.com" class="font-semibold hover:underline">contacto@darwingeospatial.com</a></p>
                 </div>
 
-                <form action="#" method="POST" class="max-w-xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
+                <form action="https://formspree.io/f/xrblldjk" method="POST" class="max-w-xl mx-auto animate-on-scroll" style="transition-delay: 150ms;">
                     <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
                         <!-- Name Field -->
                         <div class="sm:col-span-2">
                             <label for="full-name" class="sr-only">Full Name</label>
                             <input type="text" name="full-name" id="full-name" autocomplete="name"
-                                   class="bg-primary-dark/50 text-white block w-full shadow-sm py-3 px-4 placeholder-slate-300 focus:ring-white focus:border-white border-transparent rounded-md"
+                                   class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
                                    data-lang-es-placeholder="Nombre completo" data-lang-en-placeholder="Full name">
                         </div>
                         <!-- Email Field -->
                         <div>
                             <label for="email" class="sr-only">Email</label>
                             <input id="email" name="email" type="email" autocomplete="email" required
-                                   class="bg-primary-dark/50 text-white block w-full shadow-sm py-3 px-4 placeholder-slate-300 focus:ring-white focus:border-white border-transparent rounded-md"
+                                   class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
                                    data-lang-es-placeholder="Correo electrónico" data-lang-en-placeholder="Email address">
                         </div>
                         <!-- Phone Field -->
                         <div>
                             <label for="phone" class="sr-only">Phone</label>
                             <input type="text" name="phone" id="phone" autocomplete="tel"
-                                   class="bg-primary-dark/50 text-white block w-full shadow-sm py-3 px-4 placeholder-slate-300 focus:ring-white focus:border-white border-transparent rounded-md"
+                                   class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
                                    data-lang-es-placeholder="Número de teléfono" data-lang-en-placeholder="Phone number">
                         </div>
                         <!-- Message Field -->
                         <div class="sm:col-span-2">
-                            <label for="message" class="sr-only">Message</label>
-                            <textarea id="message" name="message" rows="4" required
-                                      class="bg-primary-dark/50 text-white block w-full shadow-sm py-3 px-4 placeholder-slate-300 focus:ring-white focus:border-white border-transparent rounded-md"
-                                      data-lang-es-placeholder="Escriba su mensaje..." data-lang-en-placeholder="Write your message..."></textarea>
+                        <label for="message" class="sr-only">Message</label>
+                        <textarea id="message" name="message" rows="4" required
+                            class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
+                            data-lang-es-placeholder="Escriba su mensaje..." 
+                            data-lang-en-placeholder="Write your message..."></textarea>
                         </div>
                         <!-- Submit Button -->
                         <div class="sm:col-span-2">
+                            <input type="hidden" name="_captcha" value="false">
                             <button type="submit"
-                                    class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-primary bg-white hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white">
+                                class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-primary bg-white hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white">
                                 <span data-lang="es">Enviar Mensaje</span>
                                 <span data-lang="en" class="hidden">Send Message</span>
                             </button>
