@@ -260,8 +260,46 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2" data-lang="es">Expertos en Naturaleza y Tecnología</h2>
                     <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 hidden" data-lang="en">Experts in Nature and Technology</h2>
                 </div>
-                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-                    <!-- Team Member 1 -->
+
+                <!-- Centered Team Member -->
+                <div class="flex justify-center max-w-5xl mx-auto">
+                    <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col md:flex-row gap-8 items-start animate-on-scroll">
+                        <img src="./assets/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-32 h-32 rounded-full mx-auto md:mx-0 flex-shrink-0">
+                        <div class="text-center md:text-left">
+                            <h3 class="text-xl font-bold text-slate-900">Gabriel Díaz Ireland</h3>
+                            <p class="text-accent font-medium mb-3" data-lang="es">Socio - Líder de Ingeniería</p>
+                            <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Technical Lead</p>
+
+                            <!-- Spanish Bio -->
+                            <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                                Gabriel Díaz Ireland es científico e ingeniero con una trayectoria enfocada en transformar datos espaciales y ambientales en inteligencia accionable. Como fundador de Darwin Geospatial, combina el rigor científico con la ejecución técnica para ofrecer soluciones escalables en aprendizaje automático, ingeniería de datos, inteligencia empresarial y sistemas geoespaciales.
+                            </p>
+                            <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                                Su enfoque se basa en alinear la tecnología con los objetivos estratégicos de organizaciones públicas y privadas, impulsando la toma de decisiones fundamentada mediante análisis avanzados y modelos predictivos. Con experiencia internacional y una mentalidad multidisciplinaria, lidera proyectos con impacto tangible en sostenibilidad, biodiversidad y gestión territorial.
+                            </p>
+
+                            <!-- English Bio -->
+                            <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
+                                Gabriel Ireland is a scientist and engineer with a mission to turn geospatial and environmental data into actionable intelligence. As the founder of Darwin Geospatial, he combines scientific rigor with technical execution to deliver scalable solutions in machine learning, data engineering, business intelligence, and spatial systems. His work at Darwin focuses on aligning technology with strategic goals across academic and business set ups, enabling data-driven decision-making through advanced analytics.
+                            </p>
+
+                            <!-- Skills Section -->
+                            <div class="text-slate-600 text-sm">
+                                <p><strong>Skills:</strong></p>
+                                <ul class="list-disc list-inside mt-2">
+                                    <li><strong>Geospatial Intelligence:</strong> Remote sensing, spatial modeling, environmental monitoring</li>
+                                    <li><strong>Machine Learning:</strong> Predictive analytics, model development, MLOps</li>
+                                    <li><strong>Data Engineering:</strong> Scalable data pipelines, automation, cloud infrastructure</li>
+                                    <li><strong>Business Intelligence:</strong> Interactive dashboards, KPI design, stakeholder reporting</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 1 (Commented Out) -->
+                <!--
+                <div class="grid md:grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto mt-10">
                     <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col md:flex-row gap-8 items-start animate-on-scroll">
                         <img src="./assets/mario.jpg" alt="Foto de Mario García Peces" class="w-32 h-32 rounded-full mx-auto md:mx-0 flex-shrink-0">
                         <div class="text-center md:text-left">
@@ -272,21 +310,11 @@
                             <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">Based in Spain, with international experience in environmental management and spatial modeling. He holds a Bachelor's degree in Forest Engineering and a Master's in Natural Resources Engineering from the Polytechnic University of Madrid (UPM), with a completed advanced Geospatial Analysis program at Lapin University in Finland. He has worked with the National Parks Autonomous Agency (OAPN) and participated in research on sustainable agricultural practices in Cameroon. Currently based in Madrid, he focuses on applying geospatial analysis and artificial intelligence to natural resource management and outdoor recreation projects.</p>
                         </div>
                     </div>
-                    <!-- Team Member 2 -->
-                    <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col md:flex-row gap-8 items-start animate-on-scroll" style="transition-delay: 150ms;">
-                        <img src="./assets/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-32 h-32 rounded-full mx-auto md:mx-0 flex-shrink-0">
-                        <div class="text-center md:text-left">
-                            <h3 class="text-xl font-bold text-slate-900">Gabriel Díaz Ireland</h3>
-                            <p class="text-accent font-medium mb-3" data-lang="es">Científico - Líder de Ingeniería</p>
-                            <p class="text-accent font-medium mb-3 hidden" data-lang="en">Scientist - Engineering Lead</p>
-                            <p class="text-slate-600 text-sm mb-4" data-lang="es">Apasionado por la innovación y el impacto empresarial. Experto en alinear el desarrollo técnico con los objetivos organizacionales.</p>
-                            <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">Passionate about driving innovation and business impact. Experienced in aligning technical development with organizational goals.</p>
-                            <p class="text-slate-600 text-sm"><strong>Skills:</strong> ML, Data Engineering, BI, GIS.</p>
-                        </div>
-                    </div>
                 </div>
+                -->
             </div>
         </section>
+
 
         <!-- Partners Section -->
         <section id="partners" class="py-20 lg:py-32">
@@ -308,10 +336,6 @@
                             <div class="partner-logo-container w-40">
                                 <img src="./assets/kompass.jpg" alt="Kompass Logo" class="h-12 partner-logo" onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
                                 <p class="text-sm font-medium text-slate-700">Kompass</p>
-                            </div>
-                            <div class="partner-logo-container w-40">
-                                <img src="./assets/generandi.jpg" alt="Generandi Logo" class="h-10 partner-logo" onerror="this.onerror=null;this.src='https://placehold.co/160x40/e2e8f0/46633A?text=Logo';">
-                                <p class="text-sm font-medium text-slate-700">Generandi</p>
                             </div>
                         </div>
                     </div>
