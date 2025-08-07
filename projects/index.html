@@ -69,6 +69,11 @@
             filter: grayscale(0%);
             opacity: 1;
         }
+        /* make anchor targets sit below your fixed header */
+#projects-hero,
+#projects-list {
+  scroll-margin-top: 4rem; /* adjust to match your header height */
+}
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -142,7 +147,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- GuadarramaSKI Project Card -->
                 <article class="bg-white p-6 rounded shadow animate-on-scroll flex flex-col">
-                    <img src="./guadarramaski/assets/guadarramaski_overview.jpg" alt="www.guadarramaski.com" class="w-full h-48 object-cover rounded mb-4">
+                    <img src="./guadarramaski/assets/guadarramaski_overview.jpg" alt="www.guadarramaski.com" class="w-full h-48 object-cover object-top rounded mb-4">
                     <h2 class="text-xl font-semibold mb-2" data-lang="es">Guadarrama ski</h2>
                     <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Guadarrama ski</h2>
                     <p class="text-slate-600 flex-grow" data-lang="es">La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.</p>

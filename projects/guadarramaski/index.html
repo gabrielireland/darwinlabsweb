@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Reset default spacing */
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
         /* Define custom properties for the color palette */
         :root {
             --darwin-green-dark: #395935;
@@ -22,6 +27,9 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
+        /* Prose justification */
+        .prose { text-align: justify; }
 
         /* Custom colors for Tailwind */
         .bg-primary { background-color: var(--darwin-green-base); }
@@ -68,6 +76,22 @@
         .partner-logo:hover {
             filter: grayscale(0%);
             opacity: 1;
+        }
+
+        /* Title section background */
+        .title-section {
+        /* First the darkness overlay, then the image */
+        background-image:
+            linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+            url('https://images.pexels.com/photos/4282205/pexels-photo-4282205.jpeg');
+        background-size: cover;
+        background-position: top;
+        padding: 5rem 0;
+        }
+
+        .title-section h1 {
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
     </style>
 </head>
@@ -121,24 +145,47 @@
     </header>
 
     <!-- Main Content -->
-    <main class="pt-24">
+    <main class="pt-16">
+        <!-- Title Section -->
+        <section class="animate-on-scroll title-section">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-3xl md:text-4xl leading-tight font-bold mb-4" data-lang="es">Guadarrama Ski, la web de referencia para el esquí de montaña en Madrid y Segovia</h1>
+                <h1 class="text-3xl md:text-4xl font-bold mb-4 hidden" data-lang="en">Guadarrama Ski, the go-to ski-mountaineering website for Madrid and Segovia</h1>
+            </div>
+        </section>
+
+        <!-- Content Section -->
         <section class="container mx-auto px-6 py-12 animate-on-scroll">
-            <h1 class="text-3xl font-bold mb-4" data-lang="es">Guadarrama Ski, la web de referencia para el esquí de montaña en Madrid y Segovia</h1>
-            <h1 class="text-3xl font-bold mb-4 hidden" data-lang="en">Guadarrama Ski, the go-to ski-mountaineering website for Madrid and Segovia</h1>
-            <div class="prose max-w-none">
-                <p data-lang="es">El primer proyecto acometido por Darwin Geospatial fue enfocado a llevar la cartografía digital y la teledetección a uno de los entornos con mayor tradición de esquí de montaña en España: la Sierra de Guadarrama. Un proyecto surgido de la necesidad de una mayor planificación de itinerarios y de la meteorología con el paso de los años debido al inevitable efecto del cambio climático.</p>
-                <p class="hidden" data-lang="en">Darwin Geospatial’s inaugural venture focused on bringing digital mapping and remote sensing to one of Spain’s most storied mountain-ski environments: the Sierra de Guadarrama. This initiative arose from the growing need to improve route planning and weather insights amid climate change.</p>
-                <p data-lang="es">El objetivo del proyecto fue documentar, digitalizar y ofrecer en una interfaz de usuario visual y entendible las líneas de esquí más frecuentadas para poner en valor el patrimonio deportivo de la Sierra de Guadarrama y sus visitantes. Más de 60 líneas de esquí documentadas en todos sus parámetros técnicos (pendiente, desnivel, dificultad, orientación) y nivológicos (acumulación promedio de nieve) para ofrecer la base de datos espacial más detallada hasta la fecha para este entorno.</p>
-                <p class="hidden" data-lang="en">The project aimed to document, digitize, and present the most popular ski routes through an intuitive UI—showcasing over 60 lines with detailed technical (slope, elevation gain, difficulty, aspect) and snowpack (average snow accumulation) metrics. This represents the most granular spatial ski dataset for the region to date.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="prose max-w-2xl mx-auto mb-8">
+                <p data-lang="es">El primer proyecto acometido por Darwin Geospatial fue enfocado a <b>llevar la cartografía digital y la teledetección a uno de los entornos con mayor tradición de esquí de montaña en España: la Sierra de Guadarrama.</b> Un proyecto surgido de la necesidad de una mayor planificación de itinerarios y de la meteorología con el paso de los años debido al inevitable efecto del cambio climático.</p>
+                <p class="hidden" data-lang="en">Darwin Geospatial’s inaugural venture focused on <b>bringing digital mapping and remote sensing to one of Spain’s most storied mountain-ski environments: the Guadarrama mountain range.</b> This initiative arose from the growing need to improve route planning and weather insights amid climate change.</p>
+                <p class="text-center mb-8" data-lang="es">
+                    <br>Visita la web: 
+                    <a href="https://www.guadarramaski.com" class="text-primary hover:underline" target="_blank">
+                    www.guadarramaski.com
+                    </a>
+                </p>
+                <p class="text-center mb-8 hidden" data-lang="en">
+                    <br>Visit the website: 
+                    <a href="https://www.guadarramaski.com" class="text-primary hover:underline" target="_blank">
+                    www.guadarramaski.com
+                    </a>
+                </p>
+                <p data-lang="es">El objetivo del proyecto fue documentar, digitalizar, y ofrecer en una interfaz de usuario visual y entendible las líneas de esquí más frecuentadas para poner en valor el patrimonio deportivo de la Sierra de Guadarrama y sus visitantes. <b>Más de 60 líneas de esquí documentadas en todos sus parámetros técnicos (pendiente, desnivel, dificultad, orientación) y nivológicos (acumulación promedio de nieve) para ofrecer la base de datos espacial más detallada hasta la fecha para este entorno.</b></p>
+                <p class="hidden" data-lang="en">The project aimed to document, digitize, and present the most popular ski routes through an intuitive UI, <b>showcasing over 60 lines with detailed technical (slope, elevation gain, difficulty, aspect) and snowpack (average snow accumulation) metrics. This represents the most granular spatial ski dataset for the region to date.</b></p>
+            </div>
+            <div class="max-w-xl mx-auto mb-12">
                 <img src="./assets/guadarramaski_overview.jpg" alt="Mapa GuadarramaSKI" class="w-full h-auto rounded">
             </div>
-                <p data-lang="es">Actualmente la página web aparece como uno de los primeros resultados en los motores de búsqueda, en ocasiones incluso el primero, por encima incluso de las páginas oficiales del Parque Nacional. El proyecto también ha conseguido completar con éxito el entendimiento de las dinámicas de acumulación de 10 metros/pixel de la duración promedio del manto nivoso para el periodo de 2016‑2024. Esta fue condición indispensable del proyecto: un mayor entendimiento de la nivología de Guadarrama nos permite conocer las grandes tendencias de deshielo y proponer itinerarios y rutas que mitiguen al máximo los efectos de la escasez de nieve por el calentamiento global.</p>
-                <p class="hidden" data-lang="en">Today, the site ranks at the top of search results—often outranking even the Official National Park pages. The initiative also successfully mapped snowpack dynamics, delivering a 10 m/pixel resolution map of average snow cover duration (2016–2024). This was crucial: deeper insights into Guadarrama’s nivology help highlight melt trends and craft routes that minimize climate-driven snow scarcity.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="prose max-w-2xl mx-auto mb-8">
+                <p data-lang="es">Actualmente la página web aparece como uno de los primeros resultados en los motores de búsqueda， en ocasiones incluso el primero， por encima incluso de las páginas oficiales del Parque Nacional. El proyecto también ha conseguido completar con éxito el entendimiento de las dinámica de acumulación de 10 metros/pixel de la duración promedio del manto nivoso para el periodo de 2016–2024. Esta fue condición indispensable del proyecto： un mayor entendimiento de la nivología de Guadarrama nos permite conocer las grandes tendencias de deshielo y proponer itinerarios y rutas que mitiguen al máximo los efectos de la escasez de nieve por el calentamiento global.</p>
+                <p class="hidden" data-lang="en">Today, the site ranks at the top of search results, often outranking even the Official National Park pages. The initiative also successfully mapped snowpack dynamics, delivering a 10 m/pixel resolution map of average snow cover duration (2016–2024). This was crucial: deeper insights into Guadarrama’s nivology help highlight melt trends and craft routes that minimize climate-driven snow scarcity.</p>
+            </div>
+            <div class="max-w-xl mx-auto mb-12">
                 <img src="./assets/acc_snow.png" alt="Acumulación de nieve" class="w-full h-auto rounded">
             </div>
-                <p data-lang="es">El acceso a todos los datos, así como la metodología pueden ser consultados directamente a través de la web destinada: <a href="https://www.guadarramaski.com" target="_blank" class="text-primary hover:underline">guadarramaski.com</a></p>
+            <div class="prose max-w-2xl mx-auto mb-8">
+                <p data-lang="es">El acceso a todos los datos， así como la metodología pueden ser consultados directamente a través de la web destinada： <a href="https://www.guadarramaski.com" target="_blank" class="text-primary hover:underline">guadarramaski.com</a></p>
                 <p class="hidden" data-lang="en">All data and methodology are available on the dedicated website: <a href="https://www.guadarramaski.com" target="_blank" class="text-primary hover:underline">guadarramaski.com</a></p>
             </div>
         </section>
@@ -148,8 +195,8 @@
     <footer class="bg-slate-900 text-slate-400 py-12">
         <div class="container mx-auto px-6 text-center">
             <img src="../../assets/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
-            <p data-lang="es">&copy; 2025 Darwin Geospatial. Todos los derechos reservados.</p>
-            <p class="hidden" data-lang="en">&copy; 2025 Darwin Geospatial. All rights reserved.</p>
+            <p data-lang="es">© 2025 Darwin Geospatial. Todos los derechos reservados.</p>
+            <p class="hidden" data-lang="en">© 2025 Darwin Geospatial. All rights reserved.</p>
             <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
             <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
         </div>
