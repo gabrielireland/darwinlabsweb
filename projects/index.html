@@ -69,30 +69,6 @@
             filter: grayscale(0%);
             opacity: 1;
         }
-
-        /* Video background styles */
-        #hero-video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-        #hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        #hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -145,30 +121,36 @@
         </div>
     </header>
 
-    <main class="pt-24">
-        <section id="projects" class="container mx-auto px-6 py-12">
-            <h1 class="text-3xl font-bold text-center mb-8" data-lang="es">Proyectos</h1>
-            <h1 class="text-3xl font-bold text-center mb-8 hidden" data-lang="en">Projects</h1>
-            <div class="space-y-8">
-                <article class="bg-white p-6 rounded shadow animate-on-scroll">
-                    <img src="https://via.placeholder.com/800x400" alt="Imagen del proyecto" class="w-full h-auto rounded mb-4">
-                    <h2 class="text-xl font-semibold mb-2" data-lang="es">Proyecto ejemplo</h2>
-                    <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Sample Project</h2>
-                    <p class="text-slate-600" data-lang="es">Descripción breve del proyecto.</p>
-                    <p class="text-slate-600 hidden" data-lang="en">Brief project description.</p>
-                </article>
+    <main class="pt-0">
+        <!-- Hero Section -->
+        <section id="projects-hero" class="h-screen relative flex items-center justify-center text-white">
+            <!-- Background Image & Overlay -->
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?cs=srgb&dl=pexels-stywo-1054218.jpg&fm=jpg&_gl=1*397ryp*_ga*MjEzMjg5ODgyMi4xNzU0NTY0MzM1*_ga_8JE65Q40S6*czE3NTQ1NjQzMzUkbzEkZzEkdDE3NTQ1NjQzNTUkajQwJGwwJGgw');"></div>
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="text-center px-6 animate-on-scroll z-10">
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="es">Proyectos</h1>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">Projects</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200" data-lang="es">Nos enorgullece mostrar nuestros proyectos y su propósito. Aquí encontrarás un primer vistazo de nuestro trabajo.</p>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200 hidden" data-lang="en">We are proud of our projects and their purpose. You can find here a first glimpse of our work.</p>
+                <a href="#projects-list" class="mt-8 inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300" data-lang="es">Descubre Más</a>
+                <a href="#projects-list" class="mt-8 inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300 hidden" data-lang="en">Discover More</a>
             </div>
         </section>
-        <section id="publications" class="container mx-auto px-6 py-12">
-            <h1 class="text-3xl font-bold text-center mb-8" data-lang="es">Publicaciones</h1>
-            <h1 class="text-3xl font-bold text-center mb-8 hidden" data-lang="en">Publications</h1>
-            <div class="space-y-8">
-                <article class="bg-white p-6 rounded shadow animate-on-scroll">
-                    <h2 class="text-xl font-semibold mb-2" data-lang="es">Publicación ejemplo</h2>
-                    <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Sample Publication</h2>
-                    <p class="text-slate-600" data-lang="es">Resumen de la publicación.</p>
-                    <p class="text-slate-600 hidden" data-lang="en">Publication summary.</p>
+
+        <!-- Projects Section -->
+        <section id="projects-list" class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- GuadarramaSKI Project Card -->
+                <article class="bg-white p-6 rounded shadow animate-on-scroll flex flex-col">
+                    <img src="./guadarramaski/assets/guadarramaski_overview.jpg" alt="www.guadarramaski.com" class="w-full h-48 object-cover rounded mb-4">
+                    <h2 class="text-xl font-semibold mb-2" data-lang="es">Guadarrama ski</h2>
+                    <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Guadarrama ski</h2>
+                    <p class="text-slate-600 flex-grow" data-lang="es">La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.</p>
+                    <p class="text-slate-600 flex-grow hidden" data-lang="en">The reference page to visualice ski routes in the Guadarrama mountain range.</p>
+                    <a href="./guadarramaski/index.html" class="mt-4 text-primary font-bold hover:underline" data-lang="es">Leer Más →</a>
+                    <a href="./guadarramaski/index.html" class="mt-4 text-primary font-bold hover:underline hidden" data-lang="en">Read More →</a>
                 </article>
+                <!-- Future project cards go here -->
             </div>
         </section>
     </main>
@@ -246,4 +228,3 @@
 
 </body>
 </html>
-
