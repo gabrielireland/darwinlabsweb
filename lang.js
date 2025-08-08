@@ -8,12 +8,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateInternalLinks = (lang) => {
     document.querySelectorAll('a[href]').forEach(a => {
       const href = a.getAttribute('href');
+      // ignore anchors and special schemes
       if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
       try {
         const u = new URL(href, location.href);
-        u.searchParams.set('lang', lang);
-        a.setAttribute('href', u.pathname + u.search + u.hash);
-      } catch (e) {}
+        // only touch same-origin links; leave external links alone
+        if (u.origin === location.origin) {
+          u.searchParams.set('lang', lang);
+          a.setAttribute('href', u.href); // keep full URL (origin + path + search + hash)
+        }
+      } catch (e) {
+        // ignore malformed URLs
+      }
     });
   };
 
@@ -62,14 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Apply now
   setLanguage(initialLang);
 
-  // (optional) mobile menu toggle if present
+  // Mobile menu (optional)
   const mobileBtn = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
   }
 
-  // (optional) reveal-on-scroll if you like keeping it here
+  // Reveal-on-scroll (optional)
   document.querySelectorAll('.animate-on-scroll').forEach(el => {
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((entries, obs) => {
