@@ -135,13 +135,13 @@
     </div>
     <div class="text-center px-6 animate-on-scroll z-10">
       <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="es">
-        Llevando las Imágenes Satelitales y la Ciencia al Siguiente Nivel
+        Llevando Imágenes Satelitales y Ciencia al Siguiente Nivel
       </h1>
       <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">
         Taking Satellite Imagery & Science to The Next Level
       </h1>
       <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200" data-lang="es">
-        Usamos datos geoespaciales e inteligencia artificial para transformar la manera en que los sistemas naturales son estudiados, monitoreados y gestionados.
+        Usamos datos geoespaciales e inteligencia artificial para transformar la manera en que sistemas naturales son estudiados, monitoreados y gestionados.
       </p>
       <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200 hidden" data-lang="en">
         We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored, and managed.
@@ -340,10 +340,10 @@
           <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">Projects</h1>
 
           <p class="text-lg md:text-xl text-slate-200" data-lang="es">
-            Nos enorgullece mostrar nuestros proyectos y su propósito. Aquí encontrarás un primer vistazo de nuestro trabajo.
+            Nos enorgullece mostrar nuestros proyectos y su propósito.
           </p>
           <p class="text-lg md:text-xl text-slate-200 hidden" data-lang="en">
-            We are proud of our projects and their purpose. Here’s a first glimpse of our work.
+            We are proud of our projects and their purpose.
           </p>
         </div>
 
@@ -378,6 +378,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- Partners -->
     <section id="partners" class="py-20 lg:py-32">
@@ -496,72 +497,7 @@
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const langButtons = { es: document.getElementById('lang-es'), en: document.getElementById('lang-en') };
-
-      const setLanguage = (lang) => {
-        document.documentElement.lang = lang;
-        Object.values(langButtons).forEach(btn => btn.classList.remove('active'));
-        langButtons[lang].classList.add('active');
-
-        document.querySelectorAll('[data-lang]').forEach(el => {
-          if (el.dataset.lang === lang) el.classList.remove('hidden');
-          else el.classList.add('hidden');
-        });
-
-        const placeholderAttr = `data-lang-${lang}-placeholder`;
-        document.querySelectorAll(`[${placeholderAttr}]`).forEach(el => {
-          el.placeholder = el.getAttribute(placeholderAttr);
-        });
-      };
-
-      langButtons.es.addEventListener('click', () => setLanguage('es'));
-      langButtons.en.addEventListener('click', () => setLanguage('en'));
-
-      const userLang = navigator.language || navigator.userLanguage;
-      if (userLang && userLang.startsWith('en')) setLanguage('en'); else setLanguage('es');
-
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-      // Smooth in-page scroll that accounts for fixed header height
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-          const targetId = this.getAttribute('href');
-          if (!targetId || targetId === '#') return;
-          const targetElement = document.querySelector(targetId);
-          if (!targetElement) return;
-
-          e.preventDefault();
-          if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
-
-          let headerOffset = document.getElementById('header').offsetHeight || 0;
-          if (targetId === '#home') headerOffset = 0;
-
-          const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - headerOffset;
-          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        });
-      });
-
-      // Reveal-on-scroll
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-visible');
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        animatedElements.forEach(el => observer.observe(el));
-      } else {
-        animatedElements.forEach(el => el.classList.add('is-visible'));
-      }
-    });
-  </script>
+  <!-- Single source of truth for language + interactions -->
+  <script src="./lang.js"></script>
 </body>
 </html>
