@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darwin Visor - Darwin Geospatial</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    html, body { margin: 0; padding: 0; }
+    :root {
+      --darwin-green-dark: #395935;
+      --darwin-green-base: #46633A;
+      --darwin-green-medium: #576F50;
+      --darwin-green-accent: #5D713F;
+      --darwin-grey: #939494;
+      --darwin-green-light: #f0f3ef;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    .prose { text-align: justify; }
+    .bg-primary { background-color: var(--darwin-green-base); }
+    .bg-primary-dark { background-color: var(--darwin-green-dark); }
+    .bg-primary-light { background-color: var(--darwin-green-light); }
+    .text-primary { color: var(--darwin-green-base); }
+    .text-accent { color: var(--darwin-green-accent); }
+    .border-primary { border-color: var(--darwin-green-base); }
+    .hover\:bg-primary-dark:hover { background-color: var(--darwin-green-dark); }
+    .hover\:text-primary:hover { color: var(--darwin-green-base); }
+
+    /* Animations */
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity .6s ease-out, transform .6s ease-out; }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Lang switcher */
+    .lang-switcher button.active { color: var(--darwin-green-base); font-weight: 700; }
+
+    /* Title section: now static image with overlay (no video) */
+    .title-section{
+      position: relative;
+      padding: 5rem 0;
+      overflow: hidden;
+      background-image:
+        linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+        url('./assets/banner2.jpeg');
+      background-size: cover;
+      background-position: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+    .title-section h1 { color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Header (top bar) -->
+  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="../../index.html#home" class="flex-shrink-0">
+        <img src="../../assets/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
+      </a>
+
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="../../index.html#about" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Nosotros</a>
+        <a href="../../index.html#about" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">About</a>
+
+        <a href="../../index.html#sectors" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Sectores</a>
+        <a href="../../index.html#sectors" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Sectors</a>
+
+        <a href="../../index.html#values" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Valores</a>
+        <a href="../../index.html#values" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Values</a>
+
+        <a href="../../index.html#team" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Equipo</a>
+        <a href="../../index.html#team" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Team</a>
+
+        <a href="../../index.html#projects-hero" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Proyectos</a>
+        <a href="../../index.html#projects-hero" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Projects</a>
+
+        <a href="../../index.html#contact" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Contacto</a>
+        <a href="../../index.html#contact" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Contact</a>
+      </nav>
+
+      <div class="flex items-center">
+        <div class="lang-switcher text-sm text-slate-500 ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span>/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="../../index.html#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
+      <a href="../../index.html#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
+
+      <a href="../../index.html#sectors" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Sectores</a>
+      <a href="../../index.html#sectors" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Sectors</a>
+
+      <a href="../../index.html#values" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Valores</a>
+      <a href="../../index.html#values" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Values</a>
+
+      <a href="../../index.html#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
+      <a href="../../index.html#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
+
+      <!-- keep the same relative path as desktop nav -->
+      <a href="../../index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
+      <a href="../../index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
+
+      <a href="../../index.html#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
+      <a href="../../index.html#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pt-16">
+    <!-- Title (big letters / banner) -->
+    <section class="animate-on-scroll title-section">
+      <!-- Foreground content -->
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <h1 class="text-3xl md:text-4xl leading-tight font-bold mb-4" data-lang="es">
+          Darwin Visor, tu atajo para exportar datos geoespaciales sin programar
+        </h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 hidden" data-lang="en">
+          Darwin Visor, your shortcut to export geospatial data—no coding needed
+        </h1>
+
+        <p class="max-w-3xl mx-auto text-slate-200" data-lang="es">
+          Software en <strong>Python</strong> que exporta datos de <strong>Earth Engine</strong> y otras colecciones sin escribir código, usando tu <strong>cuenta personal</strong> y cumpliendo el uso gratuito de EE (<strong>no comercial</strong>). Construido con <strong>Earth Engine</strong>, <strong>MLflow</strong> y <strong>geemap</strong>. <em>Beta</em>; Se recomienda mandar un correo para acceder a la versión actual </a>
+        </p>
+        <p class="max-w-3xl mx-auto text-slate-200 hidden" data-lang="en">
+          A <strong>Python</strong> tool to export <strong>Earth Engine</strong> and other collections without coding, using your <strong>personal account</strong> and honoring EE’s free-use (<strong>non-commercial</strong>) policy. Built with <strong>geemap</strong>, <strong>ipywidgets</strong>, and <strong>Earth Engine</strong>. Current version is Beta. Early access requests are available.</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="container mx-auto px-6 py-12 animate-on-scroll">
+      <div class="prose max-w-3xl mx-auto">
+        <p data-lang="es">
+          El objetivo es <strong>simplificar</strong> la descarga y organización de colecciones satelitales y capas derivadas mediante una interfaz clara. Incluye <strong>parámetros técnicos</strong> (escala, proyección, bandas, índices) y <strong>flujos reproducibles</strong> de exportación para acelerar el trabajo personal de análisis. Incluso integra MLflow para aquelloz científicos haciendo macro análisis!
+        </p>
+        <p class="hidden" data-lang="en">
+          The aim is to <strong>streamline</strong> downloading and organizing satellite collections and derived layers through a clean UI. It captures <strong>technical parameters</strong> (scale, projection, bands, indices) and <strong>reproducible</strong> export flows to speed up personal analysis work. It Even integrates MLflow for those scientists doing macro analysis!
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Points -->
+    <section class="container mx-auto px-6 pb-6 animate-on-scroll">
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-primary-light rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4 text-slate-900" data-lang="es">Qué ofrece</h2>
+          <h2 class="text-xl font-semibold mb-4 text-slate-900 hidden" data-lang="en">What it offers</h2>
+          <ul class="space-y-2 text-slate-700">
+            <li data-lang="es">• <strong>Exportación guiada</strong> a Drive/Cloud sin código.</li>
+            <li class="hidden" data-lang="en">• <strong>Guided exports</strong> to Drive/Cloud—no code.</li>
+            <li data-lang="es">• <strong>Earth Engine y otras colecciones</strong> desde una misma UI.</li>
+            <li class="hidden" data-lang="en">• <strong>Earth Engine & other collections</strong> from one UI.</li>
+            <li data-lang="es">• <strong>Selección de bandas e índices</strong> y control de proyección/escala.</li>
+            <li class="hidden" data-lang="en">• <strong>Band/index selection</strong> with projection/scale control.</li>
+            <li data-lang="es">• Uso <strong>personal</strong> con tu cuenta EE; <strong>no comercial</strong>.</li>
+            <li class="hidden" data-lang="en">• <strong>Personal use</strong> with your EE account; <strong>non-commercial</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="bg-primary-light rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4 text-slate-900" data-lang="es">Tecnología</h2>
+          <h2 class="text-xl font-semibold mb-4 text-slate-900 hidden" data-lang="en">Technology</h2>
+          <ul class="space-y-2 text-slate-700">
+            <li data-lang="es">• Python, <em>geemap</em>, <em>ipywidgets</em> y Google Earth Engine.</li>
+            <li class="hidden" data-lang="en">• Python, <em>geemap</em>, <em>ipywidgets</em>, and Google Earth Engine.</li>
+            <li data-lang="es">• Infraestructura en la nube y <em>pipelines</em> ETL/ELT reproducibles.</li>
+            <li class="hidden" data-lang="en">• Cloud infra and reproducible ETL/ELT pipelines.</li>
+            <li data-lang="es">• Frontend interactivo en cuadernos y librerías web de mapas.</li>
+            <li class="hidden" data-lang="en">• Interactive notebook UI and modern web mapping libs.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview videos (two side-by-side) -->
+    <section class="container mx-auto px-6 py-8 animate-on-scroll">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+
+        <!-- Yosemite Demo (new video) -->
+        <div class="bg-slate-100 rounded-lg shadow p-4">
+          <video class="w-full h-auto rounded-lg" autoplay muted loop playsinline preload="auto" controlslist="nodownload noplaybackrate">
+            <source src="./assets/yosemite_demo_video.mp4" type="video/mp4">
+            <!-- Add .webm/.mov if available:
+            <source src="./assets/yosemite_demo_video.webm" type="video/webm">
+            <source src="./assets/yosemite_demo_video.mov" type="video/quicktime">
+            -->
+            Your browser does not support the video tag.
+          </video>
+          <p class="text-sm text-slate-500 mt-2 text-center" data-lang="es">El visor exportando capas de Yosemite National Park.</p>
+          <p class="text-sm text-slate-500 mt-2 text-center hidden" data-lang="en">Visor exporting Yosemite National Park Layers.</p>
+        </div>
+        <!-- Yosemite Bands -->
+        <div class="bg-slate-100 rounded-lg shadow p-4">
+          <video class="w-full h-auto rounded-lg" autoplay muted loop playsinline preload="auto" controlslist="nodownload noplaybackrate">
+            <source src="./assets/yosemite_bands_trim.mp4" type="video/mp4">
+            <!-- Optional alternate formats if you have them:
+            <source src="./assets/yosemite_bands_trim.webm" type="video/webm">
+            <source src="./assets/yosemite_bands_trim.mov" type="video/quicktime">
+            -->
+            Your browser does not support the video tag.
+          </video>
+          <p class="text-sm text-slate-500 mt-2 text-center" data-lang="es">Flujo de bandas y capas exportadas (Yosemite).</p>
+          <p class="text-sm text-slate-500 mt-2 text-center hidden" data-lang="en">Exported bands & layers workflow (Yosemite).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="container mx-auto px-6 py-8 animate-on-scroll">
+      <div class="prose max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Resultados e impacto</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Outcomes & impact</h2>
+        <p data-lang="es">
+          Darwin Visor <strong>acelera</strong> la obtención de capas listas para análisis (índices, composiciones, mosaicos) y reduce errores al estandarizar parámetros de exportación. Diseñado para <strong>uso personal</strong> con datos públicos de EE y cumplimiento <strong>no comercial</strong>, mejora la trazabilidad y la repetibilidad del trabajo diario.
+        </p>
+        <p class="hidden" data-lang="en">
+          Darwin Visor <strong>speeds up</strong> getting analysis-ready layers (indices, composites, mosaics) while reducing errors via standardized export settings. Built for <strong>personal use</strong> with public EE data and <strong>non-commercial</strong> compliance, it improves traceability and repeatability.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container mx-auto px-6 py-8 animate-on-scroll">
+      <div class="max-w-3xl mx-auto text-center">
+        <a href="mailto:gabriel.ireland@darwingeospatial.com?subject=Darwin%20Visor%20beta%20access"
+           class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg">
+          <span data-lang="es">Solicitar acceso a la beta</span>
+          <span class="hidden" data-lang="en">Request beta access</span>
+        </a>
+        <a href="../../index.html#projects-hero"
+           class="inline-block ml-4 text-primary font-semibold hover:underline">
+          <span data-lang="es">Volver a proyectos</span>
+          <span class="hidden" data-lang="en">Back to projects</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="../../assets/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
+      <p data-lang="es">© 2025 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="hidden" data-lang="en">© 2025 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
+      <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
+    </div>
+  </footer>
+
+  <!-- Language Persistence / Animations / URL lang propagation -->
+  <script src="../../lang.js"></script>
+</body>
+</html>
