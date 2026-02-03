@@ -122,6 +122,7 @@ Cloudflare Pages will automatically detect the push and deploy.
 - `CNAME` - Contains custom domain for GitHub Pages fallback
 - `PENDING.md` - Website restructure proposal
 - `index.html` - Main website file
+- `services.html` - Comprehensive services page with all technical capabilities
 
 ---
 
@@ -138,6 +139,8 @@ Cloudflare Pages will automatically detect the push and deploy.
 - **Abilities bullet points** - Keep label lengths consistent (e.g., "Backend Systems:" not just "Backend:")
 - Use `mt-auto` on the abilities div to push them to the bottom of cards
 - Use `h-full` and `flex-grow` to ensure cards stretch equally
+- Use `min-w-0` on cards to prevent text overflow
+- **Responsive grid:** `sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5`
 
 ### Values Section
 - Uses Darwin green with 10% opacity: `rgba(70, 99, 58, 0.1)`
