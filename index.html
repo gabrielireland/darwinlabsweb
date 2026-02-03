@@ -62,7 +62,7 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      animation: kenBurnsCrossfade 56s infinite;
+      animation: kenBurnsCrossfade 48s infinite;
     }
 
     .hero-slide:nth-child(1) {
@@ -100,11 +100,6 @@
       animation-name: kenBurnsCrossfade6;
     }
 
-    .hero-slide:nth-child(7) {
-      background-image: url('./projects/darwin_crops_landuse/assets/prediction.png');
-      animation-delay: 48s;
-      animation-name: kenBurnsCrossfade7;
-    }
 
     /* 7 images = ~14.3% each, scale 1.3 ensures no dark edges with 10% travel */
     @keyframes kenBurnsCrossfade {
@@ -233,27 +228,6 @@
       }
     }
 
-    @keyframes kenBurnsCrossfade7 {
-      0% {
-        opacity: 0;
-        transform: scale(1.3) translate(10%, 5%);
-      }
-      1% {
-        opacity: 1;
-      }
-      13% {
-        opacity: 1;
-      }
-      14.3% {
-        opacity: 0;
-        transform: scale(1.3) translate(-10%, -5%);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(1.3) translate(10%, 5%);
-      }
-    }
-
     /* Dark overlay for text readability */
     #hero-overlay {
       position: absolute;
@@ -317,18 +291,14 @@
         <a href="#about" class="text-slate-600 hover:text-primary transition" data-lang="es">Nosotros</a>
         <a href="#about" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">About</a>
 
-        <a href="#sectors" class="text-slate-600 hover:text-primary transition" data-lang="es">Sectores</a>
-        <a href="#sectors" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Sectors</a>
+        <a href="#services" class="text-slate-600 hover:text-primary transition" data-lang="es">Servicios</a>
+        <a href="#services" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Services</a>
 
-        <a href="#values" class="text-slate-600 hover:text-primary transition" data-lang="es">Valores</a>
-        <a href="#values" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Values</a>
+        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
+        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
 
         <a href="#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
         <a href="#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
-
-        <!-- Projects now scrolls within same page -->
-        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
-        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
 
         <a href="#contact" class="text-slate-600 hover:text-primary transition" data-lang="es">Contacto</a>
         <a href="#contact" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Contact</a>
@@ -354,17 +324,14 @@
       <a href="#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
       <a href="#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
 
-      <a href="#sectors" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Sectores</a>
-      <a href="#sectors" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Sectors</a>
-
-      <a href="#values" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Valores</a>
-      <a href="#values" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Values</a>
-
-      <a href="#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
-      <a href="#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
+      <a href="#services" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Servicios</a>
+      <a href="#services" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Services</a>
 
       <a href="#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
       <a href="#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
+
+      <a href="#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
+      <a href="#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
 
       <a href="#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
       <a href="#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
@@ -375,7 +342,6 @@
   <section id="home" class="h-screen relative flex items-center justify-center text-white">
     <!-- Ken Burns Slideshow Background -->
     <div id="hero-slideshow">
-      <div class="hero-slide"></div>
       <div class="hero-slide"></div>
       <div class="hero-slide"></div>
       <div class="hero-slide"></div>
