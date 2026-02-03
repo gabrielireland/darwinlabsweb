@@ -47,10 +47,257 @@
     .partner-logo{filter:grayscale(100%); opacity:.7; transition:all .3s ease; object-fit:contain;}
     .partner-logo:hover{filter:grayscale(0%); opacity:1;}
 
-    /* Hero video */
-    #hero-video-container{position:absolute; inset:0; overflow:hidden; z-index:-1;}
-    #hero-video{width:100%; height:100%; object-fit:cover;}
-    #hero-overlay{position:absolute; inset:0; background:rgba(0,0,0,.6);}
+    /* Hero Slideshow with Ken Burns Effect */
+    #hero-slideshow {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+      background-color: #1a1a1a;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: kenBurnsCrossfade 56s infinite;
+    }
+
+    .hero-slide:nth-child(1) {
+      background-image: url('./assets/hero/habitat.png');
+      animation-delay: 0s;
+    }
+
+    .hero-slide:nth-child(2) {
+      background-image: url('./assets/hero/insolation.png');
+      animation-delay: 8s;
+      animation-name: kenBurnsCrossfade2;
+    }
+
+    .hero-slide:nth-child(3) {
+      background-image: url('./projects/guadarramaski/assets/acc_snow.png');
+      animation-delay: 16s;
+      animation-name: kenBurnsCrossfade3;
+    }
+
+    .hero-slide:nth-child(4) {
+      background-image: url('./assets/hero/ndvi.png');
+      animation-delay: 24s;
+      animation-name: kenBurnsCrossfade4;
+    }
+
+    .hero-slide:nth-child(5) {
+      background-image: url('./assets/hero/aspect.png');
+      animation-delay: 32s;
+      animation-name: kenBurnsCrossfade5;
+    }
+
+    .hero-slide:nth-child(6) {
+      background-image: url('./assets/hero/ch.png');
+      animation-delay: 40s;
+      animation-name: kenBurnsCrossfade6;
+    }
+
+    .hero-slide:nth-child(7) {
+      background-image: url('./projects/darwin_crops_landuse/assets/prediction.png');
+      animation-delay: 48s;
+      animation-name: kenBurnsCrossfade7;
+    }
+
+    /* 7 images = ~14.3% each, scale 1.3 ensures no dark edges with 10% travel */
+    @keyframes kenBurnsCrossfade {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(-10%, -6%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(10%, 6%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(-10%, -6%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade2 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(12%, 0%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(-12%, 0%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(12%, 0%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade3 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(0%, 10%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(0%, -10%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(0%, 10%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade4 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(8%, -8%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(-8%, 8%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(8%, -8%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade5 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(-12%, 3%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(12%, -3%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(-12%, 3%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade6 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(-6%, -10%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(6%, 10%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(-6%, -10%);
+      }
+    }
+
+    @keyframes kenBurnsCrossfade7 {
+      0% {
+        opacity: 0;
+        transform: scale(1.3) translate(10%, 5%);
+      }
+      1% {
+        opacity: 1;
+      }
+      13% {
+        opacity: 1;
+      }
+      14.3% {
+        opacity: 0;
+        transform: scale(1.3) translate(-10%, -5%);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1.3) translate(10%, 5%);
+      }
+    }
+
+    /* Dark overlay for text readability */
+    #hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.6) 0%,
+        rgba(0, 0, 0, 0.45) 50%,
+        rgba(0, 0, 0, 0.6) 100%
+      );
+    }
+
+    /* Hero text readability */
+    #home .text-center h1,
+    #home .text-center p {
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    .scroll-indicator svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
 
     /* Make in-page anchors stop below fixed header */
     #about, #sectors, #values, #team, #partners, #contact,
@@ -63,7 +310,7 @@
   <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
     <div class="container mx-auto px-6 py-3 flex justify-between items-center">
       <a href="#home" class="flex-shrink-0">
-        <img src="./assets/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
+        <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
       </a>
 
       <nav class="hidden md:flex space-x-8 items-center">
@@ -126,29 +373,44 @@
 
   <!-- Home Hero -->
   <section id="home" class="h-screen relative flex items-center justify-center text-white">
-    <div id="hero-video-container">
-      <video autoplay loop muted playsinline id="hero-video">
-        <source src="https://videos.pexels.com/video-files/4496265/4496265-hd_1920_1080_25fps.mp4" type="video/mp4">
-        Tu navegador no soporta la etiqueta de vídeo.
-      </video>
+    <!-- Ken Burns Slideshow Background -->
+    <div id="hero-slideshow">
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
       <div id="hero-overlay"></div>
     </div>
+
+    <!-- Hero Content -->
     <div class="text-center px-6 animate-on-scroll z-10">
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="es">
-        Llevando Imágenes Satelitales y Ciencia al Siguiente Nivel
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-lang="es">
+        Llevando Imágenes Satelitales al Siguiente Nivel
       </h1>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">
-        Taking Satellite Imagery & Science to The Next Level
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 hidden" data-lang="en">
+        Taking Satellite Imagery to The Next Level
       </h1>
-      <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200" data-lang="es">
+      <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10" data-lang="es">
         Usamos datos geoespaciales e inteligencia artificial para transformar la manera en que sistemas naturales son estudiados, monitoreados y gestionados.
       </p>
-      <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-200 hidden" data-lang="en">
+      <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10 hidden" data-lang="en">
         We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored, and managed.
       </p>
-      <a href="#about" class="mt-8 inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition" data-lang="es">Descubre Más</a>
-      <a href="#about" class="mt-8 inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition hidden" data-lang="en">Discover More</a>
+      <a href="#about" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl" data-lang="es">Descubre Más</a>
+      <a href="#about" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl hidden" data-lang="en">Discover More</a>
     </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#about" class="scroll-indicator z-10">
+      <span data-lang="es">Desliza</span>
+      <span class="hidden" data-lang="en">Scroll</span>
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </a>
   </section>
 
   <main>
@@ -171,7 +433,7 @@
             <p class="text-slate-600 hidden" data-lang="en">Our mission is to transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
           </div>
           <div class="animate-on-scroll">
-            <img src="./assets/dashboard.jpg" alt="Análisis de Datos Geoespaciales" class="rounded-lg shadow-xl w-full h-auto">
+            <img src="./assets/about/dashboard.jpg" alt="Análisis de Datos Geoespaciales" class="rounded-lg shadow-xl w-full h-auto">
           </div>
         </div>
       </div>
@@ -292,63 +554,149 @@
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 hidden" data-lang="en">Experts in Nature and Technology</h2>
         </div>
 
-        <div class="flex justify-center max-w-5xl mx-auto">
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col md:flex-row gap-8 items-start animate-on-scroll">
-            <div class="flex flex-col items-center gap-6 w-32 flex-none"><img src="./assets/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-32 h-32 rounded-full object-cover object-center"><a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block self-center"><img src="./assets/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto"></a></div>
-            <div class="text-center md:text-left">
-              <h3 class="text-xl font-bold text-slate-900">Gabriel Díaz Ireland</h3>
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+          <!-- Gabriel Díaz Ireland -->
+          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll">
+            <div class="flex flex-col items-center gap-4">
+              <img src="./assets/team/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-32 h-32 rounded-full object-cover object-center">
+              <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900">Gabriel<br>Díaz Ireland</h3>
               <p class="text-accent font-medium mb-3" data-lang="es">Socio - Líder de Ingeniería</p>
               <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Technical Lead</p>
               <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Gabriel Díaz Ireland es científico e ingeniero con una trayectoria enfocada en transformar datos espaciales y ambientales en inteligencia accionable. Como fundador de Darwin Geospatial, combina el rigor científico con la ejecución técnica para ofrecer soluciones escalables en aprendizaje automático, ingeniería de datos, inteligencia empresarial y sistemas geoespaciales.
-              </p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Su enfoque se basa en alinear la tecnología con los objetivos estratégicos de organizaciones públicas y privadas, impulsando la toma de decisiones fundamentada mediante análisis avanzados y modelos predictivos. Con experiencia internacional y una mentalidad multidisciplinaria, lidera proyectos con impacto tangible en sostenibilidad, biodiversidad y gestión territorial.
+                Fundador y líder técnico de Darwin Geospatial. Científico de datos e IA con experiencia en Orlando y Silicon Valley antes de liderar su propia empresa.
               </p>
               <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Gabriel Ireland is a scientist and engineer with a mission to turn geospatial and environmental data into actionable intelligence. As the founder of Darwin Geospatial, he combines scientific rigor with technical execution to deliver scalable solutions in machine learning, data engineering, business intelligence, and spatial systems. His work at Darwin focuses on aligning technology with strategic goals across academic and business set ups, enabling data-driven decision-making through advanced analytics.
+                Founder and technical leader of Darwin Geospatial. Data and AI scientist with experience in Orlando and Silicon Valley before leading his own company.
               </p>
-
-              <div class="text-slate-600 text-sm">
+              <div class="text-slate-600 text-sm text-left">
                 <ul class="list-disc list-inside mt-2">
-                  <li><strong>Geospatial Intelligence:</strong> Remote sensing, spatial modeling, environmental monitoring</li>
-                  <li><strong>Machine Learning:</strong> Predictive analytics, model development, MLOps</li>
-                  <li><strong>Data Engineering:</strong> Scalable data pipelines, automation, cloud infrastructure</li>
-                  <li><strong>Business Intelligence:</strong> Interactive dashboards, KPI design, stakeholder reporting</li>
+                  <li><strong>Leadership:</strong> Team & project management</li>
+                  <li><strong>Geospattic & ML:</strong> Remote sensing, predictive models</li>
+                  <li><strong>Data Engineering:</strong> Scalable cloud pipelines</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mario García Peces -->
+          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll" style="transition-delay:100ms;">
+            <div class="flex flex-col items-center gap-4">
+              <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-32 h-32 rounded-full object-cover object-center">
+              <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900">Mario<br>García Peces</h3>
+              <p class="text-accent font-medium mb-3" data-lang="es">Socio - Analista Geoespacial</p>
+              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Geospatial Analyst</p>
+              <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el OAPN y en investigaciones sobre prácticas agrícolas sostenibles.
+              </p>
+              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
+                Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with OAPN and on sustainable agricultural research.
+              </p>
+              <div class="text-slate-600 text-sm text-left">
+                <ul class="list-disc list-inside mt-2">
+                  <li><strong>Geospatial Analysis:</strong> Spatial modeling, remote sensing</li>
+                  <li><strong>Natural Resources:</strong> Forest & land management</li>
+                  <li><strong>Environmental:</strong> Conservation, sustainability</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nicholas Cosgrove -->
+          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll" style="transition-delay:200ms;">
+            <div class="flex flex-col items-center gap-4">
+              <img src="./assets/team/nick.png" alt="Photo of Nicholas Cosgrove" class="w-32 h-32 rounded-full object-cover object-center">
+              <a href="https://www.linkedin.com/in/nicholascosgrove/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900">Nicholas<br>Cosgrove</h3>
+              <p class="text-accent font-medium mb-3" data-lang="es">Asesor - GTM</p>
+              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Advisor - GTM</p>
+              <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                Líder tecnológico y asesor enfocado en construir herramientas que ayudan a las personas y protegen el planeta. Aporta experiencia en IA centrada en el humano, tecnología geoespacial y trabajo ambiental comunitario.
+              </p>
+              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
+                Technology leader and advisor focused on building tools that help people and heal the earth. Brings experience across human-centered AI, geospatial technology, and community-driven environmental work.
+              </p>
+              <div class="text-slate-600 text-sm text-left">
+                <ul class="list-disc list-inside mt-2">
+                  <li><strong>AI Partnerships:</strong> Director at Upwork, AI vertical</li>
+                  <li><strong>Human + AI:</strong> Collaboration models, augmentation</li>
+                  <li><strong>Climate Tech:</strong> Land intelligence, environmental initiatives</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guillermo Pérez -->
+          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll" style="transition-delay:300ms;">
+            <div class="flex flex-col items-center gap-4">
+              <img src="./assets/team/guille_perez.png" alt="Foto de Guillermo Pérez" class="w-32 h-32 rounded-full object-cover object-center">
+              <a href="https://www.linkedin.com/in/guillermopc/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900">Guillermo<br>Pérez</h3>
+              <p class="text-accent font-medium mb-3" data-lang="es">Data Ops & Software</p>
+              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Data Ops & Software</p>
+              <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                Apasionado por el 'cómo' y el 'por qué' detrás del código. Le encanta trabajar en terminal y profundizar en la infraestructura que impulsa sus aplicaciones, automatizando tareas y optimizando configuraciones.
+              </p>
+              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
+                Passionate about the 'how' and 'why' behind the code. He loves living in the terminal and digging into the infrastructure that powers his applications, automating tasks and tweaking configs.
+              </p>
+              <div class="text-slate-600 text-sm text-left">
+                <ul class="list-disc list-inside mt-2">
+                  <li><strong>Infrastructure:</strong> Linux, automation, DevOps</li>
+                  <li><strong>Backend:</strong> System architecture, APIs</li>
+                  <li><strong>Tooling:</strong> Terminal workflows, scripting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Joan Medina -->
+          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll" style="transition-delay:400ms;">
+            <div class="flex flex-col items-center gap-4">
+              <div class="w-32 h-32 rounded-full overflow-hidden">
+                <img src="./assets/team/joanmedina.png" alt="Foto de Joan Medina" class="w-full h-full object-cover" style="object-position: center 60%; transform: scale(1.6);">
+              </div>
+              <a href="https://www.linkedin.com/in/joanmedina/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
+              </a>
+            </div>
+            <div class="text-center">
+              <h3 class="text-xl font-bold text-slate-900">Joan<br>Medina</h3>
+              <p class="text-accent font-medium mb-3" data-lang="es">AI & Software</p>
+              <p class="text-accent font-medium mb-3 hidden" data-lang="en">AI & Software</p>
+              <p class="text-slate-600 text-sm mb-4" data-lang="es">
+                Graduado en Ingeniería Informática y especializado con un Máster en Inteligencia Artificial. Su perfil se centra en la aplicación del aprendizaje automático al análisis masivo de datos, transformando variables complejas en conocimiento estratégico.
+              </p>
+              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
+                Computer Engineering graduate with a Master's in Artificial Intelligence. His profile focuses on applying machine learning to massive data analysis, transforming complex variables into strategic knowledge.
+              </p>
+              <div class="text-slate-600 text-sm text-left">
+                <ul class="list-disc list-inside mt-2">
+                  <li><strong>Data Engineering:</strong> Complex information architectures</li>
+                  <li><strong>Machine Learning:</strong> High-precision solutions</li>
+                  <li><strong>Scalable Systems:</strong> Processing & modeling</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <!--
-        <div class="flex justify-center max-w-5xl mx-auto">
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col md:flex-row gap-8 items-start animate-on-scroll">
-            <div class="flex flex-col items-center gap-6 w-32 flex-none">
-              <img src="./assets/mario.jpg" alt="Foto de Mario García Peces" class="w-32 h-32 rounded-full object-cover object-center">
-              <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block self-center">
-                <img src="./assets/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
-            </div>
-            <div class="text-center md:text-left">
-              <h3 class="text-xl font-bold text-slate-900">Mario García Peces</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">Socio - Analista Geoespacial</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Geospatial Analyst</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Ingeniero Forestal y Analista Geoespacial con base en España, con experiencia internacional en gestión ambiental y modelización espacial. Posee un Grado en Ingeniería Forestal y un Máster en Ingeniería de Recursos Naturales por la Universidad Politécnica de Madrid (UPM), además de un programa avanzado de Análisis Geoespacial completado en la Universidad de Laponia (Finlandia).
-              </p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Ha trabajado con el Organismo Autónomo de Parques Nacionales (OAPN) y ha participado en investigaciones sobre prácticas agrícolas sostenibles en Camerún. Actualmente en Madrid, se centra en aplicar el análisis geoespacial y la inteligencia artificial a la gestión de los recursos naturales y a proyectos de turismo outdoor.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Forest Engineer and Geospatial Analyst based in Spain, with international experience in environmental management and spatial modeling. He holds a Bachelor's degree in Forest Engineering and a Master's in Natural Resources Engineering from the Polytechnic University of Madrid (UPM), with an advanced Geospatial Analysis program at the University of Lapland (Finland).
-              </p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="en">
-                He has worked with the National Parks Autonomous Agency (OAPN) and participated in research on sustainable agricultural practices in Cameroon. Currently based in Madrid, he focuses on applying geospatial analysis and remote sensing to natural resource management and outdoor tourism projects.
-              </p>
-            </div>
-          </div>
-        </div>
-        -->
       </div>
     </section>
 
@@ -376,7 +724,7 @@
         </div>
 
         <!-- Cards on top of background -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
           <!-- GuadarramaSKI -->
           <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
             <div class="w-full h-48 bg-no-repeat bg-[length:350%_auto]"
@@ -410,14 +758,14 @@
                 role="img" aria-label="darwin_visor banner">
             </div>
             <div class="p-6 flex flex-col">
-              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin’s GeoData Mining Visor</h2>
-              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin’s GeoData Mining Visor</h2>
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin Visor</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin Visor</h2>
 
               <p class="text-slate-600 flex-grow" data-lang="es">
-                Nuestra herramienta gratis "Open Source" para visualizar y exportar datos geoespaciales de manera automática.
+                Tu atajo para exportar datos geoespaciales sin programar.
               </p>
               <p class="text-slate-600 flex-grow hidden" data-lang="en">
-                Our free to use custom "Open Source" tool to visualize and export geospatial data automatically.
+                Your shortcut to export geospatial data without coding.
               </p>
 
               <a href="./projects/darwin_visor/index.html"
@@ -433,11 +781,11 @@
           <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
             <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
                 style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG')"
-                role="img" aria-label="Darwin’s Crops & Land Use Predictor banner">
+                role="img" aria-label="Darwin's Crops & Land Use Predictor banner">
             </div>
             <div class="p-6 flex flex-col">
-              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin’s Crops & Land Use Predictor</h2>
-              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin’s Crops & Land Use Predictor</h2>
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin's Crops & Land Use Predictor</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin's Crops & Land Use Predictor</h2>
 
               <p class="text-slate-600 flex-grow" data-lang="es">
                 El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.
@@ -454,8 +802,6 @@
                 data-lang="en">Read More →</a>
             </div>
           </article>
-
-
 
           <!-- Add more project cards here by duplicating the <article> block -->
         </div>
@@ -478,15 +824,15 @@
             <h3 class="text-2xl font-bold text-center text-slate-800 mb-10 hidden" data-lang="en">Clients</h3>
             <div class="flex flex-wrap justify-center items-start gap-x-12 gap-y-10">
               <div class="partner-logo-container w-40">
-                <img src="./assets/seo_bird_life.jpg" alt="SEO Birdlife Logo" class="h-12 partner-logo"
+                <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife Logo" class="h-12 partner-logo"
                      onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
                 <p class="text-sm font-medium text-slate-700">SEO/BirdLife</p>
               </div>
-              <div class="partner-logo-container w-40">
+              <!--<div class="partner-logo-container w-40">
                 <img src="./assets/kompass.jpg" alt="Kompass Logo" class="h-12 partner-logo"
                      onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
                 <p class="text-sm font-medium text-slate-700">Kompass</p>
-              </div>
+              </div>-->
             </div>
           </div>
 
@@ -496,12 +842,12 @@
             <h3 class="text-2xl font-bold text-center text-slate-800 mb-10 hidden" data-lang="en">Partners</h3>
             <div class="flex flex-wrap justify-center items-start gap-x-12 gap-y-10">
               <div class="partner-logo-container w-48">
-                <img src="./assets/universidad_politecnica.jpg" alt="UPM Logo" class="h-16 partner-logo"
+                <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM Logo" class="h-16 partner-logo"
                      onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
                 <p class="text-sm font-medium text-slate-700">Universidad Politécnica de Madrid</p>
               </div>
               <div class="partner-logo-container w-48">
-                <img src="./assets/universidad_avila.jpg" alt="UCAV Logo" class="h-14 partner-logo"
+                <img src="./assets/partners/universidad_avila.jpg" alt="UCAV Logo" class="h-14 partner-logo"
                      onerror="this.onerror=null;this.src='https://placehold.co/192x56/e2e8f0/46633A?text=Logo';">
                 <p class="text-sm font-medium text-slate-700">Universidad Católica de Ávila</p>
               </div>
@@ -572,7 +918,7 @@
   <!-- Footer -->
   <footer class="bg-slate-900 text-slate-400 py-12">
     <div class="container mx-auto px-6 text-center">
-      <img src="./assets/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
+      <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
       <p data-lang="es">&copy; 2025 Darwin Geospatial. Todos los derechos reservados.</p>
       <p class="hidden" data-lang="en">&copy; 2025 Darwin Geospatial. All rights reserved.</p>
       <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
