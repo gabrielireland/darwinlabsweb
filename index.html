@@ -509,6 +509,112 @@
       </div>
     </section>
 
+    <!-- Projects -->
+    <section id="projects-hero" class="relative text-white">
+      <!-- Background -->
+      <div class="absolute inset-0 bg-cover bg-center"
+          style="background-image:url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?cs=srgb&dl=pexels-stywo-1054218.jpg&fm=jpg');">
+      </div>
+      <div class="absolute inset-0 bg-black/60"></div>
+
+      <!-- Content -->
+      <div class="relative container mx-auto px-6 py-20 md:py-28">
+        <!-- Title + blurb -->
+        <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="es">Proyectos</h1>
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">Projects</h1>
+
+          <p class="text-lg md:text-xl text-slate-200" data-lang="es">
+            Nos enorgullece mostrar nuestros proyectos y su propósito.
+          </p>
+          <p class="text-lg md:text-xl text-slate-200 hidden" data-lang="en">
+            We are proud of our projects and their purpose.
+          </p>
+        </div>
+
+        <!-- Cards on top of background -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+          <!-- GuadarramaSKI -->
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+            <div class="w-full h-48 bg-no-repeat bg-[length:350%_auto]"
+                style="background-image:url('./projects/guadarramaski/assets/banner.jpg'); background-position:4.80% center;"
+                role="img" aria-label="GuadarramaSKI banner">
+            </div>
+            <div class="p-6 flex flex-col">
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">Guadarrama ski</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Guadarrama ski</h2>
+
+              <p class="text-slate-600 flex-grow" data-lang="es">
+                La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.
+              </p>
+              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+                The reference page to visualize ski routes in the Guadarrama mountain range.
+              </p>
+
+              <a href="./projects/guadarramaski/index.html"
+                class="mt-4 text-primary font-bold hover:underline"
+                data-lang="es">Leer Más →</a>
+              <a href="./projects/guadarramaski/index.html"
+                class="mt-4 text-primary font-bold hover:underline hidden"
+                data-lang="en">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Darwin Visor -->
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+            <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
+                style="background-image:url('./projects/darwin_visor/assets/banner.jpeg')"
+                role="img" aria-label="darwin_visor banner">
+            </div>
+            <div class="p-6 flex flex-col">
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin Visor</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin Visor</h2>
+
+              <p class="text-slate-600 flex-grow" data-lang="es">
+                Tu atajo para exportar datos geoespaciales sin programar.
+              </p>
+              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+                Your shortcut to export geospatial data without coding.
+              </p>
+
+              <a href="./projects/darwin_visor/index.html"
+                class="mt-4 text-primary font-bold hover:underline"
+                data-lang="es">Leer Más →</a>
+              <a href="./projects/darwin_visor/index.html"
+                class="mt-4 text-primary font-bold hover:underline hidden"
+                data-lang="en">Read More →</a>
+            </div>
+          </article>
+
+          <!-- Darwin Crops & Land Use -->
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+            <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
+                style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG')"
+                role="img" aria-label="Darwin's Crops & Land Use Predictor banner">
+            </div>
+            <div class="p-6 flex flex-col">
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin's Crops & Land Use Predictor</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin's Crops & Land Use Predictor</h2>
+
+              <p class="text-slate-600 flex-grow" data-lang="es">
+                El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.
+              </p>
+              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+                The most up-to-date crop and land-use predictor & classifier, powered by Alpha Earth.
+              </p>
+
+              <a href="./projects/darwin_crops_landuse/index.html"
+                class="mt-4 text-primary font-bold hover:underline"
+                data-lang="es">Leer Más →</a>
+              <a href="./projects/darwin_crops_landuse/index.html"
+                class="mt-4 text-primary font-bold hover:underline hidden"
+                data-lang="en">Read More →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- Sectors -->
     <section id="sectors" class="py-20 lg:py-32 overflow-hidden">
       <div class="container mx-auto px-6">
@@ -769,115 +875,6 @@
         </div>
       </div>
     </section>
-
-    <!-- Projects (single-section with background and overlayed cards) In a future version, this could be split into a separate page with a full list of projects. Or we could create a rotating visual with the most important that rotates projects through a library. -->
-    <section id="projects-hero" class="relative text-white"> 
-      <!-- Background -->
-      <div class="absolute inset-0 bg-cover bg-center"
-          style="background-image:url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?cs=srgb&dl=pexels-stywo-1054218.jpg&fm=jpg');">
-      </div>
-      <div class="absolute inset-0 bg-black/60"></div>
-
-      <!-- Content -->
-      <div class="relative container mx-auto px-6 py-20 md:py-28">
-        <!-- Title + blurb -->
-        <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll">
-          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4" data-lang="es">Proyectos</h1>
-          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 hidden" data-lang="en">Projects</h1>
-
-          <p class="text-lg md:text-xl text-slate-200" data-lang="es">
-            Nos enorgullece mostrar nuestros proyectos y su propósito.
-          </p>
-          <p class="text-lg md:text-xl text-slate-200 hidden" data-lang="en">
-            We are proud of our projects and their purpose.
-          </p>
-        </div>
-
-        <!-- Cards on top of background -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
-          <!-- GuadarramaSKI -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
-            <div class="w-full h-48 bg-no-repeat bg-[length:350%_auto]"
-                style="background-image:url('./projects/guadarramaski/assets/banner.jpg'); background-position:4.80% center;"
-                role="img" aria-label="GuadarramaSKI banner">
-            </div>
-            <div class="p-6 flex flex-col">
-              <h2 class="text-xl font-semibold mb-2" data-lang="es">Guadarrama ski</h2>
-              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Guadarrama ski</h2>
-
-              <p class="text-slate-600 flex-grow" data-lang="es">
-                La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.
-              </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
-                The reference page to visualize ski routes in the Guadarrama mountain range.
-              </p>
-
-              <a href="./projects/guadarramaski/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
-                data-lang="es">Leer Más →</a>
-              <a href="./projects/guadarramaski/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
-                data-lang="en">Read More →</a>
-            </div>
-          </article>
-
-          <!-- Darwin Visor -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
-            <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
-                style="background-image:url('./projects/darwin_visor/assets/banner.jpeg')"
-                role="img" aria-label="darwin_visor banner">
-            </div>
-            <div class="p-6 flex flex-col">
-              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin Visor</h2>
-              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin Visor</h2>
-
-              <p class="text-slate-600 flex-grow" data-lang="es">
-                Tu atajo para exportar datos geoespaciales sin programar.
-              </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
-                Your shortcut to export geospatial data without coding.
-              </p>
-
-              <a href="./projects/darwin_visor/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
-                data-lang="es">Leer Más →</a>
-              <a href="./projects/darwin_visor/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
-                data-lang="en">Read More →</a>
-            </div>
-          </article>
-
-          <!-- Darwin Crops & Land Use -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
-            <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
-                style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG')"
-                role="img" aria-label="Darwin's Crops & Land Use Predictor banner">
-            </div>
-            <div class="p-6 flex flex-col">
-              <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin's Crops & Land Use Predictor</h2>
-              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin's Crops & Land Use Predictor</h2>
-
-              <p class="text-slate-600 flex-grow" data-lang="es">
-                El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.
-              </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
-                The most up-to-date crop and land-use predictor & classifier, powered by Alpha Earth.
-              </p>
-
-              <a href="./projects/darwin_crops_landuse/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
-                data-lang="es">Leer Más →</a>
-              <a href="./projects/darwin_crops_landuse/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
-                data-lang="en">Read More →</a>
-            </div>
-          </article>
-
-          <!-- Add more project cards here by duplicating the <article> block -->
-        </div>
-      </div>
-    </section>
-
 
     <!-- Partners -->
     <section id="partners" class="py-20 lg:py-32">
