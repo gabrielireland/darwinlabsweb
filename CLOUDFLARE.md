@@ -125,6 +125,12 @@ Cloudflare Pages will automatically detect the push and deploy.
 
 ---
 
+## Claude Code Rules
+
+**NO COMMITS unless explicitly requested by the user.** Make changes but wait for user approval before committing.
+
+---
+
 ## Development Guidelines
 
 ### Team Section
