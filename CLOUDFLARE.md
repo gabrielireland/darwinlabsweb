@@ -125,6 +125,25 @@ Cloudflare Pages will automatically detect the push and deploy.
 
 ---
 
+## Development Guidelines
+
+### Team Section
+- **Descriptions MUST be aligned** - All team member cards should have similar description lengths
+- **Abilities bullet points** - Keep label lengths consistent (e.g., "Backend Systems:" not just "Backend:")
+- Use `mt-auto` on the abilities div to push them to the bottom of cards
+- Use `h-full` and `flex-grow` to ensure cards stretch equally
+
+### Values Section
+- Uses Darwin green with 10% opacity: `rgba(70, 99, 58, 0.1)`
+- Cards have rounded corners and centered text
+
+### General
+- Always test both ES and EN language versions
+- Check mobile responsiveness after changes
+- Abilities should have 3 items each with similar character counts
+
+---
+
 ## Historical Notes
 
 - **Previous repo:** `irishdevops/darwinlabsweb` (no longer exists)
