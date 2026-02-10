@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" href="./assets/hero/habitat.png" as="image"/>
+  <link rel="preload" href="./assets/hero/habitat.webp" as="image" type="image/webp"/>
 
   <style>
     /* Color palette */
@@ -71,37 +71,37 @@
     }
 
     .hero-slide:nth-child(1) {
-      background-image: url('./assets/hero/habitat.png');
+      background-image: url('./assets/hero/habitat.webp');
       animation-delay: 0s;
       opacity: 1; /* Show first slide immediately while loading */
     }
 
     .hero-slide:nth-child(2) {
-      background-image: url('./assets/hero/insolation.png');
+      background-image: url('./assets/hero/insolation.webp');
       animation-delay: 8s;
       animation-name: kenBurnsCrossfade2;
     }
 
     .hero-slide:nth-child(3) {
-      background-image: url('./projects/guadarramaski/assets/acc_snow.png');
+      background-image: url('./projects/guadarramaski/assets/acc_snow.webp');
       animation-delay: 16s;
       animation-name: kenBurnsCrossfade3;
     }
 
     .hero-slide:nth-child(4) {
-      background-image: url('./assets/hero/ndvi.png');
+      background-image: url('./assets/hero/ndvi.webp');
       animation-delay: 24s;
       animation-name: kenBurnsCrossfade4;
     }
 
     .hero-slide:nth-child(5) {
-      background-image: url('./assets/hero/aspect.png');
+      background-image: url('./assets/hero/aspect.webp');
       animation-delay: 32s;
       animation-name: kenBurnsCrossfade5;
     }
 
     .hero-slide:nth-child(6) {
-      background-image: url('./assets/hero/ch.png');
+      background-image: url('./assets/hero/ch.webp');
       animation-delay: 40s;
       animation-name: kenBurnsCrossfade6;
     }
@@ -309,8 +309,8 @@
         <a href="#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
         <a href="#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
 
-        <a href="#partners" class="text-slate-600 hover:text-primary transition" data-lang="es">Partners</a>
-        <a href="#partners" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Partners</a>
+        <!-- <a href="#partners" class="text-slate-600 hover:text-primary transition" data-lang="es">Partners</a>
+        <a href="#partners" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Partners</a> -->
 
         <a href="#contact" class="text-slate-600 hover:text-primary transition" data-lang="es">Contacto</a>
         <a href="#contact" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Contact</a>
@@ -348,8 +348,8 @@
       <a href="#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
       <a href="#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
 
-      <a href="#partners" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Partners</a>
-      <a href="#partners" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Partners</a>
+      <!-- <a href="#partners" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Partners</a>
+      <a href="#partners" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Partners</a> -->
 
       <a href="#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
       <a href="#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
@@ -399,10 +399,9 @@
 
   <main>
     <!-- About -->
-    <section id="about" class="py-20 lg:py-32 overflow-hidden">
+    <section id="about" class="py-28 lg:py-40 overflow-hidden min-h-[85vh] flex items-center">
       <div class="container mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <div class="animate-on-scroll">
+        <div class="max-w-3xl mx-auto text-center animate-on-scroll">
             <span class="text-primary font-bold text-2xl" data-lang="es">Nuestra Misión</span>
             <span class="text-primary font-bold text-2xl hidden" data-lang="en">Our Mission</span>
             <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 mb-6" data-lang="es">Entender la naturaleza para gestionarla mejor.</h2>
@@ -411,20 +410,16 @@
               En Darwin Geospatial, creemos que la gestión eficaz de la naturaleza comienza con una comprensión profunda. Por eso, ponemos los datos geoespaciales y la inteligencia artificial en el centro de todo lo que hacemos.
             </p>
             <p class="text-slate-600 mb-4 hidden" data-lang="en">
-              At Darwin Geospatial, we believe that managing nature effectively starts with understanding it deeply. That’s why we put geospatial data and artificial intelligence at the core of everything we do.
+              At Darwin Geospatial, we believe that managing nature effectively starts with understanding it deeply. That's why we put geospatial data and artificial intelligence at the core of everything we do.
             </p>
             <p class="text-slate-600" data-lang="es">Nuestra misión es transformar cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
             <p class="text-slate-600 hidden" data-lang="en">Our mission is to transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
-          </div>
-          <div class="animate-on-scroll">
-            <img src="./assets/about/dashboard.jpg" alt="Análisis de Datos Geoespaciales" class="rounded-lg shadow-xl w-full h-auto">
-          </div>
         </div>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="bg-white py-20 lg:py-32 overflow-hidden">
+    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-[85vh] flex items-center">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
           <span class="text-primary font-bold text-2xl" data-lang="es">Nuestros Servicios</span>
@@ -433,12 +428,12 @@
           <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">What We Do</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
           <!-- Data Foundation -->
-          <div class="p-6 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1);">
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Datos</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Data Foundation</h3>
-            <ul class="text-slate-600 text-sm space-y-2">
+          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1);">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Datos</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Data Foundation</h3>
+            <ul class="text-slate-600 text-base space-y-3">
               <li data-lang="es">• Ingeniería de Datos</li>
               <li class="hidden" data-lang="en">• Data Engineering</li>
               <li data-lang="es">• Pipelines ETL/ELT</li>
@@ -449,10 +444,10 @@
           </div>
 
           <!-- Intelligence -->
-          <div class="p-6 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 100ms;">
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Inteligencia</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Intelligence</h3>
-            <ul class="text-slate-600 text-sm space-y-2">
+          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 100ms;">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Inteligencia</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Intelligence</h3>
+            <ul class="text-slate-600 text-base space-y-3">
               <li data-lang="es">• IA Geoespacial</li>
               <li class="hidden" data-lang="en">• Geospatial AI</li>
               <li data-lang="es">• Modelos ML</li>
@@ -463,10 +458,10 @@
           </div>
 
           <!-- Analysis -->
-          <div class="p-6 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 200ms;">
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Análisis</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Analysis</h3>
-            <ul class="text-slate-600 text-sm space-y-2">
+          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 200ms;">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Análisis</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Analysis</h3>
+            <ul class="text-slate-600 text-base space-y-3">
               <li data-lang="es">• Conectividad Ecológica</li>
               <li class="hidden" data-lang="en">• Ecological Connectivity</li>
               <li data-lang="es">• Análisis de Grafos</li>
@@ -477,10 +472,10 @@
           </div>
 
           <!-- Delivery -->
-          <div class="p-6 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 300ms;">
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Entrega</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Delivery</h3>
-            <ul class="text-slate-600 text-sm space-y-2">
+          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 300ms;">
+            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Entrega</h3>
+            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Delivery</h3>
+            <ul class="text-slate-600 text-base space-y-3">
               <li data-lang="es">• Visores Personalizados</li>
               <li class="hidden" data-lang="en">• Custom Visors</li>
               <li data-lang="es">• Dashboards</li>
@@ -872,7 +867,7 @@
     </section>
 
     <!-- Partners -->
-    <section id="partners" class="py-20 lg:py-32">
+    <section id="partners" class="py-20 lg:py-32 hidden">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang="es">Nuestros Clientes y Partners</h2>
