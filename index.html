@@ -279,6 +279,23 @@
       50% { transform: translateX(-50%) translateY(8px); }
     }
 
+    @keyframes bounceSlow {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
+    }
+    .animate-bounce-slow {
+      animation: bounceSlow 2s ease-in-out infinite;
+    }
+
+    .service-card {
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(57, 89, 53, 0.25);
+    }
+
     /* Make in-page anchors stop below fixed header */
     #about, #sectors, #values, #team, #partners, #contact,
     #projects-hero, #projects-list { scroll-margin-top: 4rem; }
@@ -383,18 +400,20 @@
       <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10 hidden" data-lang="en">
         We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored, and managed.
       </p>
-      <a href="#about" class="inline-block bg-ochre hover:bg-ochre-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl" data-lang="es">Descubre Más</a>
-      <a href="#about" class="inline-block bg-ochre hover:bg-ochre-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl hidden" data-lang="en">Discover More</a>
+      <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300" data-lang="es">
+        <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Descubre Más</span>
+        <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+        </svg>
+      </a>
+      <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300 hidden" data-lang="en">
+        <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Discover More</span>
+        <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+        </svg>
+      </a>
     </div>
 
-    <!-- Scroll Indicator -->
-    <a href="#about" class="scroll-indicator z-10">
-      <span data-lang="es">Desliza</span>
-      <span class="hidden" data-lang="en">Scroll</span>
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </a>
   </section>
 
   <main>
@@ -428,62 +447,108 @@
           <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">What We Do</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+
           <!-- Data Foundation -->
-          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1);">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Datos</h3>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Data Foundation</h3>
-            <ul class="text-slate-600 text-base space-y-3">
-              <li data-lang="es">• Ingeniería de Datos</li>
-              <li class="hidden" data-lang="en">• Data Engineering</li>
-              <li data-lang="es">• Pipelines ETL/ELT</li>
-              <li class="hidden" data-lang="en">• ETL/ELT Pipelines</li>
-              <li data-lang="es">• Almacenamiento Geoespacial</li>
-              <li class="hidden" data-lang="en">• Geospatial Warehousing</li>
-            </ul>
-          </div>
+          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px;">
+            <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="absolute -top-[10%] left-0 w-full h-[120%] object-cover object-bottom transition-transform duration-700 group-hover:scale-[1.02]"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
+            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-3" data-lang="es">Datos</h3>
+              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Data Foundation</h3>
+              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                <li data-lang="es">Ingeniería de Datos</li>
+                <li class="hidden" data-lang="en">Data Engineering</li>
+                <li data-lang="es">Pipelines ETL/ELT</li>
+                <li class="hidden" data-lang="en">ETL/ELT Pipelines</li>
+                <li data-lang="es">Almacenamiento Geoespacial</li>
+                <li class="hidden" data-lang="en">Geospatial Warehousing</li>
+              </ul>
+              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+                <span data-lang="es">Ver más</span>
+                <span class="hidden" data-lang="en">Learn more</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+          </a>
 
           <!-- Intelligence -->
-          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 100ms;">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Inteligencia</h3>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Intelligence</h3>
-            <ul class="text-slate-600 text-base space-y-3">
-              <li data-lang="es">• IA Geoespacial</li>
-              <li class="hidden" data-lang="en">• Geospatial AI</li>
-              <li data-lang="es">• Modelos ML</li>
-              <li class="hidden" data-lang="en">• ML Models</li>
-              <li data-lang="es">• IA Ambiental</li>
-              <li class="hidden" data-lang="en">• Environmental AI</li>
-            </ul>
-          </div>
+          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 100ms;">
+            <img src="./assets/services/intelligence.png" alt="Intelligence" class="absolute -top-[10%] left-0 w-full h-[120%] object-cover object-bottom transition-transform duration-700 group-hover:scale-[1.02]"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
+            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-3" data-lang="es">Inteligencia</h3>
+              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Intelligence</h3>
+              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                <li data-lang="es">IA Geoespacial</li>
+                <li class="hidden" data-lang="en">Geospatial AI</li>
+                <li data-lang="es">Modelos ML</li>
+                <li class="hidden" data-lang="en">ML Models</li>
+                <li data-lang="es">IA Ambiental</li>
+                <li class="hidden" data-lang="en">Environmental AI</li>
+              </ul>
+              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+                <span data-lang="es">Ver más</span>
+                <span class="hidden" data-lang="en">Learn more</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+          </a>
 
           <!-- Analysis -->
-          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 200ms;">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Análisis</h3>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Analysis</h3>
-            <ul class="text-slate-600 text-base space-y-3">
-              <li data-lang="es">• Conectividad Ecológica</li>
-              <li class="hidden" data-lang="en">• Ecological Connectivity</li>
-              <li data-lang="es">• Análisis de Grafos</li>
-              <li class="hidden" data-lang="en">• Graph Analysis</li>
-              <li data-lang="es">• Indicadores Ambientales</li>
-              <li class="hidden" data-lang="en">• Environmental Indicators</li>
-            </ul>
-          </div>
+          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 200ms;">
+            <img src="./assets/services/analysis.png" alt="Analysis" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
+            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-3" data-lang="es">Análisis</h3>
+              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Analysis</h3>
+              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                <li data-lang="es">Conectividad Ecológica</li>
+                <li class="hidden" data-lang="en">Ecological Connectivity</li>
+                <li data-lang="es">Análisis de Grafos</li>
+                <li class="hidden" data-lang="en">Graph Analysis</li>
+                <li data-lang="es">Indicadores Ambientales</li>
+                <li class="hidden" data-lang="en">Environmental Indicators</li>
+              </ul>
+              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+                <span data-lang="es">Ver más</span>
+                <span class="hidden" data-lang="en">Learn more</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+          </a>
 
-          <!-- Delivery -->
-          <div class="p-8 rounded-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay: 300ms;">
-            <h3 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Entrega</h3>
-            <h3 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Delivery</h3>
-            <ul class="text-slate-600 text-base space-y-3">
-              <li data-lang="es">• Visores Personalizados</li>
-              <li class="hidden" data-lang="en">• Custom Visors</li>
-              <li data-lang="es">• Dashboards</li>
-              <li class="hidden" data-lang="en">• Dashboards</li>
-              <li data-lang="es">• Herramientas de Exportación</li>
-              <li class="hidden" data-lang="en">• Export Tools</li>
-            </ul>
-          </div>
+          <!-- Software Engineering -->
+          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 300ms;">
+            <img src="./assets/services/software.svg" alt="Software Engineering" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
+            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
+              <h3 class="text-2xl font-bold mb-3" data-lang="es">Ingeniería de Software</h3>
+              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Software Engineering</h3>
+              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+                <li data-lang="es">Visores Personalizados</li>
+                <li class="hidden" data-lang="en">Custom Visors</li>
+                <li data-lang="es">Dashboards</li>
+                <li class="hidden" data-lang="en">Dashboards</li>
+                <li data-lang="es">Herramientas de Exportación</li>
+                <li class="hidden" data-lang="en">Export Tools</li>
+              </ul>
+              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+                <span data-lang="es">Ver más</span>
+                <span class="hidden" data-lang="en">Learn more</span>
+                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </div>
+            </div>
+          </a>
+
         </div>
 
         <!-- See All Services Link -->
@@ -523,7 +588,7 @@
         </div>
 
         <!-- Cards on top of background -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
           <!-- GuadarramaSKI -->
           <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
             <div class="w-full h-48 bg-no-repeat bg-[length:350%_auto]"
@@ -599,6 +664,34 @@
               <a href="./projects/darwin_crops_landuse/index.html"
                 class="mt-4 text-primary font-bold hover:underline hidden"
                 data-lang="en">Read More →</a>
+            </div>
+          </article>
+
+          <!-- End World Hunger Ohio -->
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+            <div class="w-full h-48 bg-no-repeat bg-cover bg-center"
+                style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png')"
+                role="img" aria-label="End World Hunger Ohio - Franklin Park Community Garden">
+            </div>
+            <div class="p-6 flex flex-col">
+              <h2 class="text-xl font-semibold mb-2" data-lang="es">End World Hunger Ohio</h2>
+              <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">End World Hunger Ohio</h2>
+
+              <p class="text-slate-600 flex-grow" data-lang="es">
+                Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.
+              </p>
+              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+                We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.
+              </p>
+
+              <a href="https://endworldhungerohio.com/"
+                target="_blank" rel="noopener noreferrer"
+                class="mt-4 text-primary font-bold hover:underline"
+                data-lang="es">Visitar Web →</a>
+              <a href="https://endworldhungerohio.com/"
+                target="_blank" rel="noopener noreferrer"
+                class="mt-4 text-primary font-bold hover:underline hidden"
+                data-lang="en">Visit Website →</a>
             </div>
           </article>
         </div>

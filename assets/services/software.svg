@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141a21"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#46633A" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#46633A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+
+  <!-- Window chrome - browser/IDE frame -->
+  <rect x="60" y="80" width="680" height="440" rx="8" fill="#1c2333" stroke="#2d3748" stroke-width="1"/>
+  <rect x="60" y="80" width="680" height="32" rx="8" fill="#1e2736"/>
+  <rect x="60" y="104" width="680" height="8" fill="#1e2736"/>
+  <circle cx="84" cy="96" r="6" fill="#ff5f57"/>
+  <circle cx="104" cy="96" r="6" fill="#febc2e"/>
+  <circle cx="124" cy="96" r="6" fill="#28c840"/>
+
+  <!-- Tab bar -->
+  <rect x="160" y="84" width="100" height="24" rx="4" fill="#1c2333"/>
+  <text x="180" y="100" fill="#5D713F" font-family="monospace" font-size="10">app.py</text>
+  <rect x="265" y="84" width="100" height="24" rx="4" fill="#141a21"/>
+  <text x="280" y="100" fill="#4a5568" font-family="monospace" font-size="10">models.py</text>
+
+  <!-- Line numbers -->
+  <g fill="#4a5568" font-family="monospace" font-size="12" opacity="0.5">
+    <text x="75" y="140">1</text>
+    <text x="75" y="160">2</text>
+    <text x="75" y="180">3</text>
+    <text x="75" y="200">4</text>
+    <text x="75" y="220">5</text>
+    <text x="75" y="240">6</text>
+    <text x="75" y="260">7</text>
+    <text x="75" y="280">8</text>
+    <text x="75" y="300">9</text>
+    <text x="68" y="320">10</text>
+    <text x="68" y="340">11</text>
+    <text x="68" y="360">12</text>
+    <text x="68" y="380">13</text>
+    <text x="68" y="400">14</text>
+    <text x="68" y="420">15</text>
+    <text x="68" y="440">16</text>
+    <text x="68" y="460">17</text>
+    <text x="68" y="480">18</text>
+    <text x="68" y="500">19</text>
+  </g>
+
+  <!-- Active line highlight -->
+  <rect x="60" y="228" width="680" height="20" fill="#46633A" fill-opacity="0.08"/>
+
+  <!-- Code content -->
+  <g font-family="monospace" font-size="12">
+    <text x="100" y="140"><tspan fill="#c792ea">from</tspan><tspan fill="#a6accd"> fastapi </tspan><tspan fill="#c792ea">import</tspan><tspan fill="#a6accd"> FastAPI</tspan></text>
+    <text x="100" y="160"><tspan fill="#c792ea">from</tspan><tspan fill="#a6accd"> .engine </tspan><tspan fill="#c792ea">import</tspan><tspan fill="#a6accd"> GeoProcessor</tspan></text>
+    <text x="100" y="180"><tspan fill="#a6accd"> </tspan></text>
+    <text x="100" y="200"><tspan fill="#a6accd">app </tspan><tspan fill="#89ddff">=</tspan><tspan fill="#a6accd"> FastAPI()</tspan></text>
+    <text x="100" y="220"><tspan fill="#a6accd"> </tspan></text>
+    <text x="100" y="240"><tspan fill="#c792ea">@</tspan><tspan fill="#82aaff">app.post</tspan><tspan fill="#a6accd">(</tspan><tspan fill="#c3e88d">"/api/analyze"</tspan><tspan fill="#a6accd">)</tspan></text>
+    <text x="100" y="260"><tspan fill="#c792ea">async def</tspan><tspan fill="#82aaff"> analyze_region</tspan><tspan fill="#a6accd">(req):</tspan></text>
+    <text x="120" y="280"><tspan fill="#a6accd">processor </tspan><tspan fill="#89ddff">=</tspan><tspan fill="#a6accd"> GeoProcessor(</tspan></text>
+    <text x="140" y="300"><tspan fill="#a6accd">bbox</tspan><tspan fill="#89ddff">=</tspan><tspan fill="#a6accd">req.bbox,</tspan></text>
+    <text x="140" y="320"><tspan fill="#a6accd">model</tspan><tspan fill="#89ddff">=</tspan><tspan fill="#c3e88d">"sentinel_v3"</tspan></text>
+    <text x="120" y="340"><tspan fill="#a6accd">)</tspan></text>
+    <text x="120" y="360"><tspan fill="#c792ea">return await</tspan><tspan fill="#a6accd"> processor.run()</tspan></text>
+    <text x="100" y="380"><tspan fill="#a6accd"> </tspan></text>
+    <text x="100" y="400"><tspan fill="#c792ea">@</tspan><tspan fill="#82aaff">app.get</tspan><tspan fill="#a6accd">(</tspan><tspan fill="#c3e88d">"/api/tiles/</tspan><tspan fill="#f78c6c">{z}/{x}/{y}</tspan><tspan fill="#c3e88d">"</tspan><tspan fill="#a6accd">)</tspan></text>
+    <text x="100" y="420"><tspan fill="#c792ea">async def</tspan><tspan fill="#82aaff"> serve_tile</tspan><tspan fill="#a6accd">(z, x, y):</tspan></text>
+    <text x="120" y="440"><tspan fill="#c792ea">return</tspan><tspan fill="#a6accd"> TileResponse(</tspan></text>
+    <text x="140" y="460"><tspan fill="#82aaff">generate_mvt</tspan><tspan fill="#a6accd">(z, x, y)</tspan></text>
+    <text x="120" y="480"><tspan fill="#a6accd">)</tspan></text>
+  </g>
+
+  <!-- Terminal window -->
+  <rect x="60" y="560" width="680" height="200" rx="8" fill="#0d1117" stroke="#2d3748" stroke-width="1"/>
+  <rect x="60" y="560" width="680" height="28" rx="8" fill="#1e2736"/>
+  <rect x="60" y="580" width="680" height="8" fill="#1e2736"/>
+  <text x="80" y="578" fill="#a6accd" font-family="monospace" font-size="10">Terminal</text>
+
+  <!-- Terminal content -->
+  <g font-family="monospace" font-size="11">
+    <text x="75" y="610"><tspan fill="#5D713F">$</tspan><tspan fill="#a6accd"> docker compose up --build</tspan></text>
+    <text x="75" y="630"><tspan fill="#4a5568">[+] Building api service...</tspan></text>
+    <text x="75" y="650"><tspan fill="#5D713F">[OK]</tspan><tspan fill="#a6accd"> API running on 0.0.0.0:8000</tspan></text>
+    <text x="75" y="670"><tspan fill="#5D713F">[OK]</tspan><tspan fill="#a6accd"> Tile server ready</tspan></text>
+    <text x="75" y="690"><tspan fill="#5D713F">[OK]</tspan><tspan fill="#a6accd"> PostGIS connected</tspan></text>
+    <text x="75" y="710"><tspan fill="#5D713F">$</tspan><tspan fill="#a6accd"> pytest --cov </tspan><tspan fill="#5D713F">✓ 47 passed</tspan></text>
+    <text x="75" y="730"><tspan fill="#5D713F">$</tspan><tspan fill="#ffffff" fill-opacity="0.7"> _</tspan></text>
+  </g>
+
+  <!-- Floating architecture diagram elements -->
+  <g opacity="0.12">
+    <rect x="100" y="810" width="120" height="50" rx="6" fill="none" stroke="#5D713F" stroke-width="1.5"/>
+    <text x="130" y="840" fill="#5D713F" font-family="monospace" font-size="10">Frontend</text>
+    <rect x="340" y="810" width="120" height="50" rx="6" fill="none" stroke="#5D713F" stroke-width="1.5"/>
+    <text x="375" y="840" fill="#5D713F" font-family="monospace" font-size="10">API</text>
+    <rect x="580" y="810" width="120" height="50" rx="6" fill="none" stroke="#5D713F" stroke-width="1.5"/>
+    <text x="618" y="840" fill="#5D713F" font-family="monospace" font-size="10">DB</text>
+    <line x1="220" y1="835" x2="340" y2="835" stroke="#5D713F" stroke-width="1"/>
+    <line x1="460" y1="835" x2="580" y2="835" stroke="#5D713F" stroke-width="1"/>
+    <polygon points="335,830 345,835 335,840" fill="#5D713F"/>
+    <polygon points="575,830 585,835 575,840" fill="#5D713F"/>
+  </g>
+
+  <!-- Subtle deployment badges -->
+  <g opacity="0.08">
+    <rect x="100" y="900" width="80" height="24" rx="12" fill="none" stroke="#5D713F" stroke-width="1"/>
+    <text x="115" y="916" fill="#5D713F" font-family="monospace" font-size="9">Docker</text>
+    <rect x="200" y="900" width="80" height="24" rx="12" fill="none" stroke="#5D713F" stroke-width="1"/>
+    <text x="223" y="916" fill="#5D713F" font-family="monospace" font-size="9">CI/CD</text>
+    <rect x="300" y="900" width="80" height="24" rx="12" fill="none" stroke="#5D713F" stroke-width="1"/>
+    <text x="318" y="916" fill="#5D713F" font-family="monospace" font-size="9">Cloud</text>
+  </g>
+</svg>
