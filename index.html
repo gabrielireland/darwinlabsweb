@@ -467,7 +467,7 @@
             <p class="text-primary font-semibold text-lg md:text-xl hidden" data-lang="en">Using the latest artificial intelligence techniques, we transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
 
             <!-- Arrow to Services -->
-            <a href="#services" class="inline-flex flex-col items-center gap-2 mt-10 text-primary no-underline hover:no-underline group animate-on-scroll" style="transition-delay:900ms;">
+            <a href="#services" class="inline-flex flex-col items-center gap-2 mt-4 text-primary no-underline hover:no-underline group">
               <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Servicios</span>
               <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Services</span>
               <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -479,7 +479,7 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-screen flex items-center">
+    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-screen flex items-center relative">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
           <span class="text-primary font-bold text-2xl" data-lang="es">Nuestros Servicios</span>
@@ -624,18 +624,28 @@
 
         </div>
 
-        <!-- See All Services Link -->
-        <div class="text-center mt-12 animate-on-scroll">
-          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline transition" data-lang="es">
+        <!-- See All Services — right-aligned below cards -->
+        <div class="text-right mt-3">
+          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline transition" data-lang="es">
             Ver todos los servicios
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
             </svg>
           </a>
-          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold hover:underline transition hidden" data-lang="en">
+          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline transition hidden" data-lang="en">
             See all services
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+        <!-- Arrow to Projects -->
+        <div class="text-center mt-4">
+          <a href="#projects-hero" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Proyectos</span>
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Projects</span>
+            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
             </svg>
           </a>
         </div>
@@ -768,6 +778,16 @@
             </div>
           </article>
         </div>
+        <!-- Arrow to Sectors -->
+        <div class="text-center mt-4">
+          <a href="#sectors" class="inline-flex flex-col items-center gap-2 text-white no-underline hover:no-underline group">
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Sectores</span>
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Sectors</span>
+            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -840,6 +860,16 @@
             </ul>
           </div>
         </div>
+        <!-- Arrow to Values -->
+        <div class="text-center mt-4">
+          <a href="#values" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Valores</span>
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Values</span>
+            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -872,6 +902,16 @@
             <p class="text-slate-600" data-lang="es">Desarrollamos y entrenamos nuestros propios modelos de IA para garantizar que comprendan verdaderamente los sistemas naturales con los que trabajamos.</p>
             <p class="text-slate-600 hidden" data-lang="en">We develop and train our own AI models to ensure they truly understand the natural systems we work with.</p>
           </div>
+        </div>
+        <!-- Arrow to Team -->
+        <div class="text-center mt-4">
+          <a href="#team" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestro Equipo</span>
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Team</span>
+            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
@@ -1040,6 +1080,16 @@
             </div>
           </div>
 
+        </div>
+        <!-- Arrow to Contact -->
+        <div class="text-center mt-4">
+          <a href="#contact" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Contacto</span>
+            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Contact</span>
+            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
