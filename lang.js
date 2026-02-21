@@ -217,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } while (nx > W * 0.6 && ny > H * 0.55);
       nodes.push({
         x: nx, y: ny,
-        vx: (Math.random() - 0.5) * 0.18,
-        vy: (Math.random() - 0.5) * 0.18,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
         r: 2.5 + Math.random() * 2.5,
         opacity: 0.3 + Math.random() * 0.2,
         pulse: Math.random() * TAU,
@@ -230,8 +230,8 @@ document.addEventListener('DOMContentLoaded', () => {
       nodes.push({
         x: Math.random() * W * 0.65,
         y: H * 0.6 + Math.random() * H * 0.38,
-        vx: (Math.random() - 0.5) * 0.14,
-        vy: (Math.random() - 0.5) * 0.10,
+        vx: (Math.random() - 0.5) * 0.09,
+        vy: (Math.random() - 0.5) * 0.06,
         r: 2 + Math.random() * 2,
         opacity: 0.22 + Math.random() * 0.18,
         pulse: Math.random() * TAU,
