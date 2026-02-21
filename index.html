@@ -44,6 +44,20 @@
     }
     .animate-on-scroll.is-visible{opacity:1; transform:translateY(0);}
 
+    .animate-on-scroll.reveal-mission{
+      opacity:0;
+      transform:translateY(20px) scale(0.97);
+      filter:blur(6px);
+      transition:opacity 1.2s cubic-bezier(0.22,1,0.36,1),
+                 transform 1.2s cubic-bezier(0.22,1,0.36,1),
+                 filter 1s cubic-bezier(0.22,1,0.36,1);
+    }
+    .animate-on-scroll.reveal-mission.is-visible{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+
     /* Language switcher */
     .lang-switcher button.active{color:var(--darwin-green-base); font-weight:700;}
 
@@ -299,6 +313,31 @@
     /* Make in-page anchors stop below fixed header */
     #about, #sectors, #values, #team, #partners, #contact,
     #projects-hero, #projects-list { scroll-margin-top: 4rem; }
+
+    #mission-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    @keyframes bugFloat {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(3px, -4px) rotate(3deg); }
+      50% { transform: translate(-2px, -6px) rotate(-2deg); }
+      75% { transform: translate(4px, -2px) rotate(2deg); }
+    }
+    .service-bug {
+      position: absolute;
+      pointer-events: none;
+      z-index: 2;
+      animation: bugFloat 6s ease-in-out infinite;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover .service-bug { opacity: 0.9; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -418,27 +457,35 @@
 
   <main>
     <!-- About -->
-    <section id="about" class="py-28 lg:py-40 overflow-hidden min-h-[85vh] flex items-center">
-      <div class="container mx-auto px-6">
+    <section id="about" class="py-28 lg:py-40 overflow-hidden min-h-screen flex items-center relative">
+      <canvas id="mission-canvas" aria-hidden="true"></canvas>
+      <div class="container mx-auto px-6" style="position:relative;z-index:1;">
         <div class="max-w-3xl mx-auto text-center animate-on-scroll">
-            <span class="text-primary font-bold text-2xl" data-lang="es">Nuestra Misión</span>
-            <span class="text-primary font-bold text-2xl hidden" data-lang="en">Our Mission</span>
-            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 mb-6" data-lang="es">Entender la naturaleza para gestionarla mejor.</h2>
-            <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 mb-6 hidden" data-lang="en">Understand nature to manage it better.</h2>
-            <p class="text-slate-600 mb-4" data-lang="es">
+            <h2 class="font-bold text-primary mb-6 whitespace-nowrap" style="font-size:clamp(1.1rem,3.2vw,1.875rem);" data-lang="es">Nuestra Misión — Entender la naturaleza para gestionarla mejor.</h2>
+            <h2 class="font-bold text-primary mb-6 whitespace-nowrap hidden" style="font-size:clamp(1.1rem,3.2vw,1.875rem);" data-lang="en">Our Mission — Understand nature to manage it better.</h2>
+            <p class="text-primary mb-4" data-lang="es">
               En Darwin Geospatial, creemos que la gestión eficaz de la naturaleza comienza con una comprensión profunda. Por eso, ponemos los datos geoespaciales y la inteligencia artificial en el centro de todo lo que hacemos.
             </p>
-            <p class="text-slate-600 mb-4 hidden" data-lang="en">
+            <p class="text-primary mb-4 hidden" data-lang="en">
               At Darwin Geospatial, we believe that managing nature effectively starts with understanding it deeply. That's why we put geospatial data and artificial intelligence at the core of everything we do.
             </p>
-            <p class="text-slate-600" data-lang="es">Nuestra misión es transformar cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
-            <p class="text-slate-600 hidden" data-lang="en">Our mission is to transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
+            <p class="text-primary font-semibold text-lg md:text-xl" data-lang="es">Nuestra misión es transformar cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
+            <p class="text-primary font-semibold text-lg md:text-xl hidden" data-lang="en">Our mission is to transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
+
+            <!-- Arrow to Services -->
+            <a href="#services" class="inline-flex flex-col items-center gap-2 mt-10 text-primary no-underline hover:no-underline group animate-on-scroll" style="transition-delay:900ms;">
+              <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Servicios</span>
+              <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Services</span>
+              <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+              </svg>
+            </a>
         </div>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-[85vh] flex items-center">
+    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-screen flex items-center">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
           <span class="text-primary font-bold text-2xl" data-lang="es">Nuestros Servicios</span>
@@ -453,6 +500,11 @@
           <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid;">
             <div class="relative h-56 overflow-hidden">
               <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"/>
+              <!-- Butterfly -->
+              <svg class="service-bug" style="top:12px;right:14px;width:28px;height:28px;animation-delay:0s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#46633A" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
+              </svg>
             </div>
             <div class="bg-slate-900 p-5 text-white flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Datos</h3>
@@ -475,14 +527,23 @@
             </div>
           </a>
 
-          <!-- Intelligence -->
+          <!-- AI Intelligence -->
           <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 100ms;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/services/intelligence.png" alt="Intelligence" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <img src="./assets/services/intelligence.png" alt="AI Intelligence" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <!-- Bee -->
+              <svg class="service-bug" style="bottom:16px;left:12px;width:22px;height:22px;animation-delay:-1.5s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="20" cy="22" rx="7" ry="10" fill="#b48228" fill-opacity="0.85"/>
+                <line x1="13" y1="18" x2="27" y2="18" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="22" x2="27" y2="22" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="26" x2="27" y2="26" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
+                <ellipse cx="13" cy="13" rx="5" ry="3.5" transform="rotate(-25 13 13)" fill="#5D713F" fill-opacity="0.45"/>
+                <ellipse cx="27" cy="13" rx="5" ry="3.5" transform="rotate(25 27 13)" fill="#5D713F" fill-opacity="0.45"/>
+              </svg>
             </div>
             <div class="bg-slate-900 p-5 text-white flex flex-col">
-              <h3 class="text-xl font-bold mb-2" data-lang="es">Inteligencia</h3>
-              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Intelligence</h3>
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Inteligencia IA</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">AI Intelligence</h3>
               <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">IA Geoespacial</li>
                 <li class="hidden" data-lang="en">Geospatial AI</li>
@@ -501,14 +562,19 @@
             </div>
           </a>
 
-          <!-- Analysis -->
+          <!-- Analytics -->
           <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 200ms;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/services/analysis.png" alt="Analysis" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+              <img src="./assets/services/analysis.png" alt="Analytics" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+              <!-- Butterfly (warm teal) -->
+              <svg class="service-bug" style="top:10px;left:16px;width:26px;height:26px;animation-delay:-3s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#3c7864" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
+              </svg>
             </div>
             <div class="bg-slate-900 p-5 text-white flex flex-col">
-              <h3 class="text-xl font-bold mb-2" data-lang="es">Análisis</h3>
-              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Analysis</h3>
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Analítica</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Analytics</h3>
               <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">Conectividad Ecológica</li>
                 <li class="hidden" data-lang="en">Ecological Connectivity</li>
@@ -531,6 +597,15 @@
           <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 300ms;">
             <div class="relative h-56 overflow-hidden">
               <img src="./assets/services/software.svg" alt="Software Engineering" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+              <!-- Bee (golden) -->
+              <svg class="service-bug" style="top:14px;right:16px;width:20px;height:20px;animation-delay:-4.5s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="20" cy="22" rx="7" ry="10" fill="#a07832" fill-opacity="0.85"/>
+                <line x1="13" y1="18" x2="27" y2="18" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="22" x2="27" y2="22" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="26" x2="27" y2="26" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
+                <ellipse cx="13" cy="13" rx="5" ry="3.5" transform="rotate(-25 13 13)" fill="#5D713F" fill-opacity="0.45"/>
+                <ellipse cx="27" cy="13" rx="5" ry="3.5" transform="rotate(25 27 13)" fill="#5D713F" fill-opacity="0.45"/>
+              </svg>
             </div>
             <div class="bg-slate-900 p-5 text-white flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Ingeniería de Software</h3>
