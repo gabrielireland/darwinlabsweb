@@ -126,7 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
     { body: '150,120,50', stripe: C_DARK, wing: C_MED }
   ];
 
-  var W, H, dpr, nodes, butterflies, bees, t;
+  var BIRD_COLORS = [
+    { body: C_DARK, wing: C_TEAL, belly: C_SAGE }
+  ];
+
+  var W, H, dpr, nodes, butterflies, bees, birds, t;
   var animationId = null;
   var initialized = false;
 
@@ -167,6 +171,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
   }
 
+  function makeBird(idx) {
+    var colors = BIRD_COLORS[idx % BIRD_COLORS.length];
+    return {
+      x: W * 0.2 + Math.random() * W * 0.6,
+      y: Math.random() * H * 0.35,
+      phase: Math.random() * TAU,
+      speed: 0.5 + Math.random() * 0.3,
+      size: 10 + Math.random() * 6,
+      opacity: 0.18 + Math.random() * 0.08,
+      bodyColor: colors.body,
+      wingColor: colors.wing,
+      bellyColor: colors.belly
+    };
+  }
+
   function init() {
     var rect = section.getBoundingClientRect();
     dpr = window.devicePixelRatio || 1;
@@ -198,10 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } while (nx > W * 0.6 && ny > H * 0.55);
       nodes.push({
         x: nx, y: ny,
-        vx: (Math.random() - 0.5) * 0.08,
-        vy: (Math.random() - 0.5) * 0.08,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
         r: 2.5 + Math.random() * 2.5,
-        opacity: 0.2 + Math.random() * 0.2,
+        opacity: 0.3 + Math.random() * 0.2,
         pulse: Math.random() * TAU,
         color: nodeColors[i % nodeColors.length]
       });
@@ -211,19 +230,24 @@ document.addEventListener('DOMContentLoaded', () => {
       nodes.push({
         x: Math.random() * W * 0.65,
         y: H * 0.6 + Math.random() * H * 0.38,
-        vx: (Math.random() - 0.5) * 0.06,
-        vy: (Math.random() - 0.5) * 0.04,
+        vx: (Math.random() - 0.5) * 0.14,
+        vy: (Math.random() - 0.5) * 0.10,
         r: 2 + Math.random() * 2,
-        opacity: 0.12 + Math.random() * 0.15,
+        opacity: 0.22 + Math.random() * 0.18,
         pulse: Math.random() * TAU,
         color: nodeColors[ib % nodeColors.length]
       });
     }
 
     butterflies = [];
-    for (var b = 0; b < (m ? 2 : 3); b++) butterflies.push(makeButterfly(b));
+    for (var b = 0; b < (m ? 1 : 2); b++) butterflies.push(makeButterfly(b));
 
     bees = [];
+    var bee = makeBee(0);
+    bee.y = Math.random() * H * 0.35;
+    bees.push(bee);
+
+    birds = [];
 
     initialized = true;
   }
@@ -231,18 +255,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Drawing functions ---
 
   function drawWaves() {
-    var cy = H / 2;
-    var phase = t * 0.0008;
-
-    // Single gentle sine wave
-    ctx.beginPath();
-    for (var x = 0; x <= W; x += 3) {
-      var y = cy + H * 0.1 * Math.sin((x / W) * TAU * 1.4 + phase);
-      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    var phase = t * 0.002;
+    // Wave definitions: [baseY fraction, amplitude fraction, frequency multiplier, speed offset, color, opacity, lineWidth]
+    var waves = [
+      // Upper cluster — 3 intertwining waves
+      [0.12, 0.06, 1.2, 0, C_BASE, 0.16, 1.4],
+      [0.16, 0.05, 1.8, 1.2, C_TEAL, 0.11, 1.1],
+      [0.20, 0.04, 2.4, 2.5, C_SAGE, 0.13, 1.0],
+      // Lower cluster — 3 intertwining waves
+      [0.80, 0.06, 1.4, 0.8, C_BASE, 0.16, 1.4],
+      [0.84, 0.05, 2.0, 2.0, C_ACCENT, 0.11, 1.1],
+      [0.88, 0.04, 1.6, 3.2, C_TEAL, 0.13, 1.0]
+    ];
+    for (var w = 0; w < waves.length; w++) {
+      var wv = waves[w];
+      var baseY = H * wv[0];
+      var amp = H * wv[1];
+      var freq = wv[2];
+      var sp = wv[3];
+      ctx.beginPath();
+      for (var x = 0; x <= W; x += 3) {
+        var y = baseY + amp * Math.sin((x / W) * TAU * freq + phase * (1 + sp * 0.3))
+                      + amp * 0.4 * Math.cos((x / W) * TAU * freq * 0.7 + phase * 1.5 + sp);
+        x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = 'rgba(' + wv[4] + ',' + wv[5] + ')';
+      ctx.lineWidth = wv[6];
+      ctx.stroke();
     }
-    ctx.strokeStyle = 'rgba(' + C_BASE + ',0.1)';
-    ctx.lineWidth = 1.2;
-    ctx.stroke();
   }
 
   function drawNetwork() {
@@ -258,13 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
         var dy = nodes[j].y - nodes[i].y;
         var d = Math.sqrt(dx * dx + dy * dy);
         if (d < maxDist) {
-          var eo = 0.18 * (1 - d / maxDist);
+          var eo = 0.28 * (1 - d / maxDist);
           var ec = edgeColors[(i + j) % edgeColors.length];
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
           ctx.strokeStyle = 'rgba(' + ec + ',' + eo.toFixed(3) + ')';
-          ctx.lineWidth = 0.8;
+          ctx.lineWidth = 1.0;
           ctx.stroke();
         }
       }
@@ -387,9 +427,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function updateButterfly(b) {
-    // Smooth, gentle drift — no spinning. Uses slow sine/cosine for a lazy figure-8 path
-    b.x += Math.sin(t * 0.004 + b.phase) * 0.4 + Math.cos(t * 0.002 + b.phase * 1.3) * 0.15;
-    b.y += Math.cos(t * 0.003 + b.phase * 0.7) * 0.35 + Math.sin(t * 0.005 + b.phase * 1.5) * 0.1;
+    // Smooth drift with moderate speed — sine/cosine figure-8 path
+    b.x += Math.sin(t * 0.006 + b.phase) * 0.7 + Math.cos(t * 0.003 + b.phase * 1.3) * 0.25;
+    b.y += Math.cos(t * 0.005 + b.phase * 0.7) * 0.6 + Math.sin(t * 0.007 + b.phase * 1.5) * 0.2;
     // Soft edge bounce
     if (b.x < W * 0.05) b.x += 0.5;
     if (b.x > W * 0.95) b.x -= 0.5;
@@ -411,6 +451,63 @@ document.addEventListener('DOMContentLoaded', () => {
     b.y += Math.sin(b.angle) * b.speed + (Math.random() - 0.5) * 0.3;
     b.x = Math.max(0, Math.min(W, b.x));
     b.y = Math.max(0, Math.min(H, b.y));
+  }
+
+  function drawBird(b) {
+    ctx.save();
+    ctx.translate(b.x, b.y);
+    var tilt = Math.sin(t * 0.005 + b.phase) * 0.12;
+    ctx.rotate(tilt);
+    var s = b.size;
+    var wingBeat = Math.sin(t * 0.05 + b.phase);
+    var wingY = wingBeat * s * 0.4;
+    // Wings — sweeping arcs
+    ctx.strokeStyle = 'rgba(' + b.wingColor + ',' + b.opacity.toFixed(3) + ')';
+    ctx.lineWidth = 1.5;
+    ctx.fillStyle = 'rgba(' + b.wingColor + ',' + (b.opacity * 0.6).toFixed(3) + ')';
+    // Left wing
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(-s * 0.8, -s * 0.6 + wingY, -s * 1.2, -s * 0.1 + wingY);
+    ctx.quadraticCurveTo(-s * 0.6, s * 0.1, 0, 0);
+    ctx.fill();
+    ctx.stroke();
+    // Right wing
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.quadraticCurveTo(s * 0.8, -s * 0.6 + wingY, s * 1.2, -s * 0.1 + wingY);
+    ctx.quadraticCurveTo(s * 0.6, s * 0.1, 0, 0);
+    ctx.fill();
+    ctx.stroke();
+    // Body
+    ctx.fillStyle = 'rgba(' + b.bodyColor + ',' + (b.opacity * 1.2).toFixed(3) + ')';
+    ctx.beginPath();
+    ctx.ellipse(0, 0, s * 0.12, s * 0.5, 0, 0, TAU);
+    ctx.fill();
+    // Head
+    ctx.beginPath();
+    ctx.arc(0, -s * 0.5, s * 0.13, 0, TAU);
+    ctx.fill();
+    // Tail
+    ctx.beginPath();
+    ctx.moveTo(-s * 0.06, s * 0.45);
+    ctx.lineTo(0, s * 0.75);
+    ctx.lineTo(s * 0.06, s * 0.45);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function updateBird(b) {
+    // Smooth gliding drift, stays in upper portion
+    b.x += Math.sin(t * 0.003 + b.phase) * 0.55 + Math.cos(t * 0.005 + b.phase * 1.2) * 0.3;
+    b.y += Math.cos(t * 0.004 + b.phase * 0.8) * 0.3 + Math.sin(t * 0.002 + b.phase * 1.6) * 0.15;
+    // Keep in upper half
+    if (b.x < W * 0.05) b.x += 0.5;
+    if (b.x > W * 0.95) b.x -= 0.5;
+    if (b.y < H * 0.03) b.y += 0.4;
+    if (b.y > H * 0.45) b.y -= 0.5;
+    b.x = Math.max(0, Math.min(W, b.x));
+    b.y = Math.max(0, Math.min(H * 0.5, b.y));
   }
 
   function drawVignette() {
@@ -441,9 +538,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     for (var j = 0; j < bees.length; j++) {
       updateBee(bees[j]);
+      // Keep bee in upper part
+      if (bees[j].y > H * 0.45) bees[j].y -= 0.6;
       drawBee(bees[j]);
     }
-
     drawVignette();
     animationId = requestAnimationFrame(tick);
   }
