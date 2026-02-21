@@ -447,16 +447,17 @@
           <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">What We Do</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-0 max-w-7xl mx-auto" style="grid-template-rows: auto 1fr;">
 
           <!-- Data Foundation -->
-          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px;">
-            <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="absolute -top-[10%] left-0 w-full h-[120%] object-cover object-bottom transition-transform duration-700 group-hover:scale-[1.02]"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
-            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
-              <h3 class="text-2xl font-bold mb-3" data-lang="es">Datos</h3>
-              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Data Foundation</h3>
-              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+          <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid;">
+            <div class="relative h-56 overflow-hidden">
+              <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"/>
+            </div>
+            <div class="bg-slate-900 p-5 text-white flex flex-col">
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Datos</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Data Foundation</h3>
+              <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">Ingeniería de Datos</li>
                 <li class="hidden" data-lang="en">Data Engineering</li>
                 <li data-lang="es">Pipelines ETL/ELT</li>
@@ -464,7 +465,7 @@
                 <li data-lang="es">Almacenamiento Geoespacial</li>
                 <li class="hidden" data-lang="en">Geospatial Warehousing</li>
               </ul>
-              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
                 <span data-lang="es">Ver más</span>
                 <span class="hidden" data-lang="en">Learn more</span>
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -475,13 +476,14 @@
           </a>
 
           <!-- Intelligence -->
-          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 100ms;">
-            <img src="./assets/services/intelligence.png" alt="Intelligence" class="absolute -top-[10%] left-0 w-full h-[120%] object-cover object-bottom transition-transform duration-700 group-hover:scale-[1.02]"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
-            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
-              <h3 class="text-2xl font-bold mb-3" data-lang="es">Inteligencia</h3>
-              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Intelligence</h3>
-              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+          <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 100ms;">
+            <div class="relative h-56 overflow-hidden">
+              <img src="./assets/services/intelligence.png" alt="Intelligence" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            </div>
+            <div class="bg-slate-900 p-5 text-white flex flex-col">
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Inteligencia</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Intelligence</h3>
+              <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">IA Geoespacial</li>
                 <li class="hidden" data-lang="en">Geospatial AI</li>
                 <li data-lang="es">Modelos ML</li>
@@ -489,7 +491,7 @@
                 <li data-lang="es">IA Ambiental</li>
                 <li class="hidden" data-lang="en">Environmental AI</li>
               </ul>
-              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
                 <span data-lang="es">Ver más</span>
                 <span class="hidden" data-lang="en">Learn more</span>
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -500,13 +502,14 @@
           </a>
 
           <!-- Analysis -->
-          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 200ms;">
-            <img src="./assets/services/analysis.png" alt="Analysis" class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-[1.02]"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
-            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
-              <h3 class="text-2xl font-bold mb-3" data-lang="es">Análisis</h3>
-              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Analysis</h3>
-              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+          <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 200ms;">
+            <div class="relative h-56 overflow-hidden">
+              <img src="./assets/services/analysis.png" alt="Analysis" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+            </div>
+            <div class="bg-slate-900 p-5 text-white flex flex-col">
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Análisis</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Analysis</h3>
+              <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">Conectividad Ecológica</li>
                 <li class="hidden" data-lang="en">Ecological Connectivity</li>
                 <li data-lang="es">Análisis de Grafos</li>
@@ -514,7 +517,7 @@
                 <li data-lang="es">Indicadores Ambientales</li>
                 <li class="hidden" data-lang="en">Environmental Indicators</li>
               </ul>
-              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
                 <span data-lang="es">Ver más</span>
                 <span class="hidden" data-lang="en">Learn more</span>
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -525,13 +528,14 @@
           </a>
 
           <!-- Software Engineering -->
-          <a href="./services.html" class="service-card group relative overflow-hidden animate-on-scroll block no-underline" style="min-height: 420px; transition-delay: 300ms;">
-            <img src="./assets/services/software.svg" alt="Software Engineering" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"/>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent group-hover:from-black/80 transition-all duration-500"></div>
-            <div class="absolute inset-x-0 bottom-0 flex flex-col justify-end p-6 text-white bg-black/40 backdrop-blur-sm">
-              <h3 class="text-2xl font-bold mb-3" data-lang="es">Ingeniería de Software</h3>
-              <h3 class="text-2xl font-bold mb-3 hidden" data-lang="en">Software Engineering</h3>
-              <ul class="text-white/80 text-sm space-y-1.5 max-h-0 group-hover:max-h-40 overflow-hidden transition-all duration-500 ease-in-out">
+          <a href="./services.html" class="service-card group flex flex-col overflow-hidden animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 300ms;">
+            <div class="relative h-56 overflow-hidden">
+              <img src="./assets/services/software.svg" alt="Software Engineering" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
+            </div>
+            <div class="bg-slate-900 p-5 text-white flex flex-col">
+              <h3 class="text-xl font-bold mb-2" data-lang="es">Ingeniería de Software</h3>
+              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Software Engineering</h3>
+              <ul class="text-white/70 text-sm space-y-1 mb-3">
                 <li data-lang="es">Visores Personalizados</li>
                 <li class="hidden" data-lang="en">Custom Visors</li>
                 <li data-lang="es">Dashboards</li>
@@ -539,7 +543,7 @@
                 <li data-lang="es">Herramientas de Exportación</li>
                 <li class="hidden" data-lang="en">Export Tools</li>
               </ul>
-              <div class="flex items-center gap-2 mt-3 text-white/60 group-hover:text-white text-sm font-medium transition-colors duration-300">
+              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
                 <span data-lang="es">Ver más</span>
                 <span class="hidden" data-lang="en">Learn more</span>
                 <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -590,107 +594,107 @@
         <!-- Cards on top of background -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
           <!-- GuadarramaSKI -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-md text-white ring-1 ring-white/10">
             <div class="w-full h-48 bg-no-repeat bg-[length:350%_auto]"
                 style="background-image:url('./projects/guadarramaski/assets/banner.jpg'); background-position:4.80% center;"
                 role="img" aria-label="GuadarramaSKI banner">
             </div>
-            <div class="p-6 flex flex-col">
+            <div class="p-6 flex flex-col flex-grow">
               <h2 class="text-xl font-semibold mb-2" data-lang="es">Guadarrama ski</h2>
               <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Guadarrama ski</h2>
 
-              <p class="text-slate-600 flex-grow" data-lang="es">
+              <p class="text-white/70 flex-grow" data-lang="es">
                 La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.
               </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+              <p class="text-white/70 flex-grow hidden" data-lang="en">
                 The reference page to visualize ski routes in the Guadarrama mountain range.
               </p>
 
               <a href="./projects/guadarramaski/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
+                class="mt-4 text-white font-bold hover:underline"
                 data-lang="es">Leer Más →</a>
               <a href="./projects/guadarramaski/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
+                class="mt-4 text-white font-bold hover:underline hidden"
                 data-lang="en">Read More →</a>
             </div>
           </article>
 
           <!-- Darwin Visor -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-md text-white ring-1 ring-white/10">
             <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
                 style="background-image:url('./projects/darwin_visor/assets/banner.jpeg')"
                 role="img" aria-label="darwin_visor banner">
             </div>
-            <div class="p-6 flex flex-col">
+            <div class="p-6 flex flex-col flex-grow">
               <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin Visor</h2>
               <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin Visor</h2>
 
-              <p class="text-slate-600 flex-grow" data-lang="es">
+              <p class="text-white/70 flex-grow" data-lang="es">
                 Tu atajo para exportar datos geoespaciales sin programar.
               </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+              <p class="text-white/70 flex-grow hidden" data-lang="en">
                 Your shortcut to export geospatial data without coding.
               </p>
 
               <a href="./projects/darwin_visor/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
+                class="mt-4 text-white font-bold hover:underline"
                 data-lang="es">Leer Más →</a>
               <a href="./projects/darwin_visor/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
+                class="mt-4 text-white font-bold hover:underline hidden"
                 data-lang="en">Read More →</a>
             </div>
           </article>
 
           <!-- Darwin Crops & Land Use -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-md text-white ring-1 ring-white/10">
             <div class="w-full h-48 bg-no-repeat bg-[length:100%_auto]"
                 style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG')"
                 role="img" aria-label="Darwin's Crops & Land Use Predictor banner">
             </div>
-            <div class="p-6 flex flex-col">
+            <div class="p-6 flex flex-col flex-grow">
               <h2 class="text-xl font-semibold mb-2" data-lang="es">Darwin's Crops & Land Use Predictor</h2>
               <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">Darwin's Crops & Land Use Predictor</h2>
 
-              <p class="text-slate-600 flex-grow" data-lang="es">
+              <p class="text-white/70 flex-grow" data-lang="es">
                 El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.
               </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+              <p class="text-white/70 flex-grow hidden" data-lang="en">
                 The most up-to-date crop and land-use predictor & classifier, powered by Alpha Earth.
               </p>
 
               <a href="./projects/darwin_crops_landuse/index.html"
-                class="mt-4 text-primary font-bold hover:underline"
+                class="mt-4 text-white font-bold hover:underline"
                 data-lang="es">Leer Más →</a>
               <a href="./projects/darwin_crops_landuse/index.html"
-                class="mt-4 text-primary font-bold hover:underline hidden"
+                class="mt-4 text-white font-bold hover:underline hidden"
                 data-lang="en">Read More →</a>
             </div>
           </article>
 
           <!-- End World Hunger Ohio -->
-          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-white/85 backdrop-blur-sm text-slate-800 ring-1 ring-white/20">
+          <article class="animate-on-scroll flex flex-col rounded-xl overflow-hidden shadow-2xl bg-black/50 backdrop-blur-md text-white ring-1 ring-white/10">
             <div class="w-full h-48 bg-no-repeat bg-cover bg-center"
                 style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png')"
                 role="img" aria-label="End World Hunger Ohio - Franklin Park Community Garden">
             </div>
-            <div class="p-6 flex flex-col">
+            <div class="p-6 flex flex-col flex-grow">
               <h2 class="text-xl font-semibold mb-2" data-lang="es">End World Hunger Ohio</h2>
               <h2 class="text-xl font-semibold mb-2 hidden" data-lang="en">End World Hunger Ohio</h2>
 
-              <p class="text-slate-600 flex-grow" data-lang="es">
+              <p class="text-white/70 flex-grow" data-lang="es">
                 Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.
               </p>
-              <p class="text-slate-600 flex-grow hidden" data-lang="en">
+              <p class="text-white/70 flex-grow hidden" data-lang="en">
                 We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.
               </p>
 
               <a href="https://endworldhungerohio.com/"
                 target="_blank" rel="noopener noreferrer"
-                class="mt-4 text-primary font-bold hover:underline"
+                class="mt-4 text-white font-bold hover:underline"
                 data-lang="es">Visitar Web →</a>
               <a href="https://endworldhungerohio.com/"
                 target="_blank" rel="noopener noreferrer"
-                class="mt-4 text-primary font-bold hover:underline hidden"
+                class="mt-4 text-white font-bold hover:underline hidden"
                 data-lang="en">Visit Website →</a>
             </div>
           </article>
@@ -813,146 +817,158 @@
           <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">Experts in Nature and Technology</h2>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto" style="grid-template-rows: 1fr auto;">
           <!-- Gabriel Díaz Ireland -->
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll h-full min-w-0">
-            <div class="flex flex-col items-center gap-4">
-              <img src="./assets/team/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-32 h-32 rounded-full object-cover object-center">
-              <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
-                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
-            </div>
-            <div class="text-center flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-slate-900">Gabriel<br>Díaz Ireland</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">Socio - Líder de Ingeniería</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Technical Lead</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Fundador y líder técnico de Darwin Geospatial. Líder en datos e IA con experiencia internacional en Silicon Valley en la industria de finanzas de cadena de suministro y recursos naturales.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Founder and technical leader of Darwin Geospatial. Data and AI leader with international experience working at Silicon Valley in the supply chain finance and natural resources industry.
-              </p>
-              <div class="text-slate-600 text-sm text-left mt-auto">
-                <ul class="list-disc ml-4 mt-2 space-y-1">
-                  <li><strong>Leadership:</strong> Team & project management</li>
-                  <li><strong>Geospatial & ML:</strong> Remote sensing, foundational & traditional models</li>
-                  <li><strong>Data Engineering:</strong> Scalable pipelines, plug & play, AI & visual ready</li>
-                </ul>
+          <div class="grid animate-on-scroll min-w-0" style="grid-row: span 2; grid-template-rows: subgrid;">
+            <!-- Top: Photo + Bio -->
+            <div class="bg-primary-light rounded-t-lg shadow-lg p-6 flex flex-col gap-4 items-center">
+              <div class="flex flex-col items-center gap-3">
+                <img src="./assets/team/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-28 h-28 rounded-full object-cover object-center">
+                <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                  <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
+                </a>
               </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-slate-900">Gabriel Díaz Ireland</h3>
+                <p class="text-accent font-medium text-sm mb-2" data-lang="es">Socio - Líder de Ingeniería</p>
+                <p class="text-accent font-medium text-sm mb-2 hidden" data-lang="en">Managing Partner - Technical Lead</p>
+                <p class="text-slate-600 text-xs" data-lang="es">
+                  Fundador y líder técnico de Darwin Geospatial. Líder en datos e IA con experiencia internacional en Silicon Valley en la industria de finanzas de cadena de suministro y recursos naturales.
+                </p>
+                <p class="text-slate-600 text-xs hidden" data-lang="en">
+                  Founder and technical leader of Darwin Geospatial. Data and AI leader with international experience working at Silicon Valley in the supply chain finance and natural resources industry.
+                </p>
+              </div>
+            </div>
+            <!-- Bottom: Skills -->
+            <div class="bg-white rounded-b-lg shadow-lg p-4 border-t-2 border-primary">
+              <ul class="text-slate-600 text-xs space-y-1">
+                <li><strong>Leadership:</strong> Team & project management</li>
+                <li><strong>Geospatial & ML:</strong> Remote sensing, foundational & traditional models</li>
+                <li><strong>Data Engineering:</strong> Scalable pipelines, plug & play, AI & visual ready</li>
+              </ul>
             </div>
           </div>
 
           <!-- Mario García Peces -->
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll h-full min-w-0" style="transition-delay:100ms;">
-            <div class="flex flex-col items-center gap-4">
-              <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-32 h-32 rounded-full object-cover object-center">
-              <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
-                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
-            </div>
-            <div class="text-center flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-slate-900">Mario<br>García Peces</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">Socio - Analista Geoespacial</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Managing Partner - Geospatial Analyst</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el OAPN y en investigaciones sobre prácticas agrícolas sostenibles.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with OAPN and on sustainable agricultural research.
-              </p>
-              <div class="text-slate-600 text-sm text-left mt-auto">
-                <ul class="list-disc ml-4 mt-2 space-y-1">
-                  <li><strong>Geospatial Analysis:</strong> Spatial modeling, remote sensing</li>
-                  <li><strong>Natural Resources:</strong> Forest & land management</li>
-                  <li><strong>Environmental:</strong> Conservation, sustainability</li>
-                </ul>
+          <div class="flex flex-col animate-on-scroll h-full min-w-0" style="transition-delay:100ms;">
+            <div class="bg-primary-light rounded-t-lg shadow-lg p-6 flex flex-col gap-4 items-center">
+              <div class="flex flex-col items-center gap-3">
+                <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-28 h-28 rounded-full object-cover object-center">
+                <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                  <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
+                </a>
               </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-slate-900">Mario García Peces</h3>
+                <p class="text-accent font-medium text-sm mb-2" data-lang="es">Socio - Analista Geoespacial</p>
+                <p class="text-accent font-medium text-sm mb-2 hidden" data-lang="en">Managing Partner - Geospatial Analyst</p>
+                <p class="text-slate-600 text-xs" data-lang="es">
+                  Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el OAPN y en investigaciones sobre prácticas agrícolas sostenibles.
+                </p>
+                <p class="text-slate-600 text-xs hidden" data-lang="en">
+                  Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with OAPN and on sustainable agricultural research.
+                </p>
+              </div>
+            </div>
+            <div class="bg-white rounded-b-lg shadow-lg p-4 border-t-2 border-primary">
+              <ul class="text-slate-600 text-xs space-y-1">
+                <li><strong>Geospatial Analysis:</strong> Spatial modeling, remote sensing</li>
+                <li><strong>Natural Resources:</strong> Forest & land management</li>
+                <li><strong>Environmental:</strong> Conservation, sustainability</li>
+              </ul>
             </div>
           </div>
 
           <!-- Nicholas Cosgrove -->
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll h-full min-w-0" style="transition-delay:200ms;">
-            <div class="flex flex-col items-center gap-4">
-              <img src="./assets/team/nick.png" alt="Photo of Nicholas Cosgrove" class="w-32 h-32 rounded-full object-cover object-center">
-              <a href="https://www.linkedin.com/in/nicholas-cosgrove-794927a4/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
-                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
-            </div>
-            <div class="text-center flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-slate-900">Nicholas<br>Cosgrove</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">Asesor - GTM</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Advisor - GTM</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Líder tecnológico y asesor enfocado en construir herramientas que ayudan a las personas y protegen el planeta. Aporta experiencia en IA centrada en el humano, tecnología geoespacial y trabajo ambiental comunitario.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Technology leader and advisor focused on building tools that help people and heal the earth. Brings experience across human-centered AI, geospatial technology, and community-driven environmental work.
-              </p>
-              <div class="text-slate-600 text-sm text-left mt-auto">
-                <ul class="list-disc ml-4 mt-2 space-y-1">
-                  <li><strong>AI Partnerships:</strong> Director at Upwork, AI vertical</li>
-                  <li><strong>Human + AI:</strong> Collaboration models, augmentation</li>
-                  <li><strong>Climate Tech:</strong> Land intelligence, environmental initiatives</li>
-                </ul>
+          <div class="flex flex-col animate-on-scroll h-full min-w-0" style="transition-delay:200ms;">
+            <div class="bg-primary-light rounded-t-lg shadow-lg p-6 flex flex-col gap-4 items-center">
+              <div class="flex flex-col items-center gap-3">
+                <img src="./assets/team/nick.png" alt="Photo of Nicholas Cosgrove" class="w-28 h-28 rounded-full object-cover object-center">
+                <a href="https://www.linkedin.com/in/nicholas-cosgrove-794927a4/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                  <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
+                </a>
               </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-slate-900">Nicholas Cosgrove</h3>
+                <p class="text-accent font-medium text-sm mb-2" data-lang="es">Asesor - GTM</p>
+                <p class="text-accent font-medium text-sm mb-2 hidden" data-lang="en">Advisor - GTM</p>
+                <p class="text-slate-600 text-xs" data-lang="es">
+                  Líder tecnológico y asesor enfocado en construir herramientas que ayudan a las personas y protegen el planeta. Aporta experiencia en IA centrada en el humano, tecnología geoespacial y trabajo ambiental comunitario.
+                </p>
+                <p class="text-slate-600 text-xs hidden" data-lang="en">
+                  Technology leader and advisor focused on building tools that help people and heal the earth. Brings experience across human-centered AI, geospatial technology, and community-driven environmental work.
+                </p>
+              </div>
+            </div>
+            <div class="bg-white rounded-b-lg shadow-lg p-4 border-t-2 border-primary">
+              <ul class="text-slate-600 text-xs space-y-1">
+                <li><strong>AI Partnerships:</strong> Director at Upwork, AI vertical</li>
+                <li><strong>Human + AI:</strong> Collaboration models, augmentation</li>
+                <li><strong>Climate Tech:</strong> Land intelligence, environmental initiatives</li>
+              </ul>
             </div>
           </div>
 
           <!-- Guillermo Pérez -->
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll h-full min-w-0" style="transition-delay:300ms;">
-            <div class="flex flex-col items-center gap-4">
-              <img src="./assets/team/guille_perez.png" alt="Foto de Guillermo Pérez" class="w-32 h-32 rounded-full object-cover object-center">
-              <a href="https://www.linkedin.com/in/guillermoperezperez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
-                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
-            </div>
-            <div class="text-center flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-slate-900">Guillermo<br>Pérez</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">Data Ops & Software</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">Data Ops & Software</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Ingeniero de software especializado en infraestructura y operaciones de datos. Experiencia en sistemas Linux, automatización de pipelines y arquitectura backend para aplicaciones escalables.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Software engineer specialized in infrastructure and data operations. Experience in Linux systems, pipeline automation, and backend architecture for scalable applications.
-              </p>
-              <div class="text-slate-600 text-sm text-left mt-auto">
-                <ul class="list-disc ml-4 mt-2 space-y-1">
-                  <li><strong>Infrastructure:</strong> Linux, Docker, CI/CD, cloud systems</li>
-                  <li><strong>Backend Systems:</strong> APIs, databases, system architecture</li>
-                  <li><strong>DevOps & Cloud:</strong> Automation, monitoring, deployments</li>
-                </ul>
+          <div class="flex flex-col animate-on-scroll h-full min-w-0" style="transition-delay:300ms;">
+            <div class="bg-primary-light rounded-t-lg shadow-lg p-6 flex flex-col gap-4 items-center">
+              <div class="flex flex-col items-center gap-3">
+                <img src="./assets/team/guille_perez.png" alt="Foto de Guillermo Pérez" class="w-28 h-28 rounded-full object-cover object-center">
+                <a href="https://www.linkedin.com/in/guillermoperezperez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                  <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
+                </a>
               </div>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-slate-900">Guillermo Pérez</h3>
+                <p class="text-accent font-medium text-sm mb-2" data-lang="es">Data Ops & Software</p>
+                <p class="text-accent font-medium text-sm mb-2 hidden" data-lang="en">Data Ops & Software</p>
+                <p class="text-slate-600 text-xs" data-lang="es">
+                  Ingeniero de software especializado en infraestructura y operaciones de datos. Experiencia en sistemas Linux, automatización de pipelines y arquitectura backend para aplicaciones escalables.
+                </p>
+                <p class="text-slate-600 text-xs hidden" data-lang="en">
+                  Software engineer specialized in infrastructure and data operations. Experience in Linux systems, pipeline automation, and backend architecture for scalable applications.
+                </p>
+              </div>
+            </div>
+            <div class="bg-white rounded-b-lg shadow-lg p-4 border-t-2 border-primary">
+              <ul class="text-slate-600 text-xs space-y-1">
+                <li><strong>Infrastructure:</strong> Linux, Docker, CI/CD, cloud systems</li>
+                <li><strong>Backend Systems:</strong> APIs, databases, system architecture</li>
+                <li><strong>DevOps & Cloud:</strong> Automation, monitoring, deployments</li>
+              </ul>
             </div>
           </div>
 
           <!-- Joan Medina -->
-          <div class="bg-primary-light rounded-lg shadow-lg p-8 flex flex-col gap-6 items-center animate-on-scroll h-full min-w-0" style="transition-delay:400ms;">
-            <div class="flex flex-col items-center gap-4">
-              <div class="w-32 h-32 rounded-full overflow-hidden">
-                <img src="./assets/team/joanmedina.png" alt="Foto de Joan Medina" class="w-full h-full object-cover" style="object-position: center 60%; transform: scale(1.6);">
+          <div class="flex flex-col animate-on-scroll h-full min-w-0" style="transition-delay:400ms;">
+            <div class="bg-primary-light rounded-t-lg shadow-lg p-6 flex flex-col gap-4 items-center">
+              <div class="flex flex-col items-center gap-3">
+                <div class="w-28 h-28 rounded-full overflow-hidden">
+                  <img src="./assets/team/joanmedina.png" alt="Foto de Joan Medina" class="w-full h-full object-cover" style="object-position: center 60%; transform: scale(1.6);">
+                </div>
+                <a href="https://www.linkedin.com/in/joanmedinagim%C3%A9nez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
+                  <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
+                </a>
               </div>
-              <a href="https://www.linkedin.com/in/joanmedinagim%C3%A9nez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
-                <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-6 h-auto">
-              </a>
+              <div class="text-center">
+                <h3 class="text-lg font-bold text-slate-900">Joan Medina</h3>
+                <p class="text-accent font-medium text-sm mb-2" data-lang="es">AI & Software</p>
+                <p class="text-accent font-medium text-sm mb-2 hidden" data-lang="en">AI & Software</p>
+                <p class="text-slate-600 text-xs" data-lang="es">
+                  Ingeniero Informático con Máster en Inteligencia Artificial. Especializado en aprendizaje automático y análisis de datos a escala, desarrollando modelos predictivos y sistemas de procesamiento inteligente.
+                </p>
+                <p class="text-slate-600 text-xs hidden" data-lang="en">
+                  Computer Engineer with a Master's in Artificial Intelligence. Specialized in machine learning and data analysis at scale, developing predictive models and intelligent processing systems.
+                </p>
+              </div>
             </div>
-            <div class="text-center flex flex-col flex-grow">
-              <h3 class="text-xl font-bold text-slate-900">Joan<br>Medina</h3>
-              <p class="text-accent font-medium mb-3" data-lang="es">AI & Software</p>
-              <p class="text-accent font-medium mb-3 hidden" data-lang="en">AI & Software</p>
-              <p class="text-slate-600 text-sm mb-4" data-lang="es">
-                Ingeniero Informático con Máster en Inteligencia Artificial. Especializado en aprendizaje automático y análisis de datos a escala, desarrollando modelos predictivos y sistemas de procesamiento inteligente.
-              </p>
-              <p class="text-slate-600 text-sm mb-4 hidden" data-lang="en">
-                Computer Engineer with a Master's in Artificial Intelligence. Specialized in machine learning and data analysis at scale, developing predictive models and intelligent processing systems.
-              </p>
-              <div class="text-slate-600 text-sm text-left mt-auto">
-                <ul class="list-disc ml-4 mt-2 space-y-1">
-                  <li><strong>Machine Learning:</strong> PyTorch, TensorFlow, scikit-learn</li>
-                  <li><strong>Data Engineering:</strong> ETL pipelines, data architectures</li>
-                  <li><strong>AI Development:</strong> NLP, computer vision, predictive models</li>
-                </ul>
-              </div>
+            <div class="bg-white rounded-b-lg shadow-lg p-4 border-t-2 border-primary">
+              <ul class="text-slate-600 text-xs space-y-1">
+                <li><strong>Machine Learning:</strong> PyTorch, TensorFlow, scikit-learn</li>
+                <li><strong>Data Engineering:</strong> ETL pipelines, data architectures</li>
+                <li><strong>AI Development:</strong> NLP, computer vision, predictive models</li>
+              </ul>
             </div>
           </div>
         </div>
