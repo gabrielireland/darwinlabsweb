@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" href="./assets/hero/habitat.webp" as="image" type="image/webp"/>
 
   <style>
@@ -338,6 +338,54 @@
       transition: opacity 0.3s;
     }
     .service-card:hover .service-bug { opacity: 0.9; }
+
+    /* ── Soil SaveR transition overlay ──────────────────── */
+    #soil-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg,
+        #1F1007 0%,
+        #5C3317 30%,
+        #8B5E3C 55%,
+        #F0DEB8 80%,
+        #FBF3E0 100%
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #soil-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Soil SaveR card banner */
+    .soil-banner {
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent 0px, transparent 14px,
+          rgba(0,0,0,0.12) 14px, rgba(0,0,0,0.12) 16px
+        ),
+        linear-gradient(150deg,
+          #0d0501 0%,
+          #2e1509 20%,
+          #5C3317 45%,
+          #8B5E3C 65%,
+          #C4862D 82%,
+          #E8D5A3 100%
+        );
+      min-height: 12rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .soil-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(196,134,45,0.25) 0%, transparent 60%);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -777,6 +825,68 @@
                 data-lang="en">Visit Website →</a>
             </div>
           </article>
+
+          <!-- ── Soil SaveR ───────────────────────────────── -->
+          <article id="soil-saver-card"
+            class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
+            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
+            onclick="triggerSoilTransition()">
+
+            <!-- Banner: soil-layer gradient -->
+            <div class="soil-banner lg:w-2/5 flex-shrink-0 flex items-end p-4">
+              <!-- Layer labels overlay -->
+              <div style="position:absolute; top:1rem; left:1rem; z-index:1; display:flex; flex-direction:column; gap:0.35rem;">
+                <span style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; color:rgba(240,222,184,0.5); text-transform:uppercase;">Surface horizon</span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; color:rgba(240,222,184,0.35); text-transform:uppercase;">Sub-surface</span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; color:rgba(240,222,184,0.2); text-transform:uppercase;">Parent material</span>
+              </div>
+              <!-- SOC badge -->
+              <span style="position:absolute; bottom:1rem; left:1rem; z-index:1; background:rgba(196,134,45,0.9); color:#1F1007; padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; font-family:'Space Mono',monospace; text-transform:uppercase;">
+                SOC Monitoring
+              </span>
+              <!-- NEW badge -->
+              <span style="position:absolute; top:1rem; right:1rem; z-index:1; background:rgba(240,222,184,0.12); color:#E8D5A3; border:1px solid rgba(232,213,163,0.35); padding:0.2rem 0.6rem; border-radius:9999px; font-size:0.65rem; font-weight:700; letter-spacing:0.18em; font-family:'Space Mono',monospace; text-transform:uppercase;">
+                NEW
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 lg:p-8 flex flex-col flex-grow">
+              <!-- Meta tags row -->
+              <div class="flex flex-wrap gap-2 mb-3">
+                <span style="font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(196,134,45,0.85);">Scrollytelling</span>
+                <span style="color:rgba(255,255,255,0.25);">·</span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35);">GSAP + Remote Sensing</span>
+              </div>
+
+              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#F0DEB8;">
+                Soil SaveR
+              </h2>
+
+              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">
+                Plataforma geoespacial para monitorear el carbono orgánico del suelo y rastrear 70 años de degradación edáfica a escala de parcela. Explora el antes y el después de la Tierra a través de una experiencia visual de scrollytelling única.
+              </p>
+              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">
+                Geospatial platform to monitor soil organic carbon and track 70 years of soil degradation at field scale. Explore the Earth's before and after through a unique scrollytelling visual experience.
+              </p>
+
+              <div class="mt-5 flex items-center gap-3">
+                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#F0DEB8; background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
+                  Explorar Proyecto
+                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </button>
+                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#F0DEB8; background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
+                  Explore Project
+                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </button>
+                <!-- Soil depth indicator -->
+                <div class="ml-auto hidden md:flex items-center gap-1 opacity-40" style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#E8D5A3;">
+                  <span>0–30 cm SOC</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
         </div>
         <!-- Arrow to Sectors -->
         <div class="text-center mt-4">
@@ -1211,7 +1321,22 @@
     </div>
   </footer>
 
+  <!-- Soil SaveR transition overlay -->
+  <div id="soil-overlay" aria-hidden="true"></div>
+
   <!-- Single source of truth for language + interactions -->
   <script src="./lang.js"></script>
+
+  <script>
+    // ── Soil SaveR page transition ────────────────────────
+    function triggerSoilTransition() {
+      const overlay = document.getElementById('soil-overlay');
+      overlay.classList.add('active');
+      // Navigate after the opacity transition completes
+      setTimeout(() => {
+        window.location.href = './projects/soil_saver/index.html';
+      }, 780);
+    }
+  </script>
 </body>
 </html>

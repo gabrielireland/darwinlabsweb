@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soil SaveR — Darwin Geospatial</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts: Playfair Display (display serif) + Space Mono (monospace accent) + Inter (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* ── Color Palette ─────────────────────────────────── */
+    :root {
+      --soil-dark:    #1F1007;
+      --soil-brown:   #5C3317;
+      --soil-mid:     #8B5E3C;
+      --soil-warm:    #C4862D;
+      --soil-sand:    #E8D5A3;
+      --soil-cream:   #F0DEB8;
+      --soil-light:   #FBF3E0;
+    }
+
+    html, body { margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--soil-light);
+      color: var(--soil-dark);
+      animation: soilEntry 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    @keyframes soilEntry {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Typography ─────────────────────────────────────── */
+    .font-display      { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono-accent  { font-family: 'Space Mono', 'Courier New', monospace; }
+
+    /* ── Scroll-reveal ───────────────────────────────────── */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .8s ease-out, transform .8s ease-out;
+    }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Lang switcher ───────────────────────────────────── */
+    .lang-switcher button        { background: none; border: none; cursor: pointer; padding: 0 2px; }
+    .lang-switcher button.active { color: var(--soil-warm); font-weight: 700; }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    #header {
+      background: rgba(251, 243, 224, 0.95);
+      border-bottom: 1px solid rgba(232, 213, 163, 0.6);
+      backdrop-filter: blur(12px);
+    }
+    #header a   { color: var(--soil-mid); }
+    #header a:hover { color: var(--soil-brown); }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      background: var(--soil-dark);
+    }
+
+    /* Layered soil-texture gradient */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 10% 90%, rgba(92, 51, 23, 0.9) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 15%, rgba(196, 134, 45, 0.25) 0%, transparent 50%),
+        linear-gradient(165deg,
+          #0d0501 0%,
+          #1F1007 18%,
+          #2e1509 32%,
+          #4a2010 48%,
+          #5C3317 62%,
+          #7a4a25 76%,
+          #6B4226 88%,
+          #8B5E3C 100%
+        );
+      z-index: 0;
+    }
+
+    /* Subtle crosshatch / organic texture */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.012) 40px,
+          rgba(255,255,255,0.012) 41px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(255,255,255,0.008) 40px,
+          rgba(255,255,255,0.008) 41px
+        );
+      z-index: 0;
+    }
+
+    #hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 10rem 2rem 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-label {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--soil-warm);
+      display: block;
+      margin-bottom: 1.25rem;
+      opacity: 0.9;
+    }
+
+    .hero-title-soil {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(5.5rem, 22vw, 18rem);
+      line-height: 0.82;
+      letter-spacing: -0.04em;
+      color: var(--soil-cream);
+      display: block;
+      /* Subtle shadow depth */
+      text-shadow:
+        0 2px 0 rgba(92,51,23,0.4),
+        0 4px 0 rgba(92,51,23,0.2),
+        0 8px 20px rgba(0,0,0,0.5);
+    }
+
+    .hero-title-saver {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(2rem, 7.5vw, 6.5rem);
+      line-height: 1.1;
+      letter-spacing: 0.18em;
+      color: var(--soil-warm);
+      display: block;
+      text-transform: uppercase;
+      margin-top: 0.25em;
+    }
+
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.5rem);
+      color: var(--soil-sand);
+      margin-top: 1.75rem;
+      max-width: 600px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2rem;
+    }
+
+    .hero-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(232, 213, 163, 0.25);
+      background: rgba(240, 222, 184, 0.08);
+      color: var(--soil-sand);
+    }
+
+    .hero-tag.warm {
+      border-color: rgba(196, 134, 45, 0.5);
+      background: rgba(196, 134, 45, 0.12);
+      color: var(--soil-warm);
+    }
+
+    /* Scroll arrow */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(232, 213, 163, 0.5);
+      z-index: 1;
+      animation: nudgeDown 2.5s ease-in-out infinite;
+    }
+
+    @keyframes nudgeDown {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ── INTRO ───────────────────────────────────────────── */
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--soil-warm);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soil-mid);
+      margin-top: 0.35rem;
+    }
+
+    /* ── SCROLLYTELLING ─────────────────────────────────── */
+    #scrollytelling-wrapper {
+      height: 300vh;
+      position: relative;
+    }
+
+    #scrollytelling-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: #0d0501;
+    }
+
+    .story-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* 1950s — historical aerial photo */
+    #img-1950 {
+      background-image: url('./assets/patones_1956_raw.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    /* 2000s — modern satellite image, revealed on scroll */
+    #img-2000 {
+      background-image: url('./assets/patones_2025_raw.png');
+      background-size: cover;
+      background-position: center;
+      clip-path: inset(0 100% 0 0);
+    }
+
+    /* Wipe divider */
+    #wipe-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--soil-cream) 20%,
+        var(--soil-cream) 80%,
+        transparent 100%
+      );
+      left: 0%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 12px 2px rgba(240, 222, 184, 0.35);
+      z-index: 5;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* Labels */
+    .story-label {
+      position: absolute;
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+      z-index: 6;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: opacity 0.4s ease;
+    }
+
+    #label-1950 {
+      left: 1.5rem;
+      background: rgba(15, 8, 2, 0.75);
+      color: var(--soil-sand);
+      border-left: 2px solid rgba(232, 213, 163, 0.4);
+    }
+
+    #label-2000 {
+      right: 1.5rem;
+      background: rgba(196, 134, 45, 0.85);
+      color: var(--soil-dark);
+      opacity: 0;
+    }
+
+    /* Year counter */
+    #year-display {
+      position: absolute;
+      bottom: 4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      color: rgba(240, 222, 184, 0.9);
+      letter-spacing: -0.05em;
+      text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+      z-index: 6;
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    /* Caption */
+    #scrolly-caption {
+      position: absolute;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(90%, 640px);
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(240, 222, 184, 0.85);
+      text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+      z-index: 6;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+      padding: 0 1rem;
+      line-height: 1.5;
+    }
+
+    /* Progress bar */
+    #scrolly-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--soil-brown), var(--soil-warm));
+      width: 0%;
+      z-index: 7;
+      transition: width 0.08s linear;
+    }
+
+    /* Scroll instruction */
+    #scrolly-hint {
+      position: absolute;
+      bottom: 6.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(232, 213, 163, 0.45);
+      z-index: 6;
+      white-space: nowrap;
+      transition: opacity 0.5s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── CONTENT SECTIONS ───────────────────────────────── */
+    .soil-card {
+      background: var(--soil-cream);
+      border-left: 3px solid var(--soil-warm);
+      border-radius: 0.5rem;
+      padding: 1.75rem;
+    }
+
+    .section-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--soil-warm);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    #footer {
+      background: var(--soil-dark);
+      color: rgba(232, 213, 163, 0.55);
+    }
+
+    /* ── BTN ────────────────────────────────────────────── */
+    .btn-soil {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--soil-brown);
+      color: var(--soil-cream);
+      padding: 0.8rem 2rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-soil:hover { background: var(--soil-dark); transform: translateY(-2px); }
+
+    /* Partner logos */
+    .partner-logo { filter: grayscale(100%); opacity: .7; transition: all .3s ease; }
+    .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+
+      <a href="../../index.html#home" class="flex-shrink-0">
+        <img src="../../assets/brand/logo_darwin.png" alt="Darwin Geospatial" class="h-10 md:h-12 w-auto">
+      </a>
+
+      <nav class="hidden md:flex space-x-8 items-center text-sm font-medium" style="color: var(--soil-mid);">
+        <a href="../../index.html#about"        data-lang="es">Nosotros</a>
+        <a href="../../index.html#about" class="hidden" data-lang="en">About</a>
+        <a href="../../index.html#projects-hero" data-lang="es">Proyectos</a>
+        <a href="../../index.html#projects-hero" class="hidden" data-lang="en">Projects</a>
+        <a href="../../index.html#contact"       data-lang="es">Contacto</a>
+        <a href="../../index.html#contact" class="hidden" data-lang="en">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div class="lang-switcher text-sm" style="color: var(--soil-mid);">
+          <button id="lang-es" class="active">ES</button>
+          <span>/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none" aria-label="Menú">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: var(--soil-mid);">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 text-sm" style="background: var(--soil-light); color: var(--soil-mid);">
+      <a href="../../index.html#about"         class="block py-2" data-lang="es">Nosotros</a>
+      <a href="../../index.html#about"         class="block py-2 hidden" data-lang="en">About</a>
+      <a href="../../index.html#projects-hero" class="block py-2" data-lang="es">Proyectos</a>
+      <a href="../../index.html#projects-hero" class="block py-2 hidden" data-lang="en">Projects</a>
+      <a href="../../index.html#contact"       class="block py-2" data-lang="es">Contacto</a>
+      <a href="../../index.html#contact"       class="block py-2 hidden" data-lang="en">Contact</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section id="hero">
+      <div id="hero-content">
+        <span class="hero-label animate-on-scroll">Darwin Geospatial · Soil Science</span>
+        <div class="animate-on-scroll" style="transition-delay:0.1s;">
+          <span class="hero-title-soil">SOIL</span>
+          <span class="hero-title-saver">SaveR</span>
+        </div>
+        <p class="hero-tagline animate-on-scroll" style="transition-delay:0.25s;" data-lang="es">
+          La Tierra tiene memoria.<br>Nosotros la leemos.
+        </p>
+        <p class="hero-tagline animate-on-scroll hidden" style="transition-delay:0.25s;" data-lang="en">
+          The Earth has memory.<br>We read it.
+        </p>
+
+        <div class="hero-tags animate-on-scroll" style="transition-delay:0.4s;">
+          <span class="hero-tag warm" data-lang="es">Carbono Orgánico del Suelo</span>
+          <span class="hero-tag warm hidden" data-lang="en">Soil Organic Carbon</span>
+          <span class="hero-tag">Remote Sensing · AI</span>
+          <span class="hero-tag">Google Earth Engine</span>
+          <span class="hero-tag" data-lang="es">Análisis Temporal 70 años</span>
+          <span class="hero-tag hidden" data-lang="en">70-year Temporal Analysis</span>
+        </div>
+      </div>
+
+      <!-- Scroll cue -->
+      <div class="hero-scroll">
+        <span class="font-mono-accent" style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase;" data-lang="es">Desplaza</span>
+        <span class="font-mono-accent hidden" style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase;" data-lang="en">Scroll</span>
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── INTRO ──────────────────────────────────────────── -->
+    <section style="background: var(--soil-light); padding: 6rem 1.5rem;">
+      <div class="container mx-auto" style="max-width: 52rem;">
+
+        <div class="animate-on-scroll">
+          <span class="section-eyebrow" data-lang="es">El Proyecto</span>
+          <span class="section-eyebrow hidden" data-lang="en">The Project</span>
+
+          <h2 class="font-display mt-3 mb-6" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="es">
+            Cuando el suelo desaparece,<br>todo desaparece con él.
+          </h2>
+          <h2 class="font-display mt-3 mb-6 hidden" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="en">
+            When the soil disappears,<br>everything disappears with it.
+          </h2>
+
+          <p class="text-lg leading-relaxed" style="color:var(--soil-mid); text-align:justify;" data-lang="es">
+            <strong style="color:var(--soil-brown);">Soil SaveR</strong> es una plataforma geoespacial de monitoreo del suelo que combina imágenes satelitales multitemporales, datos SAR y modelos de inteligencia artificial para mapear el <strong style="color:var(--soil-brown);">carbono orgánico del suelo (COS)</strong> y los indicadores de salud edáfica a escala de parcela. Nuestro objetivo es hacer visible lo invisible: la salud de los 30 centímetros de suelo que sostienen toda la vida terrestre y almacenan más carbono que la atmósfera y toda la vegetación juntas.
+          </p>
+          <p class="text-lg leading-relaxed hidden" style="color:var(--soil-mid); text-align:justify;" data-lang="en">
+            <strong style="color:var(--soil-brown);">Soil SaveR</strong> is a geospatial soil monitoring platform that combines multi-temporal satellite imagery, SAR data and artificial intelligence models to map <strong style="color:var(--soil-brown);">soil organic carbon (SOC)</strong> and soil health indicators at field scale. Our goal is to make the invisible visible: the health of the 30 centimeters of soil that sustain all terrestrial life and store more carbon than the atmosphere and all vegetation combined.
+          </p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 animate-on-scroll">
+          <div class="text-center">
+            <span class="stat-value">70%</span>
+            <span class="stat-label" data-lang="es">de COS perdido<br>globalmente</span>
+            <span class="stat-label hidden" data-lang="en">of SOC lost<br>globally</span>
+          </div>
+          <div class="text-center">
+            <span class="stat-value">10m</span>
+            <span class="stat-label" data-lang="es">resolución<br>por píxel</span>
+            <span class="stat-label hidden" data-lang="en">per-pixel<br>resolution</span>
+          </div>
+          <div class="text-center">
+            <span class="stat-value">70<span style="font-size:0.6em;">yr</span></span>
+            <span class="stat-label" data-lang="es">serie temporal<br>de análisis</span>
+            <span class="stat-label hidden" data-lang="en">temporal series<br>of analysis</span>
+          </div>
+          <div class="text-center">
+            <span class="stat-value">SAR</span>
+            <span class="stat-label" data-lang="es">+ óptico<br>Sentinel-1 & 2</span>
+            <span class="stat-label hidden" data-lang="en">+ optical<br>Sentinel-1 & 2</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── SCROLLYTELLING ─────────────────────────────────── -->
+    <!-- Section header -->
+    <div style="background:var(--soil-brown); padding:3rem 1.5rem; text-align:center;">
+      <span class="section-eyebrow" style="color:var(--soil-sand);" data-lang="es">Experiencia interactiva</span>
+      <span class="section-eyebrow hidden" style="color:var(--soil-sand);" data-lang="en">Interactive experience</span>
+      <h2 class="font-display mt-2" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="es">
+        69 años de cambio — revelados al desplazarse
+      </h2>
+      <h2 class="font-display mt-2 hidden" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="en">
+        69 years of change — revealed as you scroll
+      </h2>
+      <p class="mt-3" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="es">
+        Patones, Madrid · Desplaza para revelar la transformación del paisaje entre 1956 y 2025.
+      </p>
+      <p class="mt-3 hidden" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="en">
+        Patones, Madrid · Scroll to reveal the landscape transformation between 1956 and 2025.
+      </p>
+    </div>
+
+    <div id="scrollytelling-wrapper">
+      <div id="scrollytelling-pin">
+
+        <!-- Bottom: Earth 1950s -->
+        <div id="img-1950" class="story-img"></div>
+
+        <!-- Top: Earth 2000s — revealed L→R via GSAP -->
+        <div id="img-2000" class="story-img"></div>
+
+        <!-- Divider line -->
+        <div id="wipe-line"></div>
+
+        <!-- Labels -->
+        <div id="label-1950" class="story-label">
+          <span data-lang="es">Patones · 1956</span>
+          <span data-lang="en" class="hidden">Patones · 1956</span>
+        </div>
+        <div id="label-2000" class="story-label" style="right:1.5rem; background:rgba(196,134,45,0.85); color:var(--soil-dark); opacity:0; left:auto;">
+          <span data-lang="es">Patones · 2025</span>
+          <span data-lang="en" class="hidden">Patones · 2025</span>
+        </div>
+
+        <!-- Caption -->
+        <div id="scrolly-caption"></div>
+
+        <!-- Year counter -->
+        <div id="year-display">1956</div>
+
+        <!-- Progress bar -->
+        <div id="scrolly-bar"></div>
+
+        <!-- Scroll hint (fades out on scroll) -->
+        <div id="scrolly-hint">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+          <span data-lang="es">desplaza para revelar</span>
+          <span class="hidden" data-lang="en">scroll to reveal</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── GOALS & METHODOLOGY ───────────────────────────── -->
+    <section style="background:var(--soil-cream); padding:6rem 1.5rem;">
+      <div class="container mx-auto" style="max-width:64rem;">
+
+        <div class="animate-on-scroll text-center mb-12">
+          <span class="section-eyebrow" data-lang="es">Objetivos & Metodología</span>
+          <span class="section-eyebrow hidden" data-lang="en">Goals & Methodology</span>
+          <h2 class="font-display mt-2" style="font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--soil-dark);" data-lang="es">
+            Cómo leer el suelo desde el espacio
+          </h2>
+          <h2 class="font-display mt-2 hidden" style="font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--soil-dark);" data-lang="en">
+            How to read soil from space
+          </h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
+
+          <!-- What we do -->
+          <div class="soil-card">
+            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">Qué hacemos</h3>
+            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">What we do</h3>
+            <ul class="space-y-3 text-sm leading-relaxed" style="color:var(--soil-mid);">
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Mapeo de COS</strong> mediante índices espectrales de Sentinel-2 y Landsat calibrados con datos de campo (LUCAS, ESDAC).</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">SOC mapping</strong> via Sentinel-2 and Landsat spectral indices calibrated with field data (LUCAS, ESDAC).</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Serie temporal 1950–actualidad</strong> reconstituida con imágenes históricas digitalizadas y archivo Landsat desde 1972.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">1950–present temporal series</strong> reconstituted from digitized historical imagery and Landsat archive since 1972.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Predicción de carbono y humedad</strong> del suelo con modelos DL/ML entrenados a 10 m/px.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Carbon and moisture prediction</strong> with DL/ML models trained at 10 m/px.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Alertas de degradación</strong> y recomendaciones de manejo para agricultores y gestores de tierra.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Degradation alerts</strong> and management recommendations for farmers and land managers.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Verificación de créditos de carbono</strong> con trazabilidad espacial y temporal completa.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Carbon credit verification</strong> with full spatial and temporal traceability.</li>
+            </ul>
+          </div>
+
+          <!-- Technology -->
+          <div class="soil-card">
+            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">Tecnología</h3>
+            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">Technology</h3>
+            <ul class="space-y-3 text-sm leading-relaxed" style="color:var(--soil-mid);">
+              <li>▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — procesamiento masivo de series multitemporales.</li>
+              <li>▸ <strong style="color:var(--soil-brown);">Sentinel-1 (SAR) + Sentinel-2</strong> — datos radar y ópticos fusionados.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">AlphaEarth Embeddings</strong> — base de características geoespaciales de alta densidad.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">AlphaEarth Embeddings</strong> — high-density geospatial feature backbone.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Modelos DL/ML</strong> — redes neuronales de estimación de COS y clasificación edáfica.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">DL/ML models</strong> — neural networks for SOC estimation and soil classification.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Entrega</strong> en GeoTIFF / GeoJSON + visor web integrado + API.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Delivery</strong> as GeoTIFF / GeoJSON + integrated web viewer + API.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Why it matters -->
+        <div class="animate-on-scroll mt-10 p-8 md:p-10 rounded-xl" style="background:var(--soil-dark);">
+          <h3 class="font-display text-2xl font-bold mb-4" style="color:var(--soil-cream);" data-lang="es">¿Por qué importa?</h3>
+          <h3 class="font-display text-2xl font-bold mb-4 hidden" style="color:var(--soil-cream);" data-lang="en">Why does it matter?</h3>
+          <p class="leading-relaxed" style="color:var(--soil-sand); text-align:justify;" data-lang="es">
+            El suelo es el <strong style="color:var(--soil-cream);">segundo mayor almacén de carbono del planeta</strong>, superado únicamente por los océanos. Sin embargo, décadas de agricultura intensiva, deforestación y urbanización han provocado la pérdida estimada del <strong style="color:var(--soil-cream);">50–70% del carbono orgánico del suelo</strong> a nivel global. Esta degradación no solo libera CO₂ a la atmósfera, sino que destruye la fertilidad, reduce la retención hídrica y compromete la soberanía alimentaria de miles de millones de personas. Soil SaveR existe para cuantificar este daño, comunicarlo con precisión y proporcionar los datos que permiten revertirlo.
+          </p>
+          <p class="leading-relaxed hidden" style="color:var(--soil-sand); text-align:justify;" data-lang="en">
+            Soil is the <strong style="color:var(--soil-cream);">planet's second largest carbon store</strong>, surpassed only by the oceans. Yet decades of intensive agriculture, deforestation and urbanization have caused an estimated <strong style="color:var(--soil-cream);">50–70% loss of soil organic carbon</strong> globally. This degradation not only releases CO₂ to the atmosphere but destroys fertility, reduces water retention and threatens the food sovereignty of billions. Soil SaveR exists to quantify this damage, communicate it precisely and provide the data needed to reverse it.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── CTA ────────────────────────────────────────────── -->
+    <section style="background:var(--soil-brown); padding:5rem 1.5rem; text-align:center;">
+      <div class="container mx-auto animate-on-scroll" style="max-width:36rem;">
+        <h2 class="font-display mb-4" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="es">
+          ¿Quieres monitorear<br>la salud de tu suelo?
+        </h2>
+        <h2 class="font-display mb-4 hidden" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="en">
+          Want to monitor<br>your soil health?
+        </h2>
+        <p class="mb-8 text-sm leading-relaxed" style="color:rgba(240,222,184,0.75);" data-lang="es">
+          Trabajamos con agricultores, gestores de tierras, ONGs y administraciones para implementar monitoreo de suelos a medida.
+        </p>
+        <p class="mb-8 text-sm leading-relaxed hidden" style="color:rgba(240,222,184,0.75);" data-lang="en">
+          We work with farmers, land managers, NGOs and governments to implement tailored soil monitoring solutions.
+        </p>
+        <a href="../../index.html#contact" class="btn-soil" data-lang="es">Contáctanos →</a>
+        <a href="../../index.html#contact" class="btn-soil hidden" data-lang="en">Contact Us →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer id="footer" style="padding:3rem 1.5rem; text-align:center;">
+    <div class="container mx-auto">
+      <a href="../../index.html">
+        <img src="../../assets/brand/logo_darwin.png" alt="Darwin Geospatial" class="h-8 mx-auto mb-4" style="filter:brightness(0) invert(1); opacity:0.55;">
+      </a>
+      <p class="font-mono-accent" style="font-size:0.7rem; letter-spacing:0.15em;">
+        © 2025 Darwin Geospatial Labs · Soil SaveR
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ────────────────────────────────────────── -->
+  <script src="../../lang.js"></script>
+
+  <script>
+    // ── Scroll-reveal ──────────────────────────────────
+    document.querySelectorAll('.animate-on-scroll').forEach(el => {
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver((entries, obs) => {
+          entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.12 }).observe(el);
+      } else {
+        el.classList.add('is-visible');
+      }
+    });
+
+    // ── GSAP Scrollytelling ────────────────────────────
+    gsap.registerPlugin(ScrollTrigger);
+
+    const captions = {
+      es: [
+        "Patones, 1956. El paisaje rural permanece casi inalterado: bosque mediterráneo, terrazas de cultivo y mosaicos de vegetación natural.",
+        "Décadas de abandono agrícola, repoblaciones forestales y expansión urbana comienzan a rediseñar el territorio.",
+        "Patones, 2025. 69 años de transformación quedan al descubierto: nuevas cubiertas, caminos, y la huella acumulada del tiempo."
+      ],
+      en: [
+        "Patones, 1956. The rural landscape remains almost untouched: Mediterranean woodland, cultivation terraces and natural vegetation mosaics.",
+        "Decades of agricultural abandonment, reforestation and urban expansion begin to reshape the territory.",
+        "Patones, 2025. 69 years of transformation are laid bare: new land covers, tracks, and the accumulated mark of time."
+      ]
+    };
+
+    let lastCapIdx = -1;
+    const captionEl  = document.getElementById('scrolly-caption');
+    const yearEl     = document.getElementById('year-display');
+    const barEl      = document.getElementById('scrolly-bar');
+    const wipeLineEl = document.getElementById('wipe-line');
+    const label2000  = document.getElementById('label-2000');
+    const hintEl     = document.getElementById('scrolly-hint');
+
+    function getLang() { return document.documentElement.lang === 'en' ? 'en' : 'es'; }
+
+    function setCaption(idx) {
+      if (idx === lastCapIdx) return;
+      lastCapIdx = idx;
+      captionEl.style.opacity = '0';
+      setTimeout(() => {
+        captionEl.textContent = captions[getLang()][idx];
+        captionEl.style.opacity = '1';
+      }, 280);
+    }
+
+    gsap.fromTo('#img-2000',
+      { clipPath: 'inset(0 100% 0 0)' },
+      {
+        clipPath: 'inset(0 0% 0 0)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#scrollytelling-wrapper',
+          start:   'top top',
+          end:     'bottom bottom',
+          scrub:   1.2,
+          onUpdate(self) {
+            const p = self.progress;
+
+            // Year: 1956 → 2025
+            yearEl.textContent = Math.round(1956 + p * 69);
+
+            // Progress bar
+            barEl.style.width = (p * 100) + '%';
+
+            // Wipe divider line
+            wipeLineEl.style.left    = (p * 100) + '%';
+            wipeLineEl.style.opacity = p > 0.01 ? '1' : '0';
+
+            // 2000 label
+            const l2opacity = p > 0.04 ? Math.min(1, (p - 0.04) * 8) : 0;
+            label2000.style.opacity = l2opacity;
+
+            // Scroll hint
+            if (hintEl) hintEl.style.opacity = p > 0.03 ? '0' : '1';
+
+            // Captions (3 phases)
+            if      (p < 0.33) setCaption(0);
+            else if (p < 0.66) setCaption(1);
+            else               setCaption(2);
+          }
+        }
+      }
+    );
+
+    // Reset caption when language changes so it re-renders in new lang
+    ['lang-es', 'lang-en'].forEach(id => {
+      document.getElementById(id)?.addEventListener('click', () => { lastCapIdx = -1; });
+    });
+  </script>
+
+</body>
+</html>
