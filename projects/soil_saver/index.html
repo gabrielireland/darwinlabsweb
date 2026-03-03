@@ -491,25 +491,25 @@
     <!-- ── HERO ─────────────────────────────────────────── -->
     <section id="hero">
       <div id="hero-content">
-        <span class="hero-label animate-on-scroll">Darwin Geospatial · Soil Science</span>
+        <span class="hero-label animate-on-scroll">Darwin Geospatial · Erosion Intelligence</span>
         <div class="animate-on-scroll" style="transition-delay:0.1s;">
           <span class="hero-title-soil">SOIL</span>
           <span class="hero-title-saver">SaveR</span>
         </div>
         <p class="hero-tagline animate-on-scroll" style="transition-delay:0.25s;" data-lang="es">
-          La Tierra tiene memoria.<br>Nosotros la leemos.
+          La erosión es visible desde el espacio.<br>Los datos para estudiarla, aún no.
         </p>
         <p class="hero-tagline animate-on-scroll hidden" style="transition-delay:0.25s;" data-lang="en">
-          The Earth has memory.<br>We read it.
+          Erosion is visible from space.<br>The data to study it, not yet.
         </p>
 
         <div class="hero-tags animate-on-scroll" style="transition-delay:0.4s;">
-          <span class="hero-tag warm" data-lang="es">Carbono Orgánico del Suelo</span>
-          <span class="hero-tag warm hidden" data-lang="en">Soil Organic Carbon</span>
-          <span class="hero-tag">Remote Sensing · AI</span>
-          <span class="hero-tag">Google Earth Engine</span>
-          <span class="hero-tag" data-lang="es">Análisis Temporal 70 años</span>
-          <span class="hero-tag hidden" data-lang="en">70-year Temporal Analysis</span>
+          <span class="hero-tag warm" data-lang="es">Detección de Erosión</span>
+          <span class="hero-tag warm hidden" data-lang="en">Erosion Detection</span>
+          <span class="hero-tag">RUSLE · TWI · SPI</span>
+          <span class="hero-tag">Sentinel-2 · ALOS DEM</span>
+          <span class="hero-tag" data-lang="es">Dataset Público Multi-región</span>
+          <span class="hero-tag hidden" data-lang="en">Public Multi-region Dataset</span>
         </div>
       </div>
 
@@ -532,41 +532,41 @@
           <span class="section-eyebrow hidden" data-lang="en">The Project</span>
 
           <h2 class="font-display mt-3 mb-6" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="es">
-            Cuando el suelo desaparece,<br>todo desaparece con él.
+            Un gap en los datos que<br>limita lo que podemos aprender.
           </h2>
           <h2 class="font-display mt-3 mb-6 hidden" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="en">
-            When the soil disappears,<br>everything disappears with it.
+            A data gap that limits<br>what we can learn.
           </h2>
 
           <p class="text-lg leading-relaxed" style="color:var(--soil-mid); text-align:justify;" data-lang="es">
-            <strong style="color:var(--soil-brown);">Soil SaveR</strong> es una plataforma geoespacial de monitoreo del suelo que combina imágenes satelitales multitemporales, datos SAR y modelos de inteligencia artificial para mapear el <strong style="color:var(--soil-brown);">carbono orgánico del suelo (COS)</strong> y los indicadores de salud edáfica a escala de parcela. Nuestro objetivo es hacer visible lo invisible: la salud de los 30 centímetros de suelo que sostienen toda la vida terrestre y almacenan más carbono que la atmósfera y toda la vegetación juntas.
+            Los métodos de deep learning para detección de erosión han mostrado resultados prometedores, pero la ausencia de datos públicos dificulta comparar, reproducir o mejorar esos modelos: de 15 artículos revisados, solo 2 comparten datos accesibles, y ambos cubren una única región y un único sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> es un intento de empezar a cerrar esa brecha, proponiendo una metodología para generar un <strong style="color:var(--soil-brown);">dataset etiquetado, público, multimodal y multi-región para detección de erosión desde imágenes satelitales</strong>. La metodología combina modelado determinista (RUSLE + índices topográficos del DEM) para acotar automáticamente las zonas candidatas, con verificación visual humana sobre imágenes Sentinel-2, buscando que las etiquetas estén a la vez físicamente fundamentadas y visualmente confirmadas.
           </p>
           <p class="text-lg leading-relaxed hidden" style="color:var(--soil-mid); text-align:justify;" data-lang="en">
-            <strong style="color:var(--soil-brown);">Soil SaveR</strong> is a geospatial soil monitoring platform that combines multi-temporal satellite imagery, SAR data and artificial intelligence models to map <strong style="color:var(--soil-brown);">soil organic carbon (SOC)</strong> and soil health indicators at field scale. Our goal is to make the invisible visible: the health of the 30 centimeters of soil that sustain all terrestrial life and store more carbon than the atmosphere and all vegetation combined.
+            Deep learning methods for erosion detection have shown promising results, but the absence of public data makes it difficult to compare, reproduce or improve those models: of 15 papers reviewed, only 2 share accessible data, and both cover a single region and a single sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> is an attempt to start closing that gap, proposing a methodology to generate a <strong style="color:var(--soil-brown);">labeled, public, multi-modal, multi-region dataset for erosion detection from satellite imagery</strong>. The methodology combines deterministic modeling (RUSLE + DEM-derived topographic indices) to automatically narrow candidate zones, with human visual verification on Sentinel-2 imagery, seeking labels that are both physically grounded and visually confirmed.
           </p>
         </div>
 
         <!-- Stats row -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 animate-on-scroll">
           <div class="text-center">
-            <span class="stat-value">70%</span>
-            <span class="stat-label" data-lang="es">de COS perdido<br>globalmente</span>
-            <span class="stat-label hidden" data-lang="en">of SOC lost<br>globally</span>
+            <span class="stat-value">15</span>
+            <span class="stat-label" data-lang="es">papers analizados<br>solo 2 con datos públicos</span>
+            <span class="stat-label hidden" data-lang="en">papers surveyed<br>only 2 with public data</span>
           </div>
           <div class="text-center">
             <span class="stat-value">10m</span>
-            <span class="stat-label" data-lang="es">resolución<br>por píxel</span>
-            <span class="stat-label hidden" data-lang="en">per-pixel<br>resolution</span>
+            <span class="stat-label" data-lang="es">resolución<br>Sentinel-2</span>
+            <span class="stat-label hidden" data-lang="en">Sentinel-2<br>resolution</span>
           </div>
           <div class="text-center">
-            <span class="stat-value">70<span style="font-size:0.6em;">yr</span></span>
-            <span class="stat-label" data-lang="es">serie temporal<br>de análisis</span>
-            <span class="stat-label hidden" data-lang="en">temporal series<br>of analysis</span>
+            <span class="stat-value" style="font-size:clamp(1.8rem,4vw,2.8rem);">50–80%</span>
+            <span class="stat-label" data-lang="es">reducción del esfuerzo<br>de etiquetado</span>
+            <span class="stat-label hidden" data-lang="en">labeling effort<br>reduction</span>
           </div>
           <div class="text-center">
-            <span class="stat-value">SAR</span>
-            <span class="stat-label" data-lang="es">+ óptico<br>Sentinel-1 & 2</span>
-            <span class="stat-label hidden" data-lang="en">+ optical<br>Sentinel-1 & 2</span>
+            <span class="stat-value">0</span>
+            <span class="stat-label" data-lang="es">datasets públicos<br>de erosión previos</span>
+            <span class="stat-label hidden" data-lang="en">prior public<br>erosion datasets</span>
           </div>
         </div>
 
@@ -579,16 +579,16 @@
       <span class="section-eyebrow" style="color:var(--soil-sand);" data-lang="es">Experiencia interactiva</span>
       <span class="section-eyebrow hidden" style="color:var(--soil-sand);" data-lang="en">Interactive experience</span>
       <h2 class="font-display mt-2" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="es">
-        69 años de cambio — revelados al desplazarse
+        Así se ve la erosión desde el espacio — revelada al desplazarse
       </h2>
       <h2 class="font-display mt-2 hidden" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="en">
-        69 years of change — revealed as you scroll
+        This is what erosion looks like from space — revealed as you scroll
       </h2>
       <p class="mt-3" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="es">
-        Patones, Madrid · Desplaza para revelar la transformación del paisaje entre 1956 y 2025.
+        Patones, Madrid · El mismo territorio en 1956 y 2025. Identifica los rasgos de erosión que guían nuestro proceso de etiquetado.
       </p>
       <p class="mt-3 hidden" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="en">
-        Patones, Madrid · Scroll to reveal the landscape transformation between 1956 and 2025.
+        Patones, Madrid · The same territory in 1956 and 2025. Identify the erosion features that guide our labeling process.
       </p>
     </div>
 
@@ -643,50 +643,55 @@
           <span class="section-eyebrow" data-lang="es">Objetivos & Metodología</span>
           <span class="section-eyebrow hidden" data-lang="en">Goals & Methodology</span>
           <h2 class="font-display mt-2" style="font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--soil-dark);" data-lang="es">
-            Cómo leer el suelo desde el espacio
+            Cómo construimos el dataset
           </h2>
           <h2 class="font-display mt-2 hidden" style="font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--soil-dark);" data-lang="en">
-            How to read soil from space
+            How we build the dataset
           </h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-8 animate-on-scroll">
 
-          <!-- What we do -->
+          <!-- The pipeline -->
           <div class="soil-card">
-            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">Qué hacemos</h3>
-            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">What we do</h3>
+            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">El pipeline híbrido</h3>
+            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">The hybrid pipeline</h3>
             <ul class="space-y-3 text-sm leading-relaxed" style="color:var(--soil-mid);">
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Mapeo de COS</strong> mediante índices espectrales de Sentinel-2 y Landsat calibrados con datos de campo (LUCAS, ESDAC).</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">SOC mapping</strong> via Sentinel-2 and Landsat spectral indices calibrated with field data (LUCAS, ESDAC).</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Modelado determinista (RUSLE + DEM)</strong> calcula susceptibilidad a la erosión y genera una máscara de zonas candidatas.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Deterministic modeling (RUSLE + DEM)</strong> computes erosion susceptibility and generates a candidate-zone mask.</li>
 
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Serie temporal 1950–actualidad</strong> reconstituida con imágenes históricas digitalizadas y archivo Landsat desde 1972.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">1950–present temporal series</strong> reconstituted from digitized historical imagery and Landsat archive since 1972.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Índices topográficos (TWI, SPI, slope-area)</strong> refinan las zonas candidatas con criterios físicamente fundamentados.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Topographic indices (TWI, SPI, slope-area)</strong> refine candidate zones using physically grounded criteria.</li>
 
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Predicción de carbono y humedad</strong> del suelo con modelos DL/ML entrenados a 10 m/px.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Carbon and moisture prediction</strong> with DL/ML models trained at 10 m/px.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Anotación humana guiada</strong> — los anotadores confirman presencia real de erosión solo dentro de las zonas candidatas. Reducción de esfuerzo: 50–80%.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Guided human annotation</strong> — annotators confirm actual erosion presence only within candidate zones. Effort reduction: 50–80%.</li>
 
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Alertas de degradación</strong> y recomendaciones de manejo para agricultores y gestores de tierra.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Degradation alerts</strong> and management recommendations for farmers and land managers.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Objetivos de etiquetado:</strong> cárcavas &gt;10 m y zonas de erosión laminar, en múltiples regiones.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Labeling targets:</strong> gullies &gt;10 m and sheet erosion zones, across multiple regions.</li>
 
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Verificación de créditos de carbono</strong> con trazabilidad espacial y temporal completa.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Carbon credit verification</strong> with full spatial and temporal traceability.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Publicación abierta:</strong> protocolo de etiquetado, métricas de acuerdo entre anotadores y herramientas, todo liberado públicamente.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Open release:</strong> labeling protocol, inter-annotator agreement metrics and tools, all released publicly.</li>
             </ul>
           </div>
 
           <!-- Technology -->
           <div class="soil-card">
-            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">Tecnología</h3>
-            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">Technology</h3>
+            <h3 class="font-display text-xl font-bold mb-4" style="color:var(--soil-dark);" data-lang="es">Stack de datos y modelos</h3>
+            <h3 class="font-display text-xl font-bold mb-4 hidden" style="color:var(--soil-dark);" data-lang="en">Data & model stack</h3>
             <ul class="space-y-3 text-sm leading-relaxed" style="color:var(--soil-mid);">
-              <li>▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — procesamiento masivo de series multitemporales.</li>
-              <li>▸ <strong style="color:var(--soil-brown);">Sentinel-1 (SAR) + Sentinel-2</strong> — datos radar y ópticos fusionados.</li>
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">AlphaEarth Embeddings</strong> — base de características geoespaciales de alta densidad.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">AlphaEarth Embeddings</strong> — high-density geospatial feature backbone.</li>
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Modelos DL/ML</strong> — redes neuronales de estimación de COS y clasificación edáfica.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">DL/ML models</strong> — neural networks for SOC estimation and soil classification.</li>
-              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Entrega</strong> en GeoTIFF / GeoJSON + visor web integrado + API.</li>
-              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Delivery</strong> as GeoTIFF / GeoJSON + integrated web viewer + API.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Sentinel-2 (10 m óptico)</strong> — base de etiquetado visual e imagen multiespectral de alta resolución.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Sentinel-2 (10 m optical)</strong> — visual labeling base and high-resolution multispectral imagery.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">ALOS PALSAR DEM (12,5 m)</strong> — modelo digital de elevación para RUSLE y cálculo de índices topográficos.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">ALOS PALSAR DEM (12.5 m)</strong> — digital elevation model for RUSLE and topographic index computation.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Sentinel-1 SAR (10 m, opcional)</strong> — modalidad de radar para enriquecer el dataset multimodal.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Sentinel-1 SAR (10 m, optional)</strong> — radar modality to enrich the multi-modal dataset.</li>
+
+              <li>▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — acceso y procesamiento de todos los datos satelitales en la nube.</li>
+
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Arquitecturas objetivo:</strong> DeepLabV3+, U-Net, SAM — los modelos de segmentación que el dataset habilita por primera vez de forma reproducible.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Target architectures:</strong> DeepLabV3+, U-Net, SAM — the segmentation models the dataset enables reproducibly for the first time.</li>
             </ul>
           </div>
         </div>
@@ -696,10 +701,10 @@
           <h3 class="font-display text-2xl font-bold mb-4" style="color:var(--soil-cream);" data-lang="es">¿Por qué importa?</h3>
           <h3 class="font-display text-2xl font-bold mb-4 hidden" style="color:var(--soil-cream);" data-lang="en">Why does it matter?</h3>
           <p class="leading-relaxed" style="color:var(--soil-sand); text-align:justify;" data-lang="es">
-            El suelo es el <strong style="color:var(--soil-cream);">segundo mayor almacén de carbono del planeta</strong>, superado únicamente por los océanos. Sin embargo, décadas de agricultura intensiva, deforestación y urbanización han provocado la pérdida estimada del <strong style="color:var(--soil-cream);">50–70% del carbono orgánico del suelo</strong> a nivel global. Esta degradación no solo libera CO₂ a la atmósfera, sino que destruye la fertilidad, reduce la retención hídrica y compromete la soberanía alimentaria de miles de millones de personas. Soil SaveR existe para cuantificar este daño, comunicarlo con precisión y proporcionar los datos que permiten revertirlo.
+            Cada modelo de deep learning publicado para detección de erosión fue entrenado con <strong style="color:var(--soil-cream);">datos privados e irreprocucibles</strong>. El modelo RUSLE, el estándar dominante, predice susceptibilidad —no presencia real—, y sus predicciones se desvían de mediciones en campo por factores de <strong style="color:var(--soil-cream);">0,04× a 8×</strong>; solo el 41% de los estudios que lo usan validan sus resultados. La detección por deep learning de cárcavas, erosión en masa y erosión laminar requiere etiquetas confirmadas visualmente, no predicciones deterministas. Soil SaveR es la primera infraestructura de datos que hace posible entrenar y comparar modelos de segmentación de erosión de forma abierta y reproducible.
           </p>
           <p class="leading-relaxed hidden" style="color:var(--soil-sand); text-align:justify;" data-lang="en">
-            Soil is the <strong style="color:var(--soil-cream);">planet's second largest carbon store</strong>, surpassed only by the oceans. Yet decades of intensive agriculture, deforestation and urbanization have caused an estimated <strong style="color:var(--soil-cream);">50–70% loss of soil organic carbon</strong> globally. This degradation not only releases CO₂ to the atmosphere but destroys fertility, reduces water retention and threatens the food sovereignty of billions. Soil SaveR exists to quantify this damage, communicate it precisely and provide the data needed to reverse it.
+            Every published deep learning model for erosion detection was trained on <strong style="color:var(--soil-cream);">private, non-reproducible data</strong>. The dominant standard, RUSLE, predicts susceptibility — not actual presence — and its predictions deviate from field measurements by factors of <strong style="color:var(--soil-cream);">0.04× to 8×</strong>; only 41% of studies using it validate against measured data. Deep learning detection of gullies, mass wasting and sheet erosion requires visually confirmed labels, not deterministic predictions. Soil SaveR is the first data infrastructure that makes it possible to train and compare erosion segmentation models openly and reproducibly.
           </p>
         </div>
 
@@ -710,16 +715,16 @@
     <section style="background:var(--soil-brown); padding:5rem 1.5rem; text-align:center;">
       <div class="container mx-auto animate-on-scroll" style="max-width:36rem;">
         <h2 class="font-display mb-4" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="es">
-          ¿Quieres monitorear<br>la salud de tu suelo?
+          ¿Quieres colaborar<br>o usar el dataset?
         </h2>
         <h2 class="font-display mb-4 hidden" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="en">
-          Want to monitor<br>your soil health?
+          Want to collaborate<br>or use the dataset?
         </h2>
         <p class="mb-8 text-sm leading-relaxed" style="color:rgba(240,222,184,0.75);" data-lang="es">
-          Trabajamos con agricultores, gestores de tierras, ONGs y administraciones para implementar monitoreo de suelos a medida.
+          Buscamos colaboraciones de investigación, anotadores expertos y equipos que quieran entrenar o validar modelos de detección de erosión con datos abiertos y reproducibles.
         </p>
         <p class="mb-8 text-sm leading-relaxed hidden" style="color:rgba(240,222,184,0.75);" data-lang="en">
-          We work with farmers, land managers, NGOs and governments to implement tailored soil monitoring solutions.
+          We are looking for research collaborations, expert annotators, and teams who want to train or validate erosion detection models with open, reproducible data.
         </p>
         <a href="../../index.html#contact" class="btn-soil" data-lang="es">Contáctanos →</a>
         <a href="../../index.html#contact" class="btn-soil hidden" data-lang="en">Contact Us →</a>
@@ -762,14 +767,14 @@
 
     const captions = {
       es: [
-        "Patones, 1956. El paisaje rural permanece casi inalterado: bosque mediterráneo, terrazas de cultivo y mosaicos de vegetación natural.",
-        "Décadas de abandono agrícola, repoblaciones forestales y expansión urbana comienzan a rediseñar el territorio.",
-        "Patones, 2025. 69 años de transformación quedan al descubierto: nuevas cubiertas, caminos, y la huella acumulada del tiempo."
+        "1956. La cubierta vegetal es densa y continua; los canales de drenaje siguen trazados naturales y el suelo fértil permanece protegido bajo la vegetación.",
+        "A medida que avanza el tiempo, la cubierta se fragmenta. Aparecen surcos y cárcavas donde antes había suelo estable; las zonas desnudas se amplían.",
+        "2025. Las cárcavas son claramente más extensas y profundas. La pérdida de suelo fértil es visible: donde antes había vegetación, queda roca y sedimento expuesto."
       ],
       en: [
-        "Patones, 1956. The rural landscape remains almost untouched: Mediterranean woodland, cultivation terraces and natural vegetation mosaics.",
-        "Decades of agricultural abandonment, reforestation and urban expansion begin to reshape the territory.",
-        "Patones, 2025. 69 years of transformation are laid bare: new land covers, tracks, and the accumulated mark of time."
+        "1956. Vegetation cover is dense and continuous; drainage channels follow natural paths and fertile soil remains protected beneath the vegetation.",
+        "As time advances, the cover fragments. Rills and gullies appear where stable soil once was; bare patches expand.",
+        "2025. Gullies are visibly wider and deeper. The loss of fertile soil is apparent: where vegetation once stood, exposed rock and sediment remain."
       ]
     };
 

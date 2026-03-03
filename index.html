@@ -832,8 +832,8 @@
             style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
             onclick="triggerSoilTransition()">
 
-            <!-- Banner: soil-layer gradient -->
-            <div class="soil-banner lg:w-2/5 flex-shrink-0 flex items-end p-4">
+            <!-- Banner: soil photo -->
+            <div class="lg:w-2/5 flex-shrink-0 flex items-end p-4" style="background-image:url('./projects/soil_saver/assets/pexels-dimengliu-3064079.jpg'); background-size:cover; background-position:center; min-height:12rem; position:relative; overflow:hidden;">
               <!-- Layer labels overlay -->
               <div style="position:absolute; top:1rem; left:1rem; z-index:1; display:flex; flex-direction:column; gap:0.35rem;">
                 <span style="font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; color:rgba(240,222,184,0.5); text-transform:uppercase;">Surface horizon</span>
@@ -1205,7 +1205,7 @@
     </section>
 
     <!-- Partners -->
-    <section id="partners" class="py-20 lg:py-32 hidden">
+    <section id="partners" class="py-20 lg:py-32">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang="es">Nuestros Clientes y Partners</h2>
@@ -1213,42 +1213,18 @@
         </div>
 
         <div class="animate-on-scroll">
-          <!-- Clients -->
-          <div class="mb-16">
-            <h3 class="text-2xl font-bold text-center text-slate-800 mb-10" data-lang="es">Clientes</h3>
-            <h3 class="text-2xl font-bold text-center text-slate-800 mb-10 hidden" data-lang="en">Clients</h3>
-            <div class="flex flex-wrap justify-center items-start gap-x-12 gap-y-10">
-              <div class="partner-logo-container w-40">
-                <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife Logo" class="h-12 partner-logo"
-                     onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
-                <p class="text-sm font-medium text-slate-700">SEO/BirdLife</p>
-              </div>
-              <!--<div class="partner-logo-container w-40">
-                <img src="./assets/kompass.jpg" alt="Kompass Logo" class="h-12 partner-logo"
-                     onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
-                <p class="text-sm font-medium text-slate-700">Kompass</p>
-              </div>-->
-            </div>
+          <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-10">
+            <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife Logo" class="h-20 partner-logo"
+                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
+            <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen Logo" class="h-20 partner-logo"
+                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
+            <img src="./assets/partners/kompass.jpg" alt="Kompass Logo" class="h-12 partner-logo"
+                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
+            <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM Logo" class="h-20 partner-logo"
+                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
+            <img src="./assets/partners/universidad_avila.jpg" alt="UCAV Logo" class="h-20 partner-logo"
+                 onerror="this.onerror=null;this.src='https://placehold.co/192x56/e2e8f0/46633A?text=Logo';">
           </div>
-
-          <!-- Partners -->
-          <div>
-            <h3 class="text-2xl font-bold text-center text-slate-800 mb-10" data-lang="es">Partners</h3>
-            <h3 class="text-2xl font-bold text-center text-slate-800 mb-10 hidden" data-lang="en">Partners</h3>
-            <div class="flex flex-wrap justify-center items-start gap-x-12 gap-y-10">
-              <div class="partner-logo-container w-48">
-                <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM Logo" class="h-16 partner-logo"
-                     onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-                <p class="text-sm font-medium text-slate-700">Universidad Politécnica de Madrid</p>
-              </div>
-              <div class="partner-logo-container w-48">
-                <img src="./assets/partners/universidad_avila.jpg" alt="UCAV Logo" class="h-14 partner-logo"
-                     onerror="this.onerror=null;this.src='https://placehold.co/192x56/e2e8f0/46633A?text=Logo';">
-                <p class="text-sm font-medium text-slate-700">Universidad Católica de Ávila</p>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
