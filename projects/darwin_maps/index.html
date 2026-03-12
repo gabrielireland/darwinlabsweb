@@ -47,13 +47,28 @@
       min-height: 70vh;
       display: flex;
       align-items: center;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-        url('./assets/background_darwin_maps.png');
-      background-size: cover;
-      background-position: center;
+      background: #0a1628;
     }
     .title-section h1 { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+
+    /* Crossfade slideshow */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      filter: brightness(0.7);
+      transition: opacity 1.2s ease-in-out;
+    }
+    .hero-slide.active { opacity: 1; }
+    /* Dark overlay on top of slides */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.52);
+      z-index: 1;
+    }
 
     /* WIP pill */
     .status-pill-wip {
@@ -149,6 +164,15 @@
 
     <!-- Hero -->
     <section class="title-section">
+      <!-- Slideshow layers -->
+      <div class="hero-slide active" style="background-image:url('../../assets/hero/hero_1.png')"></div>
+      <div class="hero-slide"        style="background-image:url('../../assets/hero/hero_2.png')"></div>
+      <div class="hero-slide"        style="background-image:url('../../assets/hero/hero_3.png')"></div>
+      <div class="hero-slide"        style="background-image:url('../../assets/hero/habitat.png')"></div>
+      <div class="hero-slide"        style="background-image:url('../../assets/hero/ndvi.png')"></div>
+      <!-- Overlay -->
+      <div class="hero-overlay"></div>
+
       <div class="container mx-auto px-6 text-center relative z-10">
         <div class="mb-5">
           <span class="status-pill-wip" data-lang="es">Próximamente</span>
@@ -290,5 +314,17 @@
   </footer>
 
   <script src="../../lang.js"></script>
+  <script>
+    // Hero crossfade slideshow
+    (function () {
+      const slides = document.querySelectorAll('.hero-slide');
+      let current = 0;
+      setInterval(function () {
+        slides[current].classList.remove('active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('active');
+      }, 5000);
+    })();
+  </script>
 </body>
 </html>
