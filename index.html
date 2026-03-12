@@ -339,6 +339,27 @@
     }
     .service-card:hover .service-bug { opacity: 0.9; }
 
+    /* ── Darwin Maps transition overlay ─────────────────── */
+    #maps-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: linear-gradient(135deg,
+        #0B1A0F 0%,
+        #1A3A1F 30%,
+        #3D6131 55%,
+        #A5AA6B 80%,
+        #FDF6E4 100%
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    #maps-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
     /* ── Soil SaveR transition overlay ──────────────────── */
     #soil-overlay {
       position: fixed;
@@ -827,71 +848,52 @@
           </article>
 
           <!-- ── Darwin Maps ──────────────────────────────── -->
-          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(10,22,40,0.75); backdrop-filter:blur(12px);"
-            onclick="window.location.href='./projects/darwin_maps/index.html'">
+          <article id="darwin-maps-card"
+            class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
+            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
+            onclick="triggerMapsTransition()">
 
-            <!-- Visual panel: map grid -->
-            <div class="lg:w-2/5 flex-shrink-0 relative" style="min-height:12rem; overflow:hidden; background:linear-gradient(135deg,#0a1628 0%,#1a4a7a 60%,#1e7b8c 100%);">
-              <!-- Animated grid -->
-              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(60,186,176,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(60,186,176,0.07) 1px,transparent 1px);background-size:44px 44px;"></div>
-              <!-- Glow orb -->
-              <div style="position:absolute;width:220px;height:220px;background:rgba(60,186,176,0.18);border-radius:50%;filter:blur(60px);top:-40px;right:-40px;"></div>
-              <!-- Layer name overlays -->
-              <div style="position:absolute;top:1rem;left:1rem;z-index:1;display:flex;flex-direction:column;gap:0.35rem;">
-                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:rgba(182,220,228,0.55);text-transform:uppercase;">NDVI 2024 · annual</span>
-                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:rgba(182,220,228,0.35);text-transform:uppercase;">Soil moisture · guest</span>
-                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:rgba(182,220,228,0.2);text-transform:uppercase;">Land cover · tenant</span>
-              </div>
-              <!-- Type badge -->
-              <span style="position:absolute;bottom:1rem;left:1rem;z-index:1;background:rgba(60,186,176,0.85);color:#0a1628;padding:0.25rem 0.75rem;border-radius:9999px;font-size:0.68rem;font-weight:700;letter-spacing:0.12em;font-family:'Space Mono',monospace;text-transform:uppercase;">
-                Geospatial Viewer
-              </span>
-              <!-- WIP badge -->
-              <span style="position:absolute;top:1rem;right:1rem;z-index:1;background:rgba(251,191,36,0.18);color:#fcd34d;border:1px solid rgba(251,191,36,0.4);padding:0.2rem 0.6rem;border-radius:9999px;font-size:0.65rem;font-weight:700;letter-spacing:0.18em;font-family:'Space Mono',monospace;text-transform:uppercase;">
-                IN PROGRESS
+            <!-- Banner: map screenshot -->
+            <div class="lg:w-2/5 flex-shrink-0 flex items-end p-4" style="background-image:url('./projects/darwin_maps/assets/darwin_geo_ai.png'); background-size:cover; background-position:center bottom; min-height:12rem; position:relative; overflow:hidden;">
+              <!-- GeoAI badge -->
+              <span style="position:absolute; bottom:1rem; left:1rem; z-index:1; background:rgba(61,97,49,0.9); color:#FDF6E4; padding:0.25rem 0.75rem; border-radius:9999px; font-size:0.68rem; font-weight:700; letter-spacing:0.12em; font-family:'Space Mono',monospace; text-transform:uppercase;">
+                Geo AI
               </span>
             </div>
 
             <!-- Content -->
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <!-- Meta tags -->
+              <!-- Meta tags row -->
               <div class="flex flex-wrap gap-2 mb-3">
-                <span style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(60,186,176,0.85);">MapLibre GL · FastAPI · COG</span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(165,170,107,0.85);">Interactive Map</span>
                 <span style="color:rgba(255,255,255,0.25);">·</span>
-                <span style="font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);">Cloud Run · Firebase Auth</span>
+                <span style="font-family:'Space Mono',monospace; font-size:0.65rem; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35);">Mapbox + AI Analysis</span>
               </div>
 
-              <h2 class="mb-3 text-white" style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;line-height:1;">
+              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#A5AA6B;">
                 Darwin Maps
               </h2>
 
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">
-                Visor geoespacial interactivo para exploración de capas ráster y vectoriales. Indicadores ambientales,
-                series temporales y datos de cliente con control de acceso por niveles — todo desde el navegador.
-                Actualmente en desarrollo activo.
+                Visor geoespacial interactivo con inteligencia artificial para el análisis del territorio. Capas ambientales, análisis por provincias y un asistente Geo AI que interpreta el paisaje por ti.
               </p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">
-                Interactive geospatial viewer for raster and vector layer exploration. Environmental indicators,
-                time series, and client data with tiered access control — all from the browser.
-                Currently under active development.
+                Interactive geospatial viewer with artificial intelligence for land analysis. Environmental layers, province-level analysis and a Geo AI assistant that interprets the landscape for you.
               </p>
 
-              <div class="mt-5 flex items-center gap-4">
-                <a href="./projects/darwin_maps/index.html"
-                  class="inline-flex items-center gap-1 font-bold text-sm group"
-                  style="color:rgba(60,186,176,0.9);background:none;border:none;cursor:pointer;padding:0;text-decoration:none;"
-                  data-lang="es" onclick="event.stopPropagation()">
-                  Ver Proyecto <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </a>
-                <a href="./projects/darwin_maps/index.html"
-                  class="inline-flex items-center gap-1 font-bold text-sm group hidden"
-                  style="color:rgba(60,186,176,0.9);background:none;border:none;cursor:pointer;padding:0;text-decoration:none;"
-                  data-lang="en" onclick="event.stopPropagation()">
-                  View Project <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </a>
-                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(252,211,77,0.7);border:1px solid rgba(252,211,77,0.3);padding:0.15rem 0.5rem;border-radius:9999px;" data-lang="es">En desarrollo</span>
-                <span style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(252,211,77,0.7);border:1px solid rgba(252,211,77,0.3);padding:0.15rem 0.5rem;border-radius:9999px;" class="hidden" data-lang="en">In progress</span>
+              <div class="mt-5 flex items-center gap-3">
+                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
+                  Explorar Mapa
+                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </button>
+                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
+                  Explore Map
+                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                </button>
+                <!-- Coordinate indicator -->
+                <div class="ml-auto hidden md:flex items-center gap-1 opacity-40" style="font-family:'Space Mono',monospace; font-size:0.6rem; color:#A5AA6B;">
+                  <span>40.4°N 3.7°W</span>
+                </div>
               </div>
             </div>
           </article>
@@ -1367,6 +1369,9 @@
     </div>
   </footer>
 
+  <!-- Darwin Maps transition overlay -->
+  <div id="maps-overlay" aria-hidden="true"></div>
+
   <!-- Soil SaveR transition overlay -->
   <div id="soil-overlay" aria-hidden="true"></div>
 
@@ -1374,6 +1379,15 @@
   <script src="./lang.js"></script>
 
   <script>
+    // ── Darwin Maps page transition ───────────────────────
+    function triggerMapsTransition() {
+      const overlay = document.getElementById('maps-overlay');
+      overlay.classList.add('active');
+      setTimeout(() => {
+        window.location.href = 'https://darwin-maps-dev.web.app';
+      }, 780);
+    }
+
     // ── Soil SaveR page transition ────────────────────────
     function triggerSoilTransition() {
       const overlay = document.getElementById('soil-overlay');
