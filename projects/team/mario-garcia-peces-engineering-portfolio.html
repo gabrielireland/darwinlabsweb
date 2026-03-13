@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mario García Peces | Engineer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --darwin-green-dark: #395935;
+      --darwin-green-base: #46633A;
+      --darwin-green-medium: #576F50;
+      --darwin-green-accent: #5D713F;
+      --darwin-grey: #939494;
+      --darwin-green-light: #f0f3ef;
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --bg-card-hover: #334155;
+      --text-light: #e2e8f0;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+    }
+
+    .text-green-accent { color: var(--darwin-green-accent); }
+    .bg-green-accent { background-color: var(--darwin-green-accent); }
+    .border-green-accent { border-color: var(--darwin-green-accent); }
+    .bg-card { background-color: var(--bg-card); }
+    .text-muted { color: var(--text-muted); }
+
+    .animate-on-scroll {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    .timeline-line {
+      position: absolute; left: 50%; top: 0; bottom: 0;
+      width: 2px; background: var(--darwin-green-accent);
+      transform: translateX(-50%);
+    }
+    @media (max-width: 768px) {
+      .timeline-line { left: 16px; }
+    }
+
+    .timeline-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--darwin-green-accent);
+      border: 3px solid var(--bg-dark);
+      position: absolute; left: 50%; top: 8px;
+      transform: translateX(-50%); z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .timeline-dot { left: 16px; }
+    }
+
+    .skill-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      border: 1px solid var(--darwin-green-accent);
+      color: var(--darwin-green-accent);
+      transition: all .2s;
+    }
+    .skill-tag:hover {
+      background-color: var(--darwin-green-accent);
+      color: white;
+    }
+
+    .initiative-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(93,113,63,0.3);
+      border-radius: 12px;
+      transition: transform .2s, border-color .2s;
+    }
+    .initiative-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--darwin-green-accent);
+    }
+
+    .lang-btn {
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      color: var(--text-muted);
+    }
+    .lang-btn.active {
+      background-color: var(--darwin-green-accent);
+      color: white;
+    }
+    .lang-btn:hover:not(.active) {
+      color: var(--text-light);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+
+  <!-- Language Toggle (floating) -->
+  <div class="fixed top-4 right-4 z-50 flex items-center gap-1 bg-[#0f172a]/80 backdrop-blur-sm rounded-lg px-2 py-1.5 border border-slate-800">
+    <button id="lang-es" class="lang-btn active">ES</button>
+    <button id="lang-en" class="lang-btn">EN</button>
+  </div>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12 animate-on-scroll">
+          <div class="shrink-0">
+            <img src="../../assets/team/mario.jpg" alt="Mario García Peces" class="w-36 h-36 md:w-48 md:h-48 rounded-full object-cover border-4 border-slate-700 shadow-2xl">
+          </div>
+          <div class="text-center md:text-left">
+            <h1 class="text-3xl md:text-5xl font-bold text-white" style="font-family: 'Playfair Display', serif;">Mario García Peces</h1>
+            <p class="text-green-accent text-lg md:text-xl mt-2 font-medium" data-lang="es">Socio & Analista Geoespacial, Darwin Geospatial</p>
+            <p class="text-green-accent text-lg md:text-xl mt-2 font-medium hidden" data-lang="en">Managing Partner & Geospatial Analyst, Darwin Geospatial</p>
+            <p class="text-muted mt-1" data-lang="es">Ingeniero Forestal & Especialista en Modelización Espacial</p>
+            <p class="text-muted mt-1 hidden" data-lang="en">Forest Engineer & Spatial Modeling Specialist</p>
+            <div class="flex items-center gap-4 mt-4 justify-center md:justify-start">
+              <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" class="text-muted hover:text-green-accent transition-colors" aria-label="LinkedIn">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-[2px] bg-green-accent inline-block"></span>
+          <span data-lang="es">Sobre Mí</span>
+          <span data-lang="en" class="hidden">About</span>
+        </h2>
+        <div class="bg-card rounded-xl p-6 md:p-8">
+          <p class="text-slate-300 leading-relaxed" data-lang="es">
+            Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el Organismo Autónomo de Parques Nacionales (OAPN) y en investigaciones sobre prácticas agrícolas sostenibles. En Darwin Geospatial, aporta su expertise en análisis territorial, teledetección y gestión de recursos naturales para desarrollar soluciones geoespaciales que conectan la ciencia ambiental con la tecnología.
+          </p>
+          <p class="text-slate-300 leading-relaxed hidden" data-lang="en">
+            Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with the Spanish National Parks Authority (OAPN) and on sustainable agricultural research. At Darwin Geospatial, he brings expertise in territorial analysis, remote sensing, and natural resource management to develop geospatial solutions bridging environmental science and technology.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Publications Section (Placeholder) -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-[2px] bg-green-accent inline-block"></span>
+          <span data-lang="es">Publicaciones</span>
+          <span data-lang="en" class="hidden">Publications</span>
+        </h2>
+        <div class="bg-card rounded-xl p-8 text-center">
+          <p class="text-slate-400" data-lang="es">Próximamente</p>
+          <p class="text-slate-400 hidden" data-lang="en">Coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Current Initiatives -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-[2px] bg-green-accent inline-block"></span>
+          <span data-lang="es">Iniciativas Actuales</span>
+          <span data-lang="en" class="hidden">Current Initiatives</span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <!-- Darwin Maps -->
+          <a href="../darwin_maps/index.html" class="initiative-card p-6 block">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-green-accent/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+              </div>
+              <div>
+                <h3 class="text-white font-bold text-lg">Darwin Maps</h3>
+                <span class="text-green-accent text-xs font-medium" data-lang="es">Analista Geoespacial</span>
+                <span class="text-green-accent text-xs font-medium hidden" data-lang="en">Geospatial Analyst</span>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed" data-lang="es">
+              Análisis territorial y modelización espacial para la plataforma de visualización geoespacial de Darwin. Contribuye con expertise en teledetección y gestión de capas de datos ambientales.
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed hidden" data-lang="en">
+              Territorial analysis and spatial modeling for Darwin's geospatial visualization platform. Contributes remote sensing expertise and environmental data layer management.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-1 rounded">Spatial Analysis</span>
+              <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-1 rounded">Remote Sensing</span>
+            </div>
+          </a>
+
+          <!-- Soil SaveR -->
+          <a href="../soil_saver/index.html" class="initiative-card p-6 block">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg bg-green-accent/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+              </div>
+              <div>
+                <h3 class="text-white font-bold text-lg">Soil SaveR</h3>
+                <span class="text-green-accent text-xs font-medium" data-lang="es">Analista de Erosión</span>
+                <span class="text-green-accent text-xs font-medium hidden" data-lang="en">Erosion Analyst</span>
+              </div>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed" data-lang="es">
+              Análisis de erosión y gestión de datos territoriales para el proyecto de inteligencia de erosión. Aporta conocimiento en gestión forestal y conservación de suelos.
+            </p>
+            <p class="text-slate-300 text-sm leading-relaxed hidden" data-lang="en">
+              Erosion analysis and territorial data management for the erosion intelligence project. Brings expertise in forest management and soil conservation.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-1 rounded">Sentinel-2</span>
+              <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-1 rounded">RUSLE</span>
+              <span class="text-[10px] bg-slate-700 text-slate-300 px-2 py-1 rounded">Soil Conservation</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <span class="w-8 h-[2px] bg-green-accent inline-block"></span>
+          <span data-lang="es">Trayectoria</span>
+          <span data-lang="en" class="hidden">Career</span>
+        </h2>
+
+        <div class="relative">
+          <div class="timeline-line hidden md:block"></div>
+          <div class="timeline-line md:hidden"></div>
+
+          <div class="space-y-10">
+
+            <div class="relative md:flex md:items-start">
+              <div class="timeline-dot"></div>
+              <div class="md:w-1/2 md:pr-12 md:text-right pl-10 md:pl-0">
+                <span class="text-green-accent text-sm font-semibold" data-lang="es">2023 - Presente</span>
+                <span class="text-green-accent text-sm font-semibold hidden" data-lang="en">2023 - Present</span>
+                <h3 class="text-white font-bold mt-1" data-lang="es">Socio & Analista Geoespacial</h3>
+                <h3 class="text-white font-bold mt-1 hidden" data-lang="en">Managing Partner & Geospatial Analyst</h3>
+                <p class="text-muted text-sm">Darwin Geospatial</p>
+                <p class="text-slate-400 text-sm mt-2" data-lang="es">Análisis territorial y modelización espacial para proyectos de monitoreo ambiental y conservación.</p>
+                <p class="text-slate-400 text-sm mt-2 hidden" data-lang="en">Territorial analysis and spatial modeling for environmental monitoring and conservation projects.</p>
+              </div>
+              <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+            </div>
+
+            <div class="relative md:flex md:items-start">
+              <div class="timeline-dot"></div>
+              <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+              <div class="md:w-1/2 md:pl-12 pl-10">
+                <span class="text-green-accent text-sm font-semibold" data-lang="es">Experiencia Previa</span>
+                <span class="text-green-accent text-sm font-semibold hidden" data-lang="en">Previous Experience</span>
+                <h3 class="text-white font-bold mt-1" data-lang="es">Organismo Autónomo de Parques Nacionales</h3>
+                <h3 class="text-white font-bold mt-1 hidden" data-lang="en">Spanish National Parks Authority (OAPN)</h3>
+                <p class="text-muted text-sm" data-lang="es">Gestión ambiental & Parques Nacionales</p>
+                <p class="text-muted text-sm hidden" data-lang="en">Environmental Management & National Parks</p>
+                <p class="text-slate-400 text-sm mt-2" data-lang="es">Gestión ambiental y conservación en el sistema de parques nacionales de España.</p>
+                <p class="text-slate-400 text-sm mt-2 hidden" data-lang="en">Environmental management and conservation within Spain's national parks system.</p>
+              </div>
+            </div>
+
+            <div class="relative md:flex md:items-start">
+              <div class="timeline-dot"></div>
+              <div class="md:w-1/2 md:pr-12 md:text-right pl-10 md:pl-0">
+                <span class="text-green-accent text-sm font-semibold" data-lang="es">Investigación</span>
+                <span class="text-green-accent text-sm font-semibold hidden" data-lang="en">Research</span>
+                <h3 class="text-white font-bold mt-1" data-lang="es">Prácticas Agrícolas Sostenibles</h3>
+                <h3 class="text-white font-bold mt-1 hidden" data-lang="en">Sustainable Agricultural Practices</h3>
+                <p class="text-muted text-sm" data-lang="es">Investigación Internacional</p>
+                <p class="text-muted text-sm hidden" data-lang="en">International Research</p>
+                <p class="text-slate-400 text-sm mt-2" data-lang="es">Investigación en prácticas agrícolas sostenibles y gestión de recursos naturales.</p>
+                <p class="text-slate-400 text-sm mt-2 hidden" data-lang="en">Research on sustainable agricultural practices and natural resource management.</p>
+              </div>
+              <div class="md:w-1/2 md:pl-12 hidden md:block"></div>
+            </div>
+
+            <div class="relative md:flex md:items-start">
+              <div class="timeline-dot"></div>
+              <div class="md:w-1/2 md:pr-12 hidden md:block"></div>
+              <div class="md:w-1/2 md:pl-12 pl-10">
+                <span class="text-green-accent text-sm font-semibold" data-lang="es">Formación</span>
+                <span class="text-green-accent text-sm font-semibold hidden" data-lang="en">Education</span>
+                <h3 class="text-white font-bold mt-1" data-lang="es">Ingeniería Forestal</h3>
+                <h3 class="text-white font-bold mt-1 hidden" data-lang="en">Forest Engineering</h3>
+                <p class="text-slate-400 text-sm mt-2" data-lang="es">Formación en ingeniería forestal con especialización en análisis geoespacial y gestión de recursos naturales.</p>
+                <p class="text-slate-400 text-sm mt-2 hidden" data-lang="en">Forest engineering education with specialization in geospatial analysis and natural resource management.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="py-12">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+          <span class="w-8 h-[2px] bg-green-accent inline-block"></span>
+          <span data-lang="es">Competencias Técnicas</span>
+          <span data-lang="en" class="hidden">Technical Skills</span>
+        </h2>
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <div class="bg-card rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              <span data-lang="es">Análisis Geoespacial</span>
+              <span data-lang="en" class="hidden">Geospatial Analysis</span>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag" data-lang="es">Modelización espacial</span>
+              <span class="skill-tag hidden" data-lang="en">Spatial modeling</span>
+              <span class="skill-tag">Remote Sensing</span>
+              <span class="skill-tag">GIS</span>
+              <span class="skill-tag">QGIS</span>
+              <span class="skill-tag">Google Earth Engine</span>
+            </div>
+          </div>
+
+          <div class="bg-card rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              <span data-lang="es">Recursos Naturales</span>
+              <span data-lang="en" class="hidden">Natural Resources</span>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag" data-lang="es">Gestión forestal</span>
+              <span class="skill-tag hidden" data-lang="en">Forest management</span>
+              <span class="skill-tag" data-lang="es">Gestión territorial</span>
+              <span class="skill-tag hidden" data-lang="en">Land management</span>
+              <span class="skill-tag" data-lang="es">Conservación de suelos</span>
+              <span class="skill-tag hidden" data-lang="en">Soil conservation</span>
+            </div>
+          </div>
+
+          <div class="bg-card rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              <span data-lang="es">Medio Ambiente</span>
+              <span data-lang="en" class="hidden">Environmental</span>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag" data-lang="es">Conservación</span>
+              <span class="skill-tag hidden" data-lang="en">Conservation</span>
+              <span class="skill-tag" data-lang="es">Sostenibilidad</span>
+              <span class="skill-tag hidden" data-lang="en">Sustainability</span>
+              <span class="skill-tag" data-lang="es">Evaluación de impacto</span>
+              <span class="skill-tag hidden" data-lang="en">Impact assessment</span>
+            </div>
+          </div>
+
+          <div class="bg-card rounded-xl p-6">
+            <h3 class="text-white font-semibold mb-4 flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              <span data-lang="es">Herramientas</span>
+              <span data-lang="en" class="hidden">Tools</span>
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">QGIS</span>
+              <span class="skill-tag">ArcGIS</span>
+              <span class="skill-tag">Google Earth Engine</span>
+              <span class="skill-tag">Sentinel-2</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 border-t border-slate-800 mt-12">
+    <div class="max-w-4xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <p class="text-slate-500 text-sm">Mario García Peces | Darwin Geospatial | 2025</p>
+      <div class="flex items-center gap-4">
+        <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" class="text-slate-500 hover:text-green-accent transition-colors" aria-label="LinkedIn">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../../lang.js"></script>
+</body>
+</html>
