@@ -7,19 +7,29 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
-      --darwin-green-dark: #395935;
-      --darwin-green-base: #46633A;
-      --darwin-green-medium: #576F50;
-      --darwin-green-accent: #5D713F;
-      --darwin-grey: #939494;
-      --darwin-green-light: #f0f3ef;
+      --darwin-green-dark:   #1b373f;
+      --darwin-green-base:   #426331;
+      --darwin-green-medium: #879753;
+      --darwin-green-accent: #bcbe76;
+      --darwin-grey:         #939494;
+      --darwin-green-light:  #fcf5e3;
+      --font-heading:  'Barlow Condensed', sans-serif;
+      --font-display:  'Bricolage Grotesque', sans-serif;
+      --font-sub:      'Satoshi', sans-serif;
+      --font-body:     'Cooper Hewitt', 'Bricolage Grotesque', sans-serif;
     }
 
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: var(--font-body); }
+    h1, h2, h3 { font-family: var(--font-display); }
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Book.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 
     .bg-primary{background-color:var(--darwin-green-base);}
     .bg-primary-dark{background-color:var(--darwin-green-dark);}
@@ -39,15 +49,15 @@
     .lang-switcher button.active{color:var(--darwin-green-base); font-weight:700;}
 
     .service-card {
-      background-color: rgba(70, 99, 58, 0.08);
+      background-color: rgba(66, 99, 49, 0.08);
       border-left: 4px solid var(--darwin-green-base);
     }
     .service-card:hover {
-      background-color: rgba(70, 99, 58, 0.12);
+      background-color: rgba(66, 99, 49, 0.12);
     }
 
     .tech-tag {
-      background-color: rgba(70, 99, 58, 0.15);
+      background-color: rgba(66, 99, 49, 0.15);
       color: var(--darwin-green-dark);
       font-size: 0.75rem;
       padding: 0.25rem 0.5rem;

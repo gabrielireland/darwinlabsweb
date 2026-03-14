@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Read(//c/Users/mario/Pictures/Screenshots/**)"
+      "Read(//c/Users/mario/Pictures/Screenshots/**)",
+      "Read(//c/Users/mario/Documents/GitHub/darwin_maps/documentation/**)",
+      "Bash(find c:UsersmarioDocumentsGitHubdarwinlabswebassets -type f -name *)",
+      "Read(//c/Users/mario/Documents/GitHub/darwin_maps/web/**)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(ls -la \"C:\\\\Users\\\\mario\\\\Documents\\\\GitHub\\\\darwinlabsweb\\\\video\\\\darwin_maps_showcase\\\\public\"\" 2>/dev/null | grep -v \"^total \")",
+      "Bash(find /c/Users/mario/Documents/GitHub/darwinlabsweb/video -type f \\\\\\(-iname *.tsx -o -iname *.ts \\\\\\))",
+      "Bash(file /c/Users/mario/Documents/GitHub/darwinlabsweb/projects/darwin_maps/assets/*.png)",
+      "WebFetch(domain:medium.com)",
+      "WebFetch(domain:bootcamp.uxdesign.cc)",
+      "WebSearch",
+      "WebFetch(domain:spotify.design)"
     ]
   }
 }

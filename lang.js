@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
   var TAU = Math.PI * 2;
 
   // Brand palette as RGB strings
-  var C_DARK = '57,89,53';
-  var C_BASE = '70,99,58';
-  var C_MED = '87,111,80';
-  var C_ACCENT = '93,113,63';
+  var C_DARK = '27,55,63';
+  var C_BASE = '66,99,49';
+  var C_MED = '135,151,83';
+  var C_ACCENT = '188,190,118';
   // Extra nature colors
   var C_AMBER = '180,130,40';
   var C_GOLD = '160,120,50';
@@ -515,10 +515,10 @@ document.addEventListener('DOMContentLoaded', () => {
     var innerR = Math.min(W, H) * 0.15;
     var outerR = Math.max(W, H) * 0.7;
     var grad = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-    grad.addColorStop(0, 'rgba(240,243,239,0.55)');
-    grad.addColorStop(0.35, 'rgba(240,243,239,0.3)');
-    grad.addColorStop(0.7, 'rgba(240,243,239,0.05)');
-    grad.addColorStop(1, 'rgba(240,243,239,0.0)');
+    grad.addColorStop(0, 'rgba(252,245,227,0.55)');
+    grad.addColorStop(0.35, 'rgba(252,245,227,0.3)');
+    grad.addColorStop(0.7, 'rgba(252,245,227,0.05)');
+    grad.addColorStop(1, 'rgba(252,245,227,0.0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, W, H);
   }

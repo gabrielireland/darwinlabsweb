@@ -7,23 +7,34 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet"/>
+  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,400&display=swap" rel="stylesheet"/>
   <link rel="preload" href="./assets/hero/hero_1.png" as="image"/>
 
   <style>
     /* Color palette */
     :root {
-      --darwin-green-dark: #395935;
-      --darwin-green-base: #46633A;
-      --darwin-green-medium: #576F50;
-      --darwin-green-accent: #5D713F;
-      --darwin-grey: #939494;
-      --darwin-green-light: #f0f3ef;
-      --darwin-ochre-base: #8B0000;
-      --darwin-ochre-dark: #5C0000;
+      --darwin-green-dark:   #1b373f;
+      --darwin-green-base:   #426331;
+      --darwin-green-medium: #879753;
+      --darwin-green-accent: #bcbe76;
+      --darwin-grey:         #939494;
+      --darwin-green-light:  #f0f3ef;
+      --darwin-ochre-base:   #8B0000;
+      --darwin-ochre-dark:   #5C0000;
+      --font-heading:  'Barlow Condensed', sans-serif;
+      --font-display:  'Bricolage Grotesque', sans-serif;
+      --font-sub:      'Satoshi', sans-serif;
+      --font-body:     'Cooper Hewitt', 'Bricolage Grotesque', sans-serif;
     }
 
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: var(--font-body); }
+    h1, h2, h3 { font-family: var(--font-display); }
+    /* Cooper Hewitt — self-hosted (drop files in assets/fonts/ to activate) */
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Book.woff2') format('woff2'); font-weight:400; font-display:swap; }
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Medium.woff2') format('woff2'); font-weight:500; font-display:swap; }
+    @font-face { font-family:'Cooper Hewitt'; src:url('./assets/fonts/CooperHewitt-Bold.woff2') format('woff2'); font-weight:700; font-display:swap; }
 
     /* Tailwind helpers */
     .bg-primary{background-color:var(--darwin-green-base);}
@@ -95,6 +106,7 @@
       background-image: url('./assets/hero/hero_2.png');
       animation-delay: 8s;
       animation-name: kenBurnsCrossfade2;
+      filter: brightness(0.75);
     }
 
     .hero-slide:nth-child(3) {
@@ -162,9 +174,9 @@
       inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(0, 0, 0, 0.6) 0%,
-        rgba(0, 0, 0, 0.45) 50%,
-        rgba(0, 0, 0, 0.6) 100%
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.4) 100%
       );
     }
 
@@ -211,13 +223,13 @@
 
     .service-card {
       cursor: pointer;
-      background-color: #1B373F;
+      background-color: var(--darwin-green-dark);
       box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .service-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(57, 89, 53, 0.25);
+      box-shadow: 0 20px 40px rgba(27, 55, 63, 0.25);
     }
 
     /* Make in-page anchors stop below fixed header */
@@ -257,8 +269,8 @@
       background: linear-gradient(135deg,
         #0B1A0F 0%,
         #1A3A1F 30%,
-        #3D6131 55%,
-        #A5AA6B 80%,
+        #426331 55%,
+        #bcbe76 80%,
         #FDF6E4 100%
       );
       opacity: 0;
@@ -405,10 +417,10 @@
 
     <!-- Hero Content -->
     <div class="text-center px-6 animate-on-scroll z-10">
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-lang="es">
+      <h1 class="text-5xl md:text-7xl leading-tight mb-6 uppercase" style="font-family:var(--font-heading); font-weight:600;" data-lang="es">
         Llevando Imágenes Satelitales al Siguiente Nivel
       </h1>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 hidden" data-lang="en">
+      <h1 class="text-5xl md:text-7xl leading-tight mb-6 uppercase hidden" style="font-family:var(--font-heading); font-weight:600;" data-lang="en">
         Taking Satellite Imagery to The Next Level
       </h1>
       <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10" data-lang="es">
@@ -474,8 +486,8 @@
               <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"/>
               <!-- Butterfly -->
               <svg class="service-bug" style="top:12px;right:14px;width:28px;height:28px;animation-delay:0s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#46633A" fill-opacity="0.8"/>
-                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
+                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#426331" fill-opacity="0.8"/>
+                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#1b373f" fill-opacity="0.9"/>
               </svg>
             </div>
             <div class="p-5 flex flex-col">
@@ -506,9 +518,9 @@
               <!-- Bee -->
               <svg class="service-bug" style="bottom:16px;left:12px;width:22px;height:22px;animation-delay:-1.5s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="20" cy="22" rx="7" ry="10" fill="#b48228" fill-opacity="0.85"/>
-                <line x1="13" y1="18" x2="27" y2="18" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="22" x2="27" y2="22" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="26" x2="27" y2="26" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="18" x2="27" y2="18" stroke="#1b373f" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="22" x2="27" y2="22" stroke="#1b373f" stroke-width="1.2" stroke-opacity="0.6"/>
+                <line x1="13" y1="26" x2="27" y2="26" stroke="#1b373f" stroke-width="1.2" stroke-opacity="0.6"/>
                 <ellipse cx="13" cy="13" rx="5" ry="3.5" transform="rotate(-25 13 13)" fill="#5D713F" fill-opacity="0.45"/>
                 <ellipse cx="27" cy="13" rx="5" ry="3.5" transform="rotate(25 27 13)" fill="#5D713F" fill-opacity="0.45"/>
               </svg>
@@ -541,7 +553,7 @@
               <!-- Butterfly (warm teal) -->
               <svg class="service-bug" style="top:10px;left:16px;width:26px;height:26px;animation-delay:-3s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#3c7864" fill-opacity="0.8"/>
-                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
+                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#1b373f" fill-opacity="0.9"/>
               </svg>
             </div>
             <div class="p-5 flex flex-col">
@@ -662,7 +674,7 @@
 
             <!-- Content -->
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#A5AA6B;">
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);">
                 Darwin Maps
               </h2>
 
@@ -674,11 +686,11 @@
               </p>
 
               <div class="mt-5 flex items-center gap-3">
-                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
+                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:var(--darwin-green-accent); background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
                   Explorar Mapa
                   <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </button>
-                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
+                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:var(--darwin-green-accent); background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
                   Explore Map
                   <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                 </button>
@@ -698,7 +710,7 @@
 
             <!-- Content -->
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#F0DEB8;">
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#F0DEB8;">
                 Soil SaveR
               </h2>
 
@@ -728,13 +740,13 @@
             onclick="window.location.href='./projects/guadarramaski/index.html'">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/guadarramaski/assets/banner.jpg'); background-size:350% auto; background-position:4.80% center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">Guadarrama Ski</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">Guadarrama Ski</h2>
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="es">Guadarrama Ski</h2>
+              <h2 class="mb-3 hidden" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="en">Guadarrama Ski</h2>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">La plataforma de referencia para visualizar rutas de esquí en la sierra de Guadarrama.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">The reference page to visualize ski routes in the Guadarrama mountain range.</p>
               <div class="mt-5">
-                <a href="./projects/guadarramaski/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="./projects/guadarramaski/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/guadarramaski/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:var(--darwin-green-accent);" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/guadarramaski/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:var(--darwin-green-accent);" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
               </div>
             </div>
           </article>
@@ -745,13 +757,13 @@
             onclick="window.location.href='./projects/darwin_visor/index.html'">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_visor/assets/banner.jpeg'); background-size:cover; background-position:center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">Darwin Visor</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">Darwin Visor</h2>
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="es">Darwin Visor</h2>
+              <h2 class="mb-3 hidden" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="en">Darwin Visor</h2>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Tu atajo para exportar datos geoespaciales sin programar.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Your shortcut to export geospatial data without coding.</p>
               <div class="mt-5">
-                <a href="./projects/darwin_visor/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="./projects/darwin_visor/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/darwin_visor/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:var(--darwin-green-accent);" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/darwin_visor/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:var(--darwin-green-accent);" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
               </div>
             </div>
           </article>
@@ -762,13 +774,13 @@
             onclick="window.location.href='./projects/darwin_crops_landuse/index.html'">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG'); background-size:cover; background-position:center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">Darwin Crops</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">Darwin Crops</h2>
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="es">Darwin Crops</h2>
+              <h2 class="mb-3 hidden" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="en">Darwin Crops</h2>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">The most up-to-date crop and land-use predictor & classifier, powered by Alpha Earth.</p>
               <div class="mt-5">
-                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:var(--darwin-green-accent);" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:var(--darwin-green-accent);" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
               </div>
             </div>
           </article>
@@ -779,13 +791,13 @@
             onclick="window.open('https://endworldhungerohio.com/','_blank')">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png'); background-size:cover; background-position:center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">End World Hunger Ohio</h2>
+              <h2 class="mb-3" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="es">End World Hunger Ohio</h2>
+              <h2 class="mb-3 hidden" style="font-family:var(--font-heading); font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:var(--darwin-green-accent);" data-lang="en">End World Hunger Ohio</h2>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.</p>
               <div class="mt-5">
-                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Visitar Web <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Visit Website <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:var(--darwin-green-accent);" data-lang="es">Visitar Web <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:var(--darwin-green-accent);" data-lang="en">Visit Website <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
               </div>
             </div>
           </article>
@@ -897,7 +909,7 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1);">
+          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(66, 99, 49, 0.1);">
             <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
               <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
@@ -907,7 +919,7 @@
             <p class="text-slate-600" data-lang="es">Solo apoyamos proyectos que tienen un impacto positivo y directo en la naturaleza. Creemos que los datos son la piedra angular de una gestión eficaz, y los datos espaciales proporcionan la dimensión más poderosa.</p>
             <p class="text-slate-600 hidden" data-lang="en">We only support projects that have a direct positive impact on nature. We believe that data is the cornerstone of effective management, and spatial data provides the most powerful dimension.</p>
           </div>
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay:150ms;">
+          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(66, 99, 49, 0.1); transition-delay:150ms;">
             <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="18" cy="5" r="3"/>
               <circle cx="6" cy="12" r="3"/>
@@ -920,7 +932,7 @@
             <p class="text-slate-600" data-lang="es">El mayor impacto proviene de la colaboración. Crear sinergias entre sectores, desde el turismo hasta la silvicultura, nos permite diseñar las mejores soluciones para las personas y el planeta.</p>
             <p class="text-slate-600 hidden" data-lang="en">The greatest impact comes from collaboration. Creating synergies across sectors, from tourism to forestry, allows us to design the best solutions for people and the planet.</p>
           </div>
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay:300ms;">
+          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(66, 99, 49, 0.1); transition-delay:300ms;">
             <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
               <path d="m9 12 2 2 4-4"/>
