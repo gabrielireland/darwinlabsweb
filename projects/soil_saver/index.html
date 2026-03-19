@@ -73,7 +73,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: center;
       overflow: hidden;
       background: var(--soil-dark);
     }
@@ -125,7 +125,7 @@
     #hero-content {
       position: relative;
       z-index: 1;
-      padding: 10rem 2rem 5rem;
+      padding: 6rem 2rem 5rem;
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
@@ -539,17 +539,17 @@
           </h2>
 
           <p class="text-lg leading-relaxed" style="color:var(--soil-mid); text-align:justify;" data-lang="es">
-            Los métodos de deep learning para detección de erosión han mostrado resultados prometedores, pero la ausencia de datos públicos dificulta comparar, reproducir o mejorar esos modelos: de 15 artículos revisados, solo 2 comparten datos accesibles, y ambos cubren una única región y un único sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> es un intento de empezar a cerrar esa brecha, proponiendo una metodología para generar un <strong style="color:var(--soil-brown);">dataset etiquetado, público, multimodal y multi-región para detección de erosión desde imágenes satelitales</strong>. La metodología combina modelado determinista (RUSLE + índices topográficos del DEM) para acotar automáticamente las zonas candidatas, con verificación visual humana sobre imágenes Sentinel-2, buscando que las etiquetas estén a la vez físicamente fundamentadas y visualmente confirmadas.
+            Los métodos de deep learning para detección de erosión han mostrado resultados prometedores, pero la ausencia de datos públicos dificulta comparar, reproducir o mejorar esos modelos: de 113 artículos revisados, solo 2 comparten datos accesibles, y ambos cubren una única región y un único sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> es un intento de empezar a cerrar esa brecha, proponiendo una metodología para generar un <strong style="color:var(--soil-brown);">dataset etiquetado, público, multimodal y multi-región para detección de erosión desde imágenes satelitales</strong>. La metodología combina modelado determinista (RUSLE + índices topográficos del DEM) para acotar automáticamente las zonas candidatas, con verificación visual humana sobre imágenes Sentinel-2, buscando que las etiquetas estén a la vez físicamente fundamentadas y visualmente confirmadas.
           </p>
           <p class="text-lg leading-relaxed hidden" style="color:var(--soil-mid); text-align:justify;" data-lang="en">
-            Deep learning methods for erosion detection have shown promising results, but the absence of public data makes it difficult to compare, reproduce or improve those models: of 15 papers reviewed, only 2 share accessible data, and both cover a single region and a single sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> is an attempt to start closing that gap, proposing a methodology to generate a <strong style="color:var(--soil-brown);">labeled, public, multi-modal, multi-region dataset for erosion detection from satellite imagery</strong>. The methodology combines deterministic modeling (RUSLE + DEM-derived topographic indices) to automatically narrow candidate zones, with human visual verification on Sentinel-2 imagery, seeking labels that are both physically grounded and visually confirmed.
+            Deep learning methods for erosion detection have shown promising results, but the absence of public data makes it difficult to compare, reproduce or improve those models: of 113 papers reviewed, only 2 share accessible data, and both cover a single region and a single sensor. <strong style="color:var(--soil-brown);">Soil SaveR</strong> is an attempt to start closing that gap, proposing a methodology to generate a <strong style="color:var(--soil-brown);">labeled, public, multi-modal, multi-region dataset for erosion detection from satellite imagery</strong>. The methodology combines deterministic modeling (RUSLE + DEM-derived topographic indices) to automatically narrow candidate zones, with human visual verification on Sentinel-2 imagery, seeking labels that are both physically grounded and visually confirmed.
           </p>
         </div>
 
         <!-- Stats row -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 animate-on-scroll">
           <div class="text-center">
-            <span class="stat-value">15</span>
+            <span class="stat-value">113</span>
             <span class="stat-label" data-lang="es">papers analizados<br>solo 2 con datos públicos</span>
             <span class="stat-label hidden" data-lang="en">papers surveyed<br>only 2 with public data</span>
           </div>
@@ -600,6 +600,75 @@
 
         <!-- Top: Earth 2000s — revealed L→R via GSAP -->
         <div id="img-2000" class="story-img"></div>
+
+        <!-- Erosion advancement overlay — clips with img-2000 -->
+        <svg id="erosion-overlay" viewBox="0 0 768 680" preserveAspectRatio="none"
+             style="position:absolute; inset:0; width:100%; height:100%; z-index:4; pointer-events:none; clip-path:inset(0 100% 0 0);">
+          <defs>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2.5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Left gully fan — widened edges -->
+          <path d="M200,680 Q195,600 210,530 Q220,480 235,440 Q250,400 240,360
+                   Q230,330 245,300 Q260,270 250,240 Q240,215 255,195
+                   Q270,175 260,155 Q248,140 260,120"
+                fill="none" stroke="rgba(220,50,40,0.7)" stroke-width="3" filter="url(#glow)"/>
+          <path d="M310,680 Q315,610 300,550 Q290,500 305,450 Q315,410 310,370
+                   Q305,340 315,310 Q325,280 315,250 Q305,225 315,200
+                   Q325,180 318,160 Q310,145 320,125"
+                fill="none" stroke="rgba(220,50,40,0.7)" stroke-width="3" filter="url(#glow)"/>
+
+          <!-- Right gully fan — widened edges -->
+          <path d="M420,680 Q415,610 430,550 Q440,500 425,450 Q415,410 430,370
+                   Q440,340 430,300 Q420,270 435,240 Q448,215 440,190
+                   Q430,170 445,150 Q455,135 448,115"
+                fill="none" stroke="rgba(220,50,40,0.7)" stroke-width="3" filter="url(#glow)"/>
+          <path d="M630,680 Q625,600 615,540 Q605,490 620,440 Q632,400 618,360
+                   Q608,330 622,295 Q635,265 625,235 Q615,210 628,185
+                   Q640,165 630,145 Q620,130 632,110"
+                fill="none" stroke="rgba(220,50,40,0.7)" stroke-width="3" filter="url(#glow)"/>
+
+          <!-- Gully fan expansion fills (semi-transparent) -->
+          <path d="M200,680 Q195,600 210,530 Q220,480 235,440 Q250,400 240,360
+                   Q230,330 245,300 Q260,270 250,240 Q240,215 255,195
+                   Q270,175 260,155 Q248,140 260,120
+                   L320,125 Q310,145 318,160 Q325,180 315,200
+                   Q305,225 315,250 Q325,280 315,310
+                   Q305,340 310,370 Q315,410 305,450
+                   Q290,500 300,550 Q315,610 310,680 Z"
+                fill="rgba(220,50,40,0.12)" stroke="none"/>
+          <path d="M420,680 Q415,610 430,550 Q440,500 425,450 Q415,410 430,370
+                   Q440,340 430,300 Q420,270 435,240 Q448,215 440,190
+                   Q430,170 445,150 Q455,135 448,115
+                   L632,110 Q620,130 630,145 Q640,165 628,185
+                   Q615,210 625,235 Q635,265 622,295
+                   Q608,330 618,360 Q632,400 620,440
+                   Q605,490 615,540 Q625,600 630,680 Z"
+                fill="rgba(220,50,40,0.12)" stroke="none"/>
+
+          <!-- Upper bare patch expansion -->
+          <ellipse cx="320" cy="95" rx="85" ry="35"
+                   fill="rgba(220,50,40,0.1)" stroke="rgba(220,50,40,0.6)" stroke-width="2" stroke-dasharray="6 4" filter="url(#glow)"/>
+
+          <!-- Future affected zone — circle at end of right gully -->
+          <ellipse cx="530" cy="95" rx="120" ry="45"
+                   fill="rgba(220,50,40,0.08)" stroke="rgba(220,50,40,0.5)" stroke-width="2" stroke-dasharray="6 4" filter="url(#glow)"/>
+
+          <!-- Legend -->
+          <rect x="12" y="12" width="170" height="48" rx="4" fill="rgba(15,8,2,0.7)"/>
+          <line x1="20" y1="26" x2="34" y2="26" stroke="rgba(220,50,40,0.8)" stroke-width="2"/>
+          <text x="38" y="28" fill="rgba(232,213,163,0.9)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="0.08em" data-lang="es">AVANCE DE EROSIÓN</text>
+          <text x="38" y="28" fill="rgba(232,213,163,0.9)" font-family="'Space Mono',monospace" font-size="7" letter-spacing="0.08em" class="hidden" data-lang="en">EROSION ADVANCE</text>
+          <rect x="20" y="35" width="14" height="6" fill="rgba(220,50,40,0.15)" stroke="rgba(220,50,40,0.5)" stroke-width="0.8"/>
+          <text x="38" y="41" fill="rgba(232,213,163,0.6)" font-family="'Space Mono',monospace" font-size="6" letter-spacing="0.06em" data-lang="es">ZONA AFECTADA</text>
+          <text x="38" y="41" fill="rgba(232,213,163,0.6)" font-family="'Space Mono',monospace" font-size="6" letter-spacing="0.06em" class="hidden" data-lang="en">AFFECTED ZONE</text>
+          <ellipse cx="27" cy="52" rx="7" ry="3.5" fill="rgba(220,50,40,0.1)" stroke="rgba(220,50,40,0.5)" stroke-width="0.8" stroke-dasharray="2 1.5"/>
+          <text x="38" y="54" fill="rgba(232,213,163,0.6)" font-family="'Space Mono',monospace" font-size="6" letter-spacing="0.06em" data-lang="es">FUTURA ZONA AFECTADA</text>
+          <text x="38" y="54" fill="rgba(232,213,163,0.6)" font-family="'Space Mono',monospace" font-size="6" letter-spacing="0.06em" class="hidden" data-lang="en">FUTURE AFFECTED ZONE</text>
+        </svg>
 
         <!-- Divider line -->
         <div id="wipe-line"></div>
@@ -785,6 +854,7 @@
     const wipeLineEl = document.getElementById('wipe-line');
     const label2000  = document.getElementById('label-2000');
     const hintEl     = document.getElementById('scrolly-hint');
+    const erosionEl  = document.getElementById('erosion-overlay');
 
     function getLang() { return document.documentElement.lang === 'en' ? 'en' : 'es'; }
 
@@ -824,6 +894,10 @@
             // 2000 label
             const l2opacity = p > 0.04 ? Math.min(1, (p - 0.04) * 8) : 0;
             label2000.style.opacity = l2opacity;
+
+            // Erosion overlay — clips in sync with 2025 image
+            const rightInset = (1 - p) * 100;
+            erosionEl.style.clipPath = 'inset(0 ' + rightInset + '% 0 0)';
 
             // Scroll hint
             if (hintEl) hintEl.style.opacity = p > 0.03 ? '0' : '1';
