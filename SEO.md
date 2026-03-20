@@ -254,23 +254,48 @@ Then add the page to `sitemap.xml`:
 
 ## 5. Google Search Console Setup
 
-This is the **most important step** — without it, Google may take weeks or months to discover your site. With it, indexing typically happens within days.
+> **Status: COMPLETED on 2026-03-20**
+> - Property added: `https://darwingeospatial.com`
+> - Verification method: **DNS record** (auto-verified via domain name provider)
+> - Sitemap `sitemap.xml` submitted successfully
+> - `lang="en"` set on all pages
 
-### Step-by-step:
+### How It Was Set Up
 
-1. Go to [Google Search Console](https://search.google.com/search-console)
-2. Click **"Add property"**
-3. Choose **"URL prefix"** and enter: `https://darwingeospatial.com`
-4. Verify ownership (for GitHub Pages, the easiest method is **HTML file upload** — Google gives you a small file to add to your repo root)
-5. Once verified, go to **"Sitemaps"** in the left sidebar
-6. Enter `sitemap.xml` and click **Submit**
-7. Done — Google will begin crawling within hours
+1. Went to [Google Search Console](https://search.google.com/search-console)
+2. Clicked **"Add property"** → chose **"URL prefix"** → entered `https://darwingeospatial.com`
+3. Ownership was **auto-verified** via DNS record from the domain name provider
+4. Went to **"Sitemaps"** → submitted `sitemap.xml` → confirmed success
+5. Google will now periodically crawl all 9 pages listed in the sitemap
+
+### Why Search Queries Like "gabriel diaz ireland" Now Work
+
+Google matches search queries against multiple signals on a page:
+
+| Signal | Example |
+|--------|---------|
+| `<title>` tag | `Gabriel Díaz-Ireland \| Researcher & Engineer Portfolio` |
+| `<meta description>` | `Gabriel Díaz-Ireland: researcher and engineer at Darwin Geospatial...` |
+| `og:title` | `Gabriel Díaz-Ireland \| Researcher & Engineer` |
+| Page body content | Name appears throughout the page |
+| URL slug | `gabriel-diaz-ireland-research-engineering-portfolio.html` |
+| Sitemap | Told Google the page exists |
+| Search Console | Requested indexing directly |
+
+Google normalizes accents and hyphens, so `gabriel diaz ireland` matches `Gabriel Díaz-Ireland`.
 
 ### After setup, Search Console lets you:
 - See which **search queries** bring people to your site
 - See which pages are **indexed** and which have errors
 - Request **manual re-indexing** of specific pages (useful after updates)
 - Get alerts about crawl errors or mobile usability issues
+
+### Bing Webmaster Tools (Optional — Not Done)
+
+Bing powers DuckDuckGo, Yahoo, and Ecosia (~8% of searches). To set up:
+1. Go to [bing.com/webmasters](https://www.bing.com/webmasters)
+2. Choose **"Import from Google Search Console"** (one-click setup)
+3. Done
 
 ---
 
