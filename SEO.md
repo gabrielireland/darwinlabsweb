@@ -268,6 +268,24 @@ Then add the page to `sitemap.xml`:
 4. Went to **"Sitemaps"** → submitted `sitemap.xml` → confirmed success
 5. Google will now periodically crawl all 9 pages listed in the sitemap
 
+### Sitemap Submission Troubleshooting (Resolved 2026-03-20)
+
+The first sitemap submission failed with: **"Sitemap is HTML — Your Sitemap appears to be an HTML page."**
+
+**Root cause:** Two issues combined:
+
+1. **Jekyll processing** — GitHub Pages runs Jekyll by default, which was wrapping the `sitemap.xml` in an HTML layout. Fixed by adding a `.nojekyll` file to the repo root (empty file that disables Jekyll processing).
+
+2. **Wrong property URL** — The sitemap was submitted under `https://www.darwingeospatial.com` (with `www`) instead of `https://darwingeospatial.com` (without `www`). Since all `<loc>` URLs in the sitemap use the non-www domain, Google saw a mismatch and rejected it.
+
+**What fixed it:**
+- Added `.nojekyll` to repo root → pushed to main
+- Deleted the old sitemap submission in Search Console
+- Re-submitted `sitemap.xml` under the correct property (`https://darwingeospatial.com`, no `www`)
+- Result: **Success — 9 pages discovered**
+
+**Lesson:** Always make sure the Search Console property matches the domain used in sitemap `<loc>` URLs. If the property is `https://darwingeospatial.com`, all sitemap URLs must also use `https://darwingeospatial.com` (not `www`).
+
 ### Why Search Queries Like "gabriel diaz ireland" Now Work
 
 Google matches search queries against multiple signals on a page:
