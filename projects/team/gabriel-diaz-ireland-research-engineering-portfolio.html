@@ -19,7 +19,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=DM+Sans:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
@@ -92,6 +92,50 @@
       transition: background-color .2s;
     }
     .testimonial-card:hover { background-color: var(--darwin-green-light); }
+
+    /* Research timeline */
+    .research-timeline-line {
+      position: absolute; left: 16px; top: 0; bottom: 0;
+      width: 2px; background: #e2e8f0;
+    }
+    .research-timeline-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      border: 2px solid white;
+      position: absolute; left: 12px; top: 6px;
+      z-index: 1;
+    }
+    .research-timeline-dot.submission { background: #1b5e3b; }
+    .research-timeline-dot.ongoing { background: #2a7c8a; }
+    .research-timeline-dot.exploratory { background: #b0bec5; }
+    .research-timeline-dot.open { background: transparent; border: 2px dashed #b0bec5; }
+
+    .badge-submission {
+      background: #1b5e3b; color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px;
+      display: inline-block;
+    }
+    .badge-ongoing {
+      background: #2a7c8a; color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px;
+      display: inline-block;
+    }
+    .badge-exploratory {
+      background: #f0f3f7; color: #7a8599;
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px;
+      border: 1px solid #d5dce6;
+      display: inline-block;
+    }
+
+    .open-proposal-card {
+      border: 2px dashed #c5d0de;
+      background: #fafbfc;
+      border-radius: 10px;
+      transition: border-color .2s;
+    }
+    .open-proposal-card:hover { border-color: #9aa8b8; }
   </style>
 </head>
 <body class="min-h-screen bg-white">
@@ -110,7 +154,7 @@
     <!-- Hero -->
     <section class="pt-16 pb-6 md:pt-24 md:pb-8">
       <div class="flex flex-col md:flex-row items-center gap-8 animate-on-scroll">
-        <img src="../../assets/team/gabriel.jpg" alt="Gabriel Díaz-Ireland" class="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-2 border-gray-200 shadow-md">
+        <img src="../../assets/team/gabriel_2.jpg" alt="Gabriel Díaz-Ireland" class="w-32 h-32 md:w-40 md:h-40 rounded-xl object-cover" style="border: 2px solid var(--darwin-green-medium); box-shadow: 0 0 0 3px var(--darwin-green-light), 0 4px 12px rgba(0,0,0,0.08);">
         <div class="text-center md:text-left">
           <h1 class="text-3xl md:text-4xl font-bold text-gray-900" style="font-family: 'Playfair Display', serif;">Gabriel Díaz-Ireland</h1>
           <p class="text-green text-base md:text-lg mt-2 font-medium" data-lang="es">Candidato a Doctor, Universidad Católica de Ávila</p>
@@ -121,91 +165,204 @@
             <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green transition-colors" aria-label="LinkedIn">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
-            <a href="mailto:gabriel.diaz.ireland@gmail.com" class="text-gray-400 hover:text-green transition-colors" aria-label="Email">
+            <a href="mailto:gabriel.ireland@darwingeospatial.com" class="flex items-center gap-1.5 text-gray-400 hover:text-green transition-colors" aria-label="Email">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span class="text-sm">gabriel.ireland@darwingeospatial.com</span>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Highlight Strip -->
-    <section class="pb-8 animate-on-scroll">
-      <div class="flex flex-wrap justify-center md:justify-start gap-x-4 gap-y-1 text-xs text-gray-400">
-        <span data-lang="es">Liderando un equipo de 5 personas</span>
-        <span class="hidden" data-lang="en">Leading a 5 person team</span>
-        <span class="hidden md:inline">·</span>
-        <span data-lang="es">Empresa AI-first</span>
-        <span class="hidden" data-lang="en">AI-first company</span>
-        <span class="hidden md:inline">·</span>
-        <span data-lang="es">3 proyectos en producción</span>
-        <span class="hidden" data-lang="en">3 live projects</span>
-        <span class="hidden md:inline">·</span>
-        <span data-lang="es">Premio Mejor TFM de Castilla y León</span>
-        <span class="hidden" data-lang="en">Best MEng Thesis Award, Castilla y León</span>
-      </div>
-    </section>
-
     <!-- Mission -->
     <section class="pb-10 animate-on-scroll">
       <div class="border-l-3 border-green pl-5 py-1" style="border-left: 3px solid var(--darwin-green-base);">
-        <p class="text-green text-base italic leading-relaxed" data-lang="es">
-          Investigando IA y teledetección para proteger la naturaleza, anticipar amenazas ambientales y generar un impacto positivo para el planeta y la sociedad.
+        <p class="text-base italic leading-relaxed font-semibold" style="color: var(--darwin-green-dark);" data-lang="es">
+          "Investigando IA y teledetección para proteger la naturaleza, anticipar amenazas ambientales y generar un impacto positivo para el planeta y la sociedad."
         </p>
-        <p class="text-green text-base italic leading-relaxed hidden" data-lang="en">
-          Researching AI and remote sensing to protect nature, anticipate environmental threats, and generate a positive impact for the planet and society.
+        <p class="text-base italic leading-relaxed font-semibold hidden" style="color: var(--darwin-green-dark);" data-lang="en">
+          "Researching AI and remote sensing to protect nature, anticipate environmental threats, and generate a positive impact for the planet and society."
         </p>
       </div>
     </section>
 
     <!-- Focus & Experience -->
     <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'Playfair Display', serif;" data-lang="es">Enfoque y Experiencia</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">Focus & Experience</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Enfoque y Experiencia</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Focus & Experience</h2>
 
-      <div class="space-y-3 mb-8">
+      <div class="space-y-3">
         <div>
-          <h3 class="text-green font-semibold text-sm" data-lang="es">Geoespacial & IA <span class="text-gray-400 font-normal">· Clasificación de hábitats, detección de erosión, análisis territorial a escala nacional, Sentinel & Landsat (GB a TB)</span></h3>
-          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Geospatial & AI <span class="text-gray-400 font-normal">· Vegetation and ecosystem classification, erosion detection, national-scale territorial analysis, Sentinel & Landsat (GB to TB)</span></h3>
+          <h3 class="text-green font-semibold text-sm" data-lang="es">Gestión de Proyectos <span class="text-gray-600 font-normal">· Equipo de 5 ingenieros, 3 productos en producción, 4+ clientes activos, líder técnico en proyecto EU Interreg</span></h3>
+          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Project Management <span class="text-gray-600 font-normal">· 5 engineer team, 3 products in production, 4+ active clients, technical lead on EU Interreg project</span></h3>
         </div>
         <div>
-          <h3 class="text-green font-semibold text-sm">Cloud & MLOps <span class="text-gray-400 font-normal" data-lang="es">· Pipelines multi-terabyte para investigación, entrenamiento reproducible, despliegue en producción</span><span class="text-gray-400 font-normal hidden" data-lang="en">· Multi-terabyte pipelines for research, reproducible training, production deployment</span></h3>
+          <h3 class="text-green font-semibold text-sm" data-lang="es">Geoespacial & IA <span class="text-gray-600 font-normal">· +20 TB en imágenes Sentinel y Landsat procesadas; modelos CNN y ViT para clasificación de ecosistemas y detección de erosión</span></h3>
+          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Geospatial & AI <span class="text-gray-600 font-normal">· 20+ TB of Sentinel and Landsat imagery processed; CNN and ViT models for ecosystem classification and erosion detection</span></h3>
         </div>
         <div>
-          <h3 class="text-green font-semibold text-sm" data-lang="es">Ingeniería de Datos <span class="text-gray-400 font-normal">· Multi-source data mining a escala, trazabilidad de datos y experimentos, automatización end-to-end</span></h3>
-          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Data Engineering <span class="text-gray-400 font-normal">· Multi-source data mining at scale, data and experiment traceability, end-to-end automation</span></h3>
+          <h3 class="text-green font-semibold text-sm" data-lang="es">Cloud & MLOps <span class="text-gray-600 font-normal">· Entrenamiento reproducible a escala TB y despliegue en producción en Google Cloud y Databricks</span></h3>
+          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Cloud & MLOps <span class="text-gray-600 font-normal">· TB-scale reproducible training and production deployment on Google Cloud and Databricks</span></h3>
         </div>
         <div>
-          <h3 class="text-green font-semibold text-sm" data-lang="es">Liderazgo <span class="text-gray-400 font-normal">· Equipos distribuidos, fundación de startup, producto de idea a producción, operaciones multinacionales</span></h3>
-          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Leadership <span class="text-gray-400 font-normal">· Distributed teams, startup founding, concept to production, multinational operations</span></h3>
+          <h3 class="text-green font-semibold text-sm" data-lang="es">Ingeniería de Datos & IA <span class="text-gray-600 font-normal">· Databricks y Spark para operaciones globales en Brambles/CHEP</span></h3>
+          <h3 class="text-green font-semibold text-sm hidden" data-lang="en">Data & AI Engineering <span class="text-gray-600 font-normal">· Databricks and Spark for global operations at Brambles/CHEP</span></h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ongoing Research — Horizontal Gantt Timeline -->
+    <section class="pb-12 animate-on-scroll">
+      <h2 class="text-xl font-bold text-gray-900 mb-2" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Investigación en Curso</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-2 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Ongoing Research</h2>
+      <p class="text-gray-400 text-sm mb-6" data-lang="es">Pipeline de investigación activo con líneas en desarrollo y propuestas abiertas.</p>
+      <p class="text-gray-400 text-sm mb-6 hidden" data-lang="en">Active research pipeline with lines in development and open proposals.</p>
+
+      <!-- Gantt container — scrollable on mobile -->
+      <div class="overflow-x-auto -mx-6 px-6">
+        <div style="min-width: 700px;">
+
+          <!-- Month headers + horizontal line -->
+          <div class="relative flex items-end mb-0">
+            <div class="flex-1 text-center">
+              <span class="text-xs font-semibold text-gray-500" data-lang="es">Mar 2026</span>
+              <span class="text-xs font-semibold text-gray-500 hidden" data-lang="en">Mar 2026</span>
+            </div>
+            <div class="flex-1 text-center">
+              <span class="text-xs font-semibold text-gray-500" data-lang="es">Abr 2026</span>
+              <span class="text-xs font-semibold text-gray-500 hidden" data-lang="en">Apr 2026</span>
+            </div>
+            <div class="flex-1 text-center">
+              <span class="text-xs font-semibold text-gray-500" data-lang="es">May 2026</span>
+              <span class="text-xs font-semibold text-gray-500 hidden" data-lang="en">May 2026</span>
+            </div>
+            <div class="flex-1 text-center">
+              <span class="text-xs font-semibold text-gray-400">→</span>
+            </div>
+          </div>
+
+          <!-- Tick marks row -->
+          <div class="relative flex h-3 mb-4">
+            <div class="flex-1 border-l-2 border-gray-200"></div>
+            <div class="flex-1 border-l-2 border-gray-200"></div>
+            <div class="flex-1 border-l-2 border-gray-200"></div>
+            <div class="flex-1 border-l-2 border-dashed border-gray-200"></div>
+            <!-- Horizontal baseline -->
+            <div class="absolute left-0 right-0 top-0 h-[2px] bg-gray-200"></div>
+          </div>
+
+          <!-- Gantt bars -->
+          <div class="space-y-2.5">
+
+            <!-- Alpha Earth Embeddings — starts Mar, short bar -->
+            <div class="flex items-center gap-0">
+              <div class="flex-1 pr-1">
+                <div class="rounded-md px-3 py-2" style="background: #1b5e3b;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-submission">Submission</span>
+                    <span class="text-white text-xs font-semibold truncate">Alpha Earth Embeddings</span>
+                  </div>
+                  <p class="text-green-100 text-[10px] mt-0.5 opacity-80 truncate" data-lang="es">Embeddings de modelos fundacionales geoespaciales</p>
+                  <p class="text-green-100 text-[10px] mt-0.5 opacity-80 truncate hidden" data-lang="en">Geospatial foundation model embeddings for EO</p>
+                </div>
+              </div>
+              <div class="flex-1"></div>
+              <div class="flex-1"></div>
+              <div class="flex-1"></div>
+            </div>
+
+            <!-- Gen AI Orchestration — starts Mar, ends Apr -->
+            <div class="flex items-center gap-0">
+              <div class="flex-[2] pr-1">
+                <div class="rounded-md px-3 py-2" style="background: #2a7c8a;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-ongoing">Ongoing</span>
+                    <span class="text-white text-xs font-semibold truncate" data-lang="es">Orquestación de IA Generativa en Ing. Geoespacial</span>
+                    <span class="text-white text-xs font-semibold truncate hidden" data-lang="en">Gen AI Orchestration in Natural Resources Geospatial Eng.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1"></div>
+              <div class="flex-1"></div>
+            </div>
+
+            <!-- Prithvi Fine-Tuning — starts Mar, ends Apr -->
+            <div class="flex items-center gap-0">
+              <div class="flex-[2] pr-1">
+                <div class="rounded-md px-3 py-2" style="background: #2a7c8a;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-ongoing">Ongoing</span>
+                    <span class="text-white text-xs font-semibold truncate" data-lang="es">Fine-tuning de Prithvi para Erosión del Suelo</span>
+                    <span class="text-white text-xs font-semibold truncate hidden" data-lang="en">Prithvi Fine-Tuning for Soil Erosion</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1"></div>
+              <div class="flex-1"></div>
+            </div>
+
+            <!-- Open Datasets — starts Apr, ends May -->
+            <div class="flex items-center gap-0">
+              <div class="flex-1"></div>
+              <div class="flex-[2] pr-1">
+                <div class="rounded-md px-3 py-2" style="background: #2a7c8a;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-ongoing">Ongoing</span>
+                    <span class="text-white text-xs font-semibold truncate" data-lang="es">Nuevos Datasets Abiertos, Erosión del Suelo</span>
+                    <span class="text-white text-xs font-semibold truncate hidden" data-lang="en">Open Novel Datasets, Soil Erosion</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1"></div>
+            </div>
+
+            <!-- Auto-Regressive — starts Apr, ends May, exploratory -->
+            <div class="flex items-center gap-0">
+              <div class="flex-1"></div>
+              <div class="flex-[2] pr-1">
+                <div class="rounded-md px-3 py-2 border" style="background: #f0f3f7; border-color: #d5dce6;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-exploratory">Exploratory</span>
+                    <span class="text-gray-600 text-xs font-semibold truncate" data-lang="es">Modelado Auto-Regresivo de Erosión</span>
+                    <span class="text-gray-600 text-xs font-semibold truncate hidden" data-lang="en">Auto-Regressive Soil Erosion Modeling</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex-1"></div>
+            </div>
+
+            <!-- Gen AI Time-Series — starts May, exploratory -->
+            <div class="flex items-center gap-0">
+              <div class="flex-1"></div>
+              <div class="flex-1"></div>
+              <div class="flex-[2] pr-1">
+                <div class="rounded-md px-3 py-2 border" style="background: #f0f3f7; border-color: #d5dce6;">
+                  <div class="flex items-center gap-2">
+                    <span class="badge-exploratory">Exploratory</span>
+                    <span class="text-gray-600 text-xs font-semibold truncate" data-lang="es">IA Generativa: Series Temporales</span>
+                    <span class="text-gray-600 text-xs font-semibold truncate hidden" data-lang="en">Gen AI: Time-Series Analytics Framework</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 
-      <div class="flex flex-wrap gap-2">
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Python</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">PyTorch</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">TensorFlow</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Earth Engine</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Google Cloud</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Databricks</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Docker</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">SQL</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Spark</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">QGIS</span>
-        <span class="text-xs text-gray-400 border border-gray-200 px-2.5 py-1 rounded-full">Power BI</span>
-      </div>
     </section>
 
     <hr class="border-gray-100 mb-12">
 
     <!-- Lead Projects -->
     <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'Playfair Display', serif;" data-lang="es">Proyectos Liderados</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">Lead Projects</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Proyectos en Curso</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Projects Led by Gabriel</h2>
       <div class="grid md:grid-cols-2 gap-5">
 
         <!-- Soil SaveR -->
-        <a href="../soil_saver/index.html" class="project-card block bg-white overflow-hidden">
+        <a href="../soil_saver/index.html" class="project-card block bg-white overflow-hidden relative">
+          <svg class="w-4 h-4 absolute top-3 right-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           <img src="../soil_saver/assets/pexels-dimengliu-3064079.jpg" alt="Soil erosion" class="w-full h-28 object-cover">
           <div class="p-5">
           <div class="flex items-center gap-2.5 mb-3">
@@ -234,7 +391,8 @@
         </a>
 
         <!-- Darwin Maps -->
-        <a href="https://darwinmaps.web.app/" target="_blank" class="project-card block bg-white overflow-hidden">
+        <a href="https://darwinmaps.web.app/" target="_blank" class="project-card block bg-white overflow-hidden relative">
+          <svg class="w-4 h-4 absolute top-3 right-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           <img src="../darwin_maps/assets/darwin_geo_ai.png" alt="Darwin Maps" class="w-full h-28 object-cover">
           <div class="p-5">
           <div class="flex items-center gap-2.5 mb-3">
@@ -262,7 +420,8 @@
         </a>
 
         <!-- Guadarrama Ski -->
-        <a href="../guadarramaski/index.html" class="project-card block bg-white md:col-span-2 overflow-hidden">
+        <a href="https://www.guadarramaski.com/" target="_blank" class="project-card block bg-white md:col-span-2 overflow-hidden relative">
+          <svg class="w-4 h-4 absolute top-3 right-3 text-gray-300 z-10" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           <img src="../guadarramaski/assets/banner.jpg" alt="Sierra de Guadarrama" class="w-full h-28 object-cover">
           <div class="p-5">
           <div class="flex items-center gap-2.5 mb-3">
@@ -295,46 +454,10 @@
 
     <hr class="border-gray-100 mb-12">
 
-    <!-- About -->
-    <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'Playfair Display', serif;" data-lang="es">Sobre Mí</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-4 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">About</h2>
-      <p class="text-gray-600 leading-relaxed" data-lang="es">
-        Soy el fundador de <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a>, donde lidero las operaciones del día a día de un equipo de cinco personas. Construimos productos como <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> y software end-to-end basado en IA para clientes de todo el mundo que trabajan con ciencia geoespacial. Lo que me ha movido durante los últimos cuatro años a construir una empresa es mi ambición por el conocimiento, la investigación y dejar una huella en la sociedad.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
-        Antes de Darwin, pasé casi cuatro años en Brambles/CHEP, donde crecí por cuatro posiciones hasta dirigir el equipo de Financial Architecture Data Engineering en el Bay Area, liderando ingenieros, científicos y analistas de datos construyendo pipelines con Databricks y Spark para operaciones globales. Estudié Ingeniería del Medio Natural en la UPM (TFG con Matrícula de Honor), hice un Máster en la UCAV (Premio Mejor TFM de Castilla y León) y aprendí IA en la Universidad de Valencia. Actualmente curso mi doctorado en la UCAV, donde he procesado más de 20 TB en imágenes de satélite y entrenado modelos de visión por computador (CNN, ViT) para actualizar inventarios de cobertura terrestre de forma automática.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
-        Mi objetivo es seguir investigando en IA, ciencia geoespacial y medio ambiente, y construir cosas que sirvan. Mi foco es que Darwin y mi investigación dejen huella: datos que ayuden a frenar la erosión, herramientas que ayuden a organizaciones a tomar mejores decisiones sobre su territorio, y ciencia que nos ayude a entender cómo están cambiando nuestro paisaje y nuestras montañas, siempre usando las matemáticas y la ingeniería como base. Eso es lo que me mueve.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
-        Algunos datos curiosos sobre mí: tengo mi propio jardín y huerto, toco el piano, y he completado travesías de hasta 20 días por la naturaleza salvaje de Canadá. Las matemáticas y la ingeniería no son solo mi profesión, son la lente con la que interpreto el mundo. También disfruto leyendo sobre ingeniería de sistemas, macroeconomía, y conocer diferentes culturas.
-      </p>
-      <p class="text-gray-600 leading-relaxed hidden" data-lang="en">
-        I'm the founder of <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a>, where I lead day-to-day operations of a five person team. We build products like <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> and end-to-end AI-based software for customers around the world working with geospatial science. What has driven me over the past four years to build a company is my ambition for knowledge, research, and leaving a watermark on society.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
-        Before Darwin, I spent almost four years at Brambles/CHEP, where I grew through four positions to lead the Financial Architecture Data Engineering team in the Bay Area, managing engineers, scientists, and analysts building pipelines with Databricks and Spark for global operations. I studied Environmental Engineering at UPM (thesis with Honours), completed a Master's at UCAV (Best MEng Thesis Award, Castilla y León), and learnt AI at the University of Valencia. I'm currently pursuing my PhD at UCAV, where I've processed over 20 TB in satellite imagery and trained computer vision models (CNN, ViT) to automatically update land cover inventories.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
-        My goal is to keep researching AI, geospatial science, and environmental science, and build things that matter. My focus is that Darwin and my research leave a mark: data that helps stop erosion, tools that help organizations make better decisions about their land, and science that helps us understand how our landscape and our mountains are changing, always using mathematics and engineering as the foundation. That's what drives me.
-      </p>
-      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
-        Some fun facts about me: I keep my own garden and vegetable patch, play the piano, and have completed treks of up to 20 days through the Canadian wilderness. Mathematics and engineering are not just my profession, they're the lens through which I interpret the world. I also enjoy reading about systems engineering, macroeconomics, and exploring different cultures.
-      </p>
-      <div class="grid grid-cols-2 gap-4 mt-6">
-        <img src="../../assets/team/gabriel_field.jpeg" alt="Gabriel in the field" class="w-full h-56 object-cover rounded-lg">
-        <img src="../../assets/team/gabriel_pancake.jpeg" alt="Gabriel with Pancake" class="w-full h-56 object-cover rounded-lg">
-      </div>
-    </section>
-
-    <hr class="border-gray-100 mb-12">
-
     <!-- Career Timeline -->
     <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-8" style="font-family: 'Playfair Display', serif;" data-lang="es">Trayectoria</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-8 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">Career</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-8" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Trayectoria</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-8 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Career</h2>
 
       <div class="relative">
         <div class="timeline-line hidden md:block"></div>
@@ -366,7 +489,7 @@
               <span class="text-green text-sm font-semibold hidden" data-lang="en">Current</span>
               <h3 class="text-gray-900 font-bold mt-1" data-lang="es">Fundador, Darwin Geospatial</h3>
               <h3 class="text-gray-900 font-bold mt-1 hidden" data-lang="en">Founder, Darwin Geospatial</h3>
-              <p class="text-gray-400 text-sm">2025 –</p>
+              <p class="text-gray-400 text-sm">2025</p>
               <p class="text-gray-500 text-sm mt-1.5" data-lang="es">Fundé Darwin para conectar lo que aprendí en la industria tech con lo que me importa: usar datos y tecnología al servicio del medio ambiente. Actualmente somos un equipo de 5 personas.</p>
               <p class="text-gray-500 text-sm mt-1.5 hidden" data-lang="en">Founded Darwin to connect what I learned in the tech industry with what I care about: using data and technology in service of the environment. Currently a team of 5.</p>
             </div>
@@ -408,10 +531,46 @@
 
     <hr class="border-gray-100 mb-12">
 
+    <!-- About -->
+    <section class="pb-12 animate-on-scroll">
+      <h2 class="text-xl font-bold text-gray-900 mb-4" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Sobre Mí</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-4 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">About</h2>
+      <p class="text-gray-600 leading-relaxed" data-lang="es">
+        Soy el fundador de <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a>, donde lidero las operaciones del día a día de un equipo de cinco personas. Construimos productos como <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> y software basado en IA para clientes de todo el mundo que trabajan con ciencia geoespacial. Lo que me ha movido durante los últimos cuatro años a construir una empresa es mi ambición por el conocimiento, la investigación y dejar una huella en la sociedad.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
+        Antes de Darwin, pasé casi cuatro años en Brambles/CHEP, donde crecí por cuatro posiciones hasta dirigir el equipo de Financial Architecture Data Engineering en el Bay Area, liderando ingenieros, científicos y analistas de datos construyendo pipelines con Databricks y Spark para operaciones globales. Estudié Ingeniería del Medio Natural en la UPM (TFG con Matrícula de Honor), hice un Máster en la UCAV (Premio Mejor TFM de Castilla y León) y aprendí IA en la Universidad de Valencia. Actualmente curso mi doctorado en la UCAV, donde he procesado más de 20 TB en imágenes de satélite y entrenado modelos de visión por computador (CNN, ViT) para actualizar inventarios de cobertura terrestre de forma automática.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
+        Mi base está en la industria — MLOps e Ingeniería de Datos a escala — pero siempre me impulsa profundizar en mis fundamentos matemáticos y explorar nuevas disciplinas que afilen mi forma de pensar ante problemas complejos. Mi objetivo es seguir investigando en IA, ciencia geoespacial y medio ambiente, y construir cosas que sirvan. Mi foco es que Darwin y mi investigación dejen huella: datos que ayuden a frenar la erosión, herramientas que ayuden a organizaciones a tomar mejores decisiones sobre su territorio, y ciencia que nos ayude a entender cómo están cambiando nuestro paisaje y nuestras montañas, siempre usando las matemáticas y la ingeniería como base. Eso es lo que me mueve.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3" data-lang="es">
+        Algunos datos curiosos sobre mí: tengo mi propio jardín y huerto, toco el piano, y he completado travesías de hasta 20 días por la naturaleza salvaje de Canadá. Las matemáticas y la ingeniería no son solo mi profesión, son la lente con la que interpreto el mundo. También disfruto leyendo sobre ingeniería de sistemas, macroeconomía, y conocer diferentes culturas.
+      </p>
+      <p class="text-gray-600 leading-relaxed hidden" data-lang="en">
+        I'm the founder of <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a>, where I lead day-to-day operations of a five person team. We build products like <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> and AI-based software for customers around the world working with geospatial science. What has driven me over the past four years to build a company is my ambition for knowledge, research, and leaving a watermark on society.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
+        Before Darwin, I spent almost four years at Brambles/CHEP, where I grew through four positions to lead the Financial Architecture Data Engineering team in the Bay Area, managing engineers, scientists, and analysts building pipelines with Databricks and Spark for global operations. I studied Environmental Engineering at UPM (thesis with Honours), completed a Master's at UCAV (Best MEng Thesis Award, Castilla y León), and learnt AI at the University of Valencia. I'm currently pursuing my PhD at UCAV, where I've processed over 20 TB in satellite imagery and trained computer vision models (CNN, ViT) to automatically update land cover inventories.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
+        My background is rooted in industry — MLOps and Data Engineering at scale — but I am always drawn toward deepening my mathematical foundations and exploring new disciplines that sharpen how I think about hard problems. My goal is to keep researching AI, geospatial science, and environmental science, and build things that matter. My focus is that Darwin and my research leave a mark: data that helps stop erosion, tools that help organizations make better decisions about their land, and science that helps us understand how our landscape and our mountains are changing, always using mathematics and engineering as the foundation. That's what drives me.
+      </p>
+      <p class="text-gray-600 leading-relaxed mt-3 hidden" data-lang="en">
+        Some fun facts about me: I keep my own garden and vegetable patch, play the piano, and have completed treks of up to 20 days through the Canadian wilderness. Mathematics and engineering are not just my profession, they're the lens through which I interpret the world. I also enjoy reading about systems engineering, macroeconomics, and exploring different cultures.
+      </p>
+      <div class="grid grid-cols-2 gap-4 mt-6">
+        <img src="../../assets/team/gabriel_field.jpeg" alt="Gabriel in the field" class="w-full h-56 object-cover rounded-lg">
+        <img src="../../assets/team/gabriel_pancake.jpeg" alt="Gabriel with Pancake" class="w-full h-56 object-cover rounded-lg">
+      </div>
+    </section>
+
+    <hr class="border-gray-100 mb-12">
+
     <!-- Testimonials -->
     <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'Playfair Display', serif;" data-lang="es">Lo que dicen mis colegas</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">What colleagues say</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Lo que dicen mis colegas</h2>
+      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">What colleagues say</h2>
       <div class="space-y-5">
 
         <div class="testimonial-card bg-white rounded-lg p-5">
@@ -451,73 +610,77 @@
 
     <hr class="border-gray-100 mb-12">
 
-    <!-- Awards -->
+    <!-- Awards & Published Research — side by side on desktop -->
     <section class="pb-12 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'Playfair Display', serif;" data-lang="es">Reconocimientos</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">Awards</h2>
-      <div class="space-y-4">
-        <div class="flex items-start gap-3">
-          <span class="shrink-0 mt-0.5 bg-green text-white text-[10px] font-bold px-2 py-0.5 rounded">2023</span>
-          <div>
-            <h3 class="text-gray-900 font-semibold text-sm" data-lang="es">Premio Mejor Trabajo Fin de Máster, Castilla y León</h3>
-            <h3 class="text-gray-900 font-semibold text-sm hidden" data-lang="en">Best MEng Thesis Award, Castilla y León</h3>
-            <p class="text-gray-400 text-xs mt-0.5" data-lang="es">Colegio de Ingenieros de Montes (Sociedad Española de Ingeniería Forestal)</p>
-            <p class="text-gray-400 text-xs mt-0.5 hidden" data-lang="en">Spanish Forestry Engineering Society (Colegio de Ingenieros de Montes)</p>
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Awards Column -->
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-5" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Reconocimientos</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Awards</h2>
+          <div class="space-y-4">
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 mt-0.5 bg-green text-white text-[10px] font-bold px-2 py-0.5 rounded">2023</span>
+              <div>
+                <h3 class="text-gray-900 font-semibold text-sm" data-lang="es">Premio Mejor Trabajo Fin de Máster, Castilla y León</h3>
+                <h3 class="text-gray-900 font-semibold text-sm hidden" data-lang="en">Best MEng Thesis Award, Castilla y León</h3>
+                <p class="text-gray-400 text-xs mt-0.5" data-lang="es">Colegio de Ingenieros de Montes (Sociedad Española de Ingeniería Forestal)</p>
+                <p class="text-gray-400 text-xs mt-0.5 hidden" data-lang="en">Spanish Forestry Engineering Society (Colegio de Ingenieros de Montes)</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 mt-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded">2021</span>
+              <div>
+                <h3 class="text-gray-900 font-semibold text-sm" data-lang="es">Matrícula de Honor, Trabajo Fin de Grado</h3>
+                <h3 class="text-gray-900 font-semibold text-sm hidden" data-lang="en">Honours, Bachelor's Thesis</h3>
+                <p class="text-gray-400 text-xs mt-0.5" data-lang="es">Universidad Politécnica de Madrid (UPM)</p>
+                <p class="text-gray-400 text-xs mt-0.5 hidden" data-lang="en">Polytechnic University of Madrid (UPM)</p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex items-start gap-3">
-          <span class="shrink-0 mt-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded">2021</span>
-          <div>
-            <h3 class="text-gray-900 font-semibold text-sm" data-lang="es">Matrícula de Honor, Trabajo Fin de Grado</h3>
-            <h3 class="text-gray-900 font-semibold text-sm hidden" data-lang="en">Honours, Bachelor's Thesis</h3>
-            <p class="text-gray-400 text-xs mt-0.5" data-lang="es">Universidad Politécnica de Madrid (UPM)</p>
-            <p class="text-gray-400 text-xs mt-0.5 hidden" data-lang="en">Polytechnic University of Madrid (UPM)</p>
+
+        <!-- Published Research Column -->
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-2" style="font-family: 'DM Sans', sans-serif;" data-lang="es">Publicaciones</h2>
+          <h2 class="text-xl font-bold text-gray-900 mb-2 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">Published Research</h2>
+          <p class="text-gray-400 text-sm mb-5" data-lang="es">Trabajos publicados hasta ahora:</p>
+          <p class="text-gray-400 text-sm mb-5 hidden" data-lang="en">Published work so far:</p>
+          <div class="space-y-4">
+
+            <a href="https://doi.org/10.1016/j.jag.2024.104221" target="_blank" rel="noopener noreferrer" class="publication-card bg-white rounded-lg p-4 block">
+              <div class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 bg-green text-white text-[10px] font-bold px-2 py-0.5 rounded">OPEN ACCESS</span>
+                <div>
+                  <h3 class="text-gray-900 font-semibold text-xs leading-snug">Classification of protected grassland habitats using deep learning architectures on Sentinel-2 satellite imagery data</h3>
+                  <p class="text-gray-500 text-xs mt-1"><strong class="text-green">Díaz-Ireland, G.</strong>, et al.</p>
+                  <p class="text-gray-400 text-xs mt-0.5"><em>Int. J. Appl. Earth Obs. Geoinf.</em>, 134 (2024)</p>
+                </div>
+              </div>
+            </a>
+
+            <a href="https://doi.org/10.1007/s10531-025-03090-1" target="_blank" rel="noopener noreferrer" class="publication-card bg-white rounded-lg p-4 block">
+              <div class="flex items-start gap-2">
+                <span class="shrink-0 mt-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded">2025</span>
+                <div>
+                  <h3 class="text-gray-900 font-semibold text-xs leading-snug">Impacts of the Russian aggression on forest ecosystems in Ukraine and identification of key restoration areas</h3>
+                  <p class="text-gray-500 text-xs mt-1">Velázquez, J., <strong class="text-green">Díaz-Ireland, G.</strong>, et al.</p>
+                  <p class="text-gray-400 text-xs mt-0.5"><em>Biodivers. Conserv.</em> (2025)</p>
+                </div>
+              </div>
+            </a>
+
           </div>
         </div>
+
       </div>
     </section>
 
     <hr class="border-gray-100 mb-12">
 
-    <!-- Research -->
     <section class="pb-16 animate-on-scroll">
-      <h2 class="text-xl font-bold text-gray-900 mb-2" style="font-family: 'Playfair Display', serif;" data-lang="es">Investigación</h2>
-      <h2 class="text-xl font-bold text-gray-900 mb-2 hidden" style="font-family: 'Playfair Display', serif;" data-lang="en">Research</h2>
-      <p class="text-gray-400 text-sm mb-5" data-lang="es">Mi investigación doctoral en la UCAV se centra en aplicar deep learning a imágenes de satélite para clasificación de vegetación y ecosistemas y monitoreo ambiental. Trabajos publicados hasta ahora:</p>
-      <p class="text-gray-400 text-sm mb-5 hidden" data-lang="en">My doctoral research at UCAV focuses on applying deep learning to satellite imagery for vegetation and ecosystem classification and environmental monitoring. Published work so far:</p>
-      <div class="space-y-5">
-
-        <a href="https://doi.org/10.1016/j.jag.2024.104221" target="_blank" rel="noopener noreferrer" class="publication-card bg-white rounded-lg p-5 block">
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 mt-0.5 bg-green text-white text-[10px] font-bold px-2 py-0.5 rounded">OPEN ACCESS</span>
-            <div>
-              <h3 class="text-gray-900 font-semibold text-sm leading-snug">Classification of protected grassland habitats using deep learning architectures on Sentinel-2 satellite imagery data</h3>
-              <p class="text-gray-500 text-sm mt-1.5"><strong class="text-green">Díaz-Ireland, G.</strong>, Gülçin, D., López-Sánchez, A., Pla, E., Burton, J., Velázquez, J.</p>
-              <p class="text-gray-400 text-sm mt-1"><em>International Journal of Applied Earth Observation and Geoinformation</em>, 134, 104221 (2024)</p>
-              <p class="text-gray-400 text-xs mt-1.5" data-lang="es">Rol: Escritura (borrador original + revisión), Supervisión, Recursos, Metodología, Análisis formal, Conceptualización</p>
-              <p class="text-gray-400 text-xs mt-1.5 hidden" data-lang="en">Role: Writing (original draft + review), Supervision, Resources, Methodology, Formal analysis, Conceptualization</p>
-            </div>
-          </div>
-        </a>
-
-        <a href="https://doi.org/10.1007/s10531-025-03090-1" target="_blank" rel="noopener noreferrer" class="publication-card bg-white rounded-lg p-5 block">
-          <div class="flex items-start gap-3">
-            <span class="shrink-0 mt-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold px-2 py-0.5 rounded">2025</span>
-            <div>
-              <h3 class="text-gray-900 font-semibold text-sm leading-snug">Impacts of the Russian aggression on forest ecosystems in Ukraine and identification of key restoration areas to improve connectivity</h3>
-              <p class="text-gray-500 text-sm mt-1.5">Velázquez, J., <strong class="text-green">Díaz-Ireland, G.</strong>, Rincón, V., Özcan, A.U., et al.</p>
-              <p class="text-gray-400 text-sm mt-1"><em>Biodiversity and Conservation</em> (2025)</p>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </section>
-
-
-    <section class="pb-16 animate-on-scroll">
-      <p class="text-gray-400 text-sm italic" data-lang="es">¡Ey! Por si te los perdiste: <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a> y <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a>.</p>
-      <p class="text-gray-400 text-sm italic hidden" data-lang="en">Hey! In case you missed them: <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a> and <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a>.</p>
+      <p class="text-gray-400 text-sm italic" data-lang="es">¡Ey! Por si te los perdiste: <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a> es mi empresa y <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> es nuestra plataforma abierta principal, actualmente en fase de pruebas.</p>
+      <p class="text-gray-400 text-sm italic hidden" data-lang="en">Hey! In case you missed them: <a href="https://www.darwingeospatial.com" target="_blank" class="text-green hover:underline">darwingeospatial.com</a> is my company and <a href="https://darwinmaps.web.app/" target="_blank" class="text-green hover:underline">Darwin Maps</a> is our main open platform, currently in testing.</p>
     </section>
 
   </main>
@@ -530,7 +693,7 @@
         <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-green transition-colors" aria-label="LinkedIn">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         </a>
-        <a href="mailto:gabriel.diaz.ireland@gmail.com" class="text-gray-400 hover:text-green transition-colors" aria-label="Email">
+        <a href="mailto:gabriel.ireland@darwingeospatial.com" class="text-gray-400 hover:text-green transition-colors" aria-label="Email">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </a>
       </div>
