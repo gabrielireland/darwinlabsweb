@@ -54,61 +54,36 @@
     /* Hero */
     .title-section {
       position: relative;
-      padding: 5rem 0;
+      padding: 4rem 0 3rem;
       overflow: hidden;
-      min-height: 70vh;
+      background: linear-gradient(135deg, #0a1628 0%, #1a2a3a 100%);
+    }
+    .title-section h1 { color: #fff; }
+
+    /* Browser mockup */
+    .browser-mockup {
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+    }
+    .browser-mockup-bar {
+      background: #334155;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
-      background: #0a1628;
+      gap: 8px;
     }
-    .title-section h1 { color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
-
-    /* Crossfade slideshow */
-    .hero-slide {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      filter: brightness(0.7);
-      transition: opacity 1.2s ease-in-out;
+    .browser-dot {
+      width: 10px; height: 10px; border-radius: 50%;
     }
-    .hero-slide.active { opacity: 1; }
-    /* Dark overlay on top of slides */
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.52);
-      z-index: 1;
-    }
-
-    /* WIP pill */
-    .status-pill-wip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(251,191,36,0.15);
-      color: #fbbf24;
-      border: 1px solid rgba(251,191,36,0.4);
-      border-radius: 9999px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.85rem;
-    }
-    .status-pill-wip::before {
-      content: '';
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background: #fbbf24;
-      border-radius: 50%;
-      animation: pulse-amber 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse-amber {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.35; transform: scale(0.8); }
+    .browser-dot.red { background: #ef4444; }
+    .browser-dot.yellow { background: #eab308; }
+    .browser-dot.green { background: #22c55e; }
+    .browser-mockup img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
   </style>
 </head>
@@ -176,29 +151,34 @@
 
     <!-- Hero -->
     <section class="title-section">
-      <!-- Slideshow layers -->
-      <div class="hero-slide active" style="background-image:url('../../assets/hero/hero_1.png')"></div>
-      <div class="hero-slide"        style="background-image:url('../../assets/hero/hero_2.png')"></div>
-      <div class="hero-slide"        style="background-image:url('../../assets/hero/hero_3.png')"></div>
-      <div class="hero-slide"        style="background-image:url('../../assets/hero/habitat.png')"></div>
-      <div class="hero-slide"        style="background-image:url('../../assets/hero/ndvi.png')"></div>
-      <!-- Overlay -->
-      <div class="hero-overlay"></div>
-
-      <div class="container mx-auto px-6 text-center relative z-10">
-        <div class="mb-5">
-          <span class="status-pill-wip" data-lang="es">Próximamente</span>
-          <span class="status-pill-wip hidden" data-lang="en">Coming soon</span>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center mb-10">
+          <p class="max-w-2xl mx-auto text-slate-300 text-lg" data-lang="es">
+            Inteligencia geoespacial para tu organización. Sin barreras técnicas.
+          </p>
+          <p class="max-w-2xl mx-auto text-slate-300 text-lg hidden" data-lang="en">
+            Geospatial intelligence for your organization. No technical barriers.
+          </p>
         </div>
 
-        <h1 class="text-3xl md:text-5xl leading-tight font-bold mb-5">Darwin Maps</h1>
+        <div class="mb-8 text-center">
+          <a href="https://darwinmaps.web.app/" target="_blank" rel="noopener noreferrer"
+            class="inline-block bg-primary text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-colors duration-200 text-sm"
+            data-lang="es">Probar Darwin Maps →</a>
+          <a href="https://darwinmaps.web.app/" target="_blank" rel="noopener noreferrer"
+            class="inline-block bg-primary text-white font-semibold px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-colors duration-200 text-sm hidden"
+            data-lang="en">Try Darwin Maps →</a>
+        </div>
 
-        <p class="max-w-2xl mx-auto text-slate-200 text-lg" data-lang="es">
-          Una nueva forma de ver, entender y actuar sobre el territorio.
-        </p>
-        <p class="max-w-2xl mx-auto text-slate-200 text-lg hidden" data-lang="en">
-          A new way to see, understand, and act on the land.
-        </p>
+        <!-- Product screenshot in browser mockup -->
+        <div class="max-w-4xl mx-auto browser-mockup">
+          <div class="browser-mockup-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+          </div>
+          <img src="assets/darwin_geo_ai.png" alt="Darwin Maps — geospatial platform with AI assistant, environmental layers, and province-level analysis">
+        </div>
       </div>
     </section>
 
@@ -282,32 +262,25 @@
       </div>
     </section>
 
-    <!-- Coming soon / CTA -->
+    <!-- CTA -->
     <section class="container mx-auto px-6 py-14 animate-on-scroll">
       <div class="max-w-3xl mx-auto text-center">
-        <div class="inline-block mb-6">
-          <span class="status-pill-wip" data-lang="es">En construcción</span>
-          <span class="status-pill-wip hidden" data-lang="en">Under construction</span>
-        </div>
-
-        <h2 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Estamos trabajando en ello</h2>
-        <h2 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">We are working on it</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Lleva esta tecnología a tu organización</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Bring this technology to your organization</h2>
 
         <p class="text-slate-600 leading-relaxed mb-8" data-lang="es">
-          Darwin Maps está en desarrollo activo. Si tu organización trabaja con datos territoriales y quieres
-          ser de las primeras en acceder, escríbenos. Estamos seleccionando partners para la fase de acceso anticipado.
+          Darwin Maps convierte datos complejos de satélite en capas visuales que cualquier equipo puede usar para tomar mejores decisiones sobre el territorio. Si tu organización trabaja con datos ambientales, forestales o de uso del suelo, podemos adaptarlo a tus necesidades.
         </p>
         <p class="text-slate-600 leading-relaxed mb-8 hidden" data-lang="en">
-          Darwin Maps is under active development. If your organization works with land data and you want
-          to be among the first to access it, reach out. We are selecting partners for the early access phase.
+          Darwin Maps turns complex satellite data into visual layers any team can use to make better decisions about their land. If your organization works with environmental, forestry, or land use data, we can tailor it to your needs.
         </p>
 
         <a href="../../index.html#contact"
           class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200"
-          data-lang="es">Solicitar acceso anticipado</a>
+          data-lang="es">¿Quieres ver cómo funciona en tu territorio? Hablemos</a>
         <a href="../../index.html#contact"
           class="inline-block bg-primary text-white font-semibold px-8 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-200 hidden"
-          data-lang="en">Request early access</a>
+          data-lang="en">Want to see how this works for your territory? Let's talk</a>
       </div>
     </section>
 
@@ -327,16 +300,13 @@
 
   <script src="../../lang.js"></script>
   <script>
-    // Hero crossfade slideshow
-    (function () {
-      const slides = document.querySelectorAll('.hero-slide');
-      let current = 0;
-      setInterval(function () {
-        slides[current].classList.remove('active');
-        current = (current + 1) % slides.length;
-        slides[current].classList.add('active');
-      }, 5000);
-    })();
+    // Scroll animations
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) entry.target.classList.add('is-visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-on-scroll').forEach(function (el) { observer.observe(el); });
   </script>
 </body>
 </html>
