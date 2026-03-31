@@ -774,22 +774,14 @@
             </div>
           </article>
 
-          <!-- Darwin Crops & Land Use -->
-          <article class="animate-on-scroll lg:col-span-2 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="window.location.href='./projects/darwin_crops_landuse/index.html'">
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_crops_landuse/assets/alpha_earth.JPG'); background-size:cover; background-position:center; min-height:12rem;"></div>
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">Darwin Crops</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">Darwin Crops</h2>
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">El predictor y clasificador de cultivos y usos del suelo más actualizado, potenciado por Alpha Earth.</p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">The most up-to-date crop and land-use predictor & classifier, powered by Alpha Earth.</p>
-              <div class="mt-5">
-                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Leer Más <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="./projects/darwin_crops_landuse/index.html" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Read More <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-              </div>
-            </div>
-          </article>
+          <!-- Darwin Crops & Land Use — compact banner, not clickable -->
+          <div class="animate-on-scroll lg:col-span-2 flex items-center rounded-lg overflow-hidden ring-1 ring-white/10"
+            style="background:rgba(0,0,0,0.35); backdrop-filter:blur(12px); padding:1rem 1.5rem; gap:1rem; opacity:0.7;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:#A5AA6B; white-space:nowrap;" data-lang="es">Darwin Crops</h3>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:#A5AA6B; white-space:nowrap;" class="hidden" data-lang="en">Darwin Crops</h3>
+            <p class="text-xs leading-relaxed" style="color:rgba(255,255,255,0.45);" data-lang="es">Clasificador de cultivos y usos del suelo — próximamente.</p>
+            <p class="text-xs leading-relaxed hidden" style="color:rgba(255,255,255,0.45);" data-lang="en">Crop &amp; land-use classifier — coming soon.</p>
+          </div>
 
           <!-- End World Hunger Ohio -->
           <article class="animate-on-scroll lg:col-span-2 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
@@ -797,8 +789,12 @@
             onclick="window.open('https://endworldhungerohio.com/','_blank')">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png'); background-size:cover; background-position:center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="en">End World Hunger Ohio</h2>
+              <div class="flex items-center gap-3 mb-3 flex-wrap">
+                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
+                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" class="hidden" data-lang="en">End World Hunger Ohio</h2>
+                <span style="display:inline-block; background:rgba(165,170,107,0.2); border:1px solid rgba(165,170,107,0.4); color:#A5AA6B; font-size:0.7rem; font-weight:700; letter-spacing:0.05em; padding:3px 10px; border-radius:9999px;" data-lang="es">Próximo mayo</span>
+                <span style="display:inline-block; background:rgba(165,170,107,0.2); border:1px solid rgba(165,170,107,0.4); color:#A5AA6B; font-size:0.7rem; font-weight:700; letter-spacing:0.05em; padding:3px 10px; border-radius:9999px;" class="hidden" data-lang="en">Next May</span>
+              </div>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.</p>
               <div class="mt-5">
