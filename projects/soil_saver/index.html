@@ -24,10 +24,10 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts: Playfair Display (display serif) + Space Mono (monospace accent) + Inter (body) -->
+  <!-- Fonts: Lora (display serif) + Space Mono (monospace accent) + Inter (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -60,7 +60,7 @@
     }
 
     /* ── Typography ─────────────────────────────────────── */
-    .font-display      { font-family: 'Playfair Display', Georgia, serif; }
+    .font-display      { font-family: 'Lora', Georgia, serif; }
     .font-mono-accent  { font-family: 'Space Mono', 'Courier New', monospace; }
 
     /* ── Scroll-reveal ───────────────────────────────────── */
@@ -83,6 +83,7 @@
     }
     #header a   { color: var(--soil-mid); }
     #header a:hover { color: var(--soil-brown); }
+    #header img { opacity: 1; filter: none; }
 
     /* ── HERO ────────────────────────────────────────────── */
     #hero {
@@ -160,7 +161,7 @@
     }
 
     .hero-title-soil {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
       font-weight: 900;
       font-size: clamp(5.5rem, 22vw, 18rem);
       line-height: 0.82;
@@ -187,7 +188,7 @@
     }
 
     .hero-tagline {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
       font-style: italic;
       font-size: clamp(1rem, 2.2vw, 1.5rem);
       color: var(--soil-sand);
@@ -243,7 +244,7 @@
 
     /* ── INTRO ───────────────────────────────────────────── */
     .stat-value {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
       font-weight: 900;
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       color: var(--soil-warm);
@@ -258,6 +259,36 @@
       text-transform: uppercase;
       color: var(--soil-mid);
       margin-top: 0.35rem;
+      display: block;
+      text-align: center;
+    }
+
+    /* ── WHY IT MATTERS ─────────────────────────────────── */
+    .why-matters-stat {
+      text-align: center;
+    }
+    .why-matters-stat .stat-value {
+      color: var(--soil-warm);
+    }
+    .why-matters-stat .stat-label {
+      color: rgba(232, 213, 163, 0.7);
+    }
+    .why-matters-stat .stat-source {
+      display: block;
+      margin-top: 0.5rem;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+    .why-matters-stat .stat-source a {
+      color: var(--soil-warm);
+      opacity: 0.7;
+      text-decoration: none;
+      border-bottom: 1px dotted var(--soil-warm);
+      transition: opacity 0.2s;
+    }
+    .why-matters-stat .stat-source a:hover {
+      opacity: 1;
     }
 
     /* ── SCROLLYTELLING ─────────────────────────────────── */
@@ -353,7 +384,7 @@
       bottom: 4rem;
       left: 50%;
       transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
       font-weight: 900;
       font-size: clamp(3.5rem, 10vw, 7rem);
       color: rgba(240, 222, 184, 0.9);
@@ -372,7 +403,7 @@
       transform: translateX(-50%);
       width: min(90%, 640px);
       text-align: center;
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lora', serif;
       font-style: italic;
       font-size: clamp(1rem, 2vw, 1.3rem);
       color: rgba(240, 222, 184, 0.85);
@@ -424,11 +455,13 @@
     }
 
     .section-eyebrow {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.3em;
+      font-family: 'Lora', Georgia, serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--soil-warm);
+      color: var(--soil-brown);
+      font-weight: 700;
     }
 
     /* ── FOOTER ──────────────────────────────────────────── */
@@ -471,12 +504,16 @@
       </a>
 
       <nav class="hidden md:flex space-x-8 items-center text-sm font-medium" style="color: var(--soil-mid);">
-        <a href="../../index.html#about"        data-lang="es">Nosotros</a>
-        <a href="../../index.html#about" class="hidden" data-lang="en">About</a>
-        <a href="../../index.html#projects-hero" data-lang="es">Proyectos</a>
-        <a href="../../index.html#projects-hero" class="hidden" data-lang="en">Projects</a>
-        <a href="../../index.html#contact"       data-lang="es">Contacto</a>
-        <a href="../../index.html#contact" class="hidden" data-lang="en">Contact</a>
+        <a href="#hero"        data-lang="es">Inicio</a>
+        <a href="#hero" class="hidden" data-lang="en">Home</a>
+        <a href="#project-intro" data-lang="es">El Proyecto</a>
+        <a href="#project-intro" class="hidden" data-lang="en">The Project</a>
+        <a href="#scrollytelling-wrapper" data-lang="es">Explorar</a>
+        <a href="#scrollytelling-wrapper" class="hidden" data-lang="en">Explore</a>
+        <a href="#methodology"       data-lang="es">Metodología</a>
+        <a href="#methodology" class="hidden" data-lang="en">Methodology</a>
+        <a href="#soil-contact"       data-lang="es">Contacto</a>
+        <a href="#soil-contact" class="hidden" data-lang="en">Contact</a>
       </nav>
 
       <div class="flex items-center gap-3">
@@ -494,12 +531,16 @@
     </div>
 
     <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 text-sm" style="background: var(--soil-light); color: var(--soil-mid);">
-      <a href="../../index.html#about"         class="block py-2" data-lang="es">Nosotros</a>
-      <a href="../../index.html#about"         class="block py-2 hidden" data-lang="en">About</a>
-      <a href="../../index.html#projects-hero" class="block py-2" data-lang="es">Proyectos</a>
-      <a href="../../index.html#projects-hero" class="block py-2 hidden" data-lang="en">Projects</a>
-      <a href="../../index.html#contact"       class="block py-2" data-lang="es">Contacto</a>
-      <a href="../../index.html#contact"       class="block py-2 hidden" data-lang="en">Contact</a>
+      <a href="#hero"                    class="block py-2" data-lang="es">Inicio</a>
+      <a href="#hero"                    class="block py-2 hidden" data-lang="en">Home</a>
+      <a href="#project-intro"           class="block py-2" data-lang="es">El Proyecto</a>
+      <a href="#project-intro"           class="block py-2 hidden" data-lang="en">The Project</a>
+      <a href="#scrollytelling-wrapper"  class="block py-2" data-lang="es">Explorar</a>
+      <a href="#scrollytelling-wrapper"  class="block py-2 hidden" data-lang="en">Explore</a>
+      <a href="#methodology"             class="block py-2" data-lang="es">Metodología</a>
+      <a href="#methodology"             class="block py-2 hidden" data-lang="en">Methodology</a>
+      <a href="#soil-contact"            class="block py-2" data-lang="es">Contacto</a>
+      <a href="#soil-contact"            class="block py-2 hidden" data-lang="en">Contact</a>
     </div>
   </header>
 
@@ -508,7 +549,7 @@
     <!-- ── HERO ─────────────────────────────────────────── -->
     <section id="hero">
       <div id="hero-content">
-        <span class="hero-label animate-on-scroll">Darwin Geospatial · Erosion Intelligence</span>
+        <span class="hero-label animate-on-scroll">Erosion Intelligence for Researchers</span>
         <div class="animate-on-scroll" style="transition-delay:0.1s;">
           <span class="hero-title-soil">SOIL</span>
           <span class="hero-title-saver">SaveR</span>
@@ -521,12 +562,6 @@
         </p>
 
         <div class="hero-tags animate-on-scroll" style="transition-delay:0.4s;">
-          <span class="hero-tag warm" data-lang="es">Detección de Erosión</span>
-          <span class="hero-tag warm hidden" data-lang="en">Erosion Detection</span>
-          <span class="hero-tag">RUSLE · TWI · SPI</span>
-          <span class="hero-tag">Sentinel-2 · ALOS DEM</span>
-          <span class="hero-tag" data-lang="es">Dataset Público Multi-región</span>
-          <span class="hero-tag hidden" data-lang="en">Public Multi-region Dataset</span>
         </div>
       </div>
 
@@ -540,19 +575,65 @@
       </div>
     </section>
 
+    <!-- ── WHY IT MATTERS ────────────────────────────────── -->
+    <section id="why-it-matters" style="background: var(--soil-dark); padding: 5rem 1.5rem;">
+      <div class="container mx-auto" style="max-width: 60rem; text-align: center;">
+
+        <div class="animate-on-scroll">
+          <span class="section-eyebrow" style="color: var(--soil-warm);" data-lang="es">Por Qué Importa</span>
+          <span class="section-eyebrow hidden" style="color: var(--soil-warm);" data-lang="en">Why It Matters</span>
+
+          <h2 class="mt-3 mb-10" style="font-family:'Lora',Georgia,serif; font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; color:var(--soil-sand); line-height:1.3;" data-lang="es">
+            La erosión no es solo un problema ambiental
+          </h2>
+          <h2 class="mt-3 mb-10 hidden" style="font-family:'Lora',Georgia,serif; font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; color:var(--soil-sand); line-height:1.3;" data-lang="en">
+            Erosion is not just an environmental problem
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 animate-on-scroll">
+          <div class="why-matters-stat">
+            <span class="stat-value">€1.25B</span>
+            <span class="stat-label" data-lang="es">coste anual para<br>agricultores europeos</span>
+            <span class="stat-label hidden" data-lang="en">annual cost to<br>European farmers</span>
+            <span class="stat-source"><a href="https://www.peer.eu/news/detail/soil-erosion-costs-european-farmers-eur125-billion-a-year" target="_blank" rel="noopener">EU JRC / PEER</a></span>
+          </div>
+          <div class="why-matters-stat">
+            <span class="stat-value">$37.6B</span>
+            <span class="stat-label" data-lang="es">pérdidas anuales de<br>productividad en EE.UU.</span>
+            <span class="stat-label hidden" data-lang="en">annual US<br>productivity losses</span>
+            <span class="stat-source"><a href="https://www.nrdc.org/stories/soil-erosion-101" target="_blank" rel="noopener">NRDC</a></span>
+          </div>
+          <div class="why-matters-stat">
+            <span class="stat-value">60%</span>
+            <span class="stat-label" data-lang="es">de suelos europeos<br>degradados</span>
+            <span class="stat-label hidden" data-lang="en">of European soils<br>now unhealthy</span>
+            <span class="stat-source"><a href="https://joint-research-centre.ec.europa.eu/jrc-news-and-updates/urgent-action-needed-reverse-soil-degradation-europe-2024-10-22_en" target="_blank" rel="noopener">EU State of Soils 2024</a></span>
+          </div>
+          <div class="why-matters-stat">
+            <span class="stat-value" style="font-size:clamp(1.8rem,4vw,2.8rem);">57.6B t</span>
+            <span class="stat-label" data-lang="es">de suelo perdido en<br>el Medio Oeste de EE.UU.</span>
+            <span class="stat-label hidden" data-lang="en">of soil lost in<br>the US Midwest alone</span>
+            <span class="stat-source"><a href="https://www.pnas.org/doi/10.1073/pnas.1922375118" target="_blank" rel="noopener">PNAS</a></span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ── INTRO ──────────────────────────────────────────── -->
-    <section style="background: var(--soil-light); padding: 6rem 1.5rem;">
+    <section id="project-intro" style="background: var(--soil-light); padding: 6rem 1.5rem;">
       <div class="container mx-auto" style="max-width: 52rem;">
 
         <div class="animate-on-scroll">
           <span class="section-eyebrow" data-lang="es">El Proyecto</span>
           <span class="section-eyebrow hidden" data-lang="en">The Project</span>
 
-          <h2 class="font-display mt-3 mb-6" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="es">
-            Un gap en los datos que<br>limita lo que podemos aprender.
+          <h2 class="mt-3 mb-6" style="font-family:'Lora',Georgia,serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; color:var(--soil-dark); line-height:1.3;" data-lang="es">
+            Un gap en los datos que limita lo que podemos aprender.
           </h2>
-          <h2 class="font-display mt-3 mb-6 hidden" style="font-size:clamp(1.8rem,4vw,2.8rem); font-weight:800; color:var(--soil-dark); line-height:1.2;" data-lang="en">
-            A data gap that limits<br>what we can learn.
+          <h2 class="mt-3 mb-6 hidden" style="font-family:'Lora',Georgia,serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:700; color:var(--soil-dark); line-height:1.3;" data-lang="en">
+            A data gap that limits what we can learn.
           </h2>
 
           <p class="text-lg leading-relaxed" style="color:var(--soil-mid); text-align:justify;" data-lang="es">
@@ -566,24 +647,24 @@
         <!-- Stats row -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14 animate-on-scroll">
           <div class="text-center">
-            <span class="stat-value">113</span>
-            <span class="stat-label" data-lang="es">papers analizados<br>solo 2 con datos públicos</span>
-            <span class="stat-label hidden" data-lang="en">papers surveyed<br>only 2 with public data</span>
+            <span class="stat-value">10+</span>
+            <span class="stat-label" data-lang="es">fuentes de datos<br>integradas</span>
+            <span class="stat-label hidden" data-lang="en">data sources<br>integrated</span>
           </div>
           <div class="text-center">
-            <span class="stat-value">10m</span>
-            <span class="stat-label" data-lang="es">resolución<br>Sentinel-2</span>
-            <span class="stat-label hidden" data-lang="en">Sentinel-2<br>resolution</span>
+            <span class="stat-value">3</span>
+            <span class="stat-label" data-lang="es">regiones de<br>estudio activas</span>
+            <span class="stat-label hidden" data-lang="en">active study<br>regions</span>
           </div>
           <div class="text-center">
-            <span class="stat-value" style="font-size:clamp(1.8rem,4vw,2.8rem);">50–80%</span>
-            <span class="stat-label" data-lang="es">reducción del esfuerzo<br>de etiquetado</span>
-            <span class="stat-label hidden" data-lang="en">labeling effort<br>reduction</span>
+            <span class="stat-value" style="font-size:clamp(1.8rem,4vw,2.8rem);">50–60%</span>
+            <span class="stat-label" data-lang="es">datos de calidad vía<br>modelos semi-supervisados</span>
+            <span class="stat-label hidden" data-lang="en">quality data via<br>semi-supervised models</span>
           </div>
           <div class="text-center">
-            <span class="stat-value">0</span>
-            <span class="stat-label" data-lang="es">datasets públicos<br>de erosión previos</span>
-            <span class="stat-label hidden" data-lang="en">prior public<br>erosion datasets</span>
+            <span class="stat-value" style="font-size:clamp(1.8rem,4vw,2.8rem);">100%</span>
+            <span class="stat-label" data-lang="es">abierto y<br>reproducible</span>
+            <span class="stat-label hidden" data-lang="en">open &<br>reproducible</span>
           </div>
         </div>
 
@@ -593,19 +674,17 @@
     <!-- ── SCROLLYTELLING ─────────────────────────────────── -->
     <!-- Section header -->
     <div style="background:var(--soil-brown); padding:3rem 1.5rem; text-align:center;">
-      <span class="section-eyebrow" style="color:var(--soil-sand);" data-lang="es">Experiencia interactiva</span>
-      <span class="section-eyebrow hidden" style="color:var(--soil-sand);" data-lang="en">Interactive experience</span>
-      <h2 class="font-display mt-2" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="es">
-        Así se ve la erosión desde el espacio — revelada al desplazarse
+      <h2 style="font-family:'Lora',Georgia,serif; font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; color:var(--soil-cream); line-height:1.3;" data-lang="es">
+        Así se ve la erosión desde el espacio
       </h2>
-      <h2 class="font-display mt-2 hidden" style="font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:800; color:var(--soil-cream); line-height:1.2;" data-lang="en">
-        This is what erosion looks like from space — revealed as you scroll
+      <h2 class="mt-3 hidden" style="font-family:'Lora',Georgia,serif; font-size:clamp(1.6rem,3.5vw,2.4rem); font-weight:700; color:var(--soil-cream); line-height:1.3;" data-lang="en">
+        This is what erosion looks like from space
       </h2>
-      <p class="mt-3" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="es">
-        Patones, Madrid · El mismo territorio en 1956 y 2025. Identifica los rasgos de erosión que guían nuestro proceso de etiquetado.
+      <p class="mt-3" style="font-family:Georgia,'Times New Roman',serif; font-size:1rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto; line-height:1.6;" data-lang="es">
+        Patones, Madrid · El mismo territorio en 1956 y 2025. Desliza para revelar los cambios.
       </p>
-      <p class="mt-3 hidden" style="font-size:0.95rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto;" data-lang="en">
-        Patones, Madrid · The same territory in 1956 and 2025. Identify the erosion features that guide our labeling process.
+      <p class="mt-3 hidden" style="font-family:Georgia,'Times New Roman',serif; font-size:1rem; color:rgba(240,222,184,0.7); max-width:600px; margin-inline:auto; line-height:1.6;" data-lang="en">
+        Patones, Madrid · The same territory in 1956 and 2025. Scroll to reveal the changes.
       </p>
     </div>
 
@@ -720,7 +799,7 @@
     </div>
 
     <!-- ── GOALS & METHODOLOGY ───────────────────────────── -->
-    <section style="background:var(--soil-cream); padding:6rem 1.5rem;">
+    <section id="methodology" style="background:var(--soil-cream); padding:6rem 1.5rem;">
       <div class="container mx-auto" style="max-width:64rem;">
 
         <div class="animate-on-scroll text-center mb-12">
@@ -772,7 +851,8 @@
               <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Sentinel-1 SAR (10 m, opcional)</strong> — modalidad de radar para enriquecer el dataset multimodal.</li>
               <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Sentinel-1 SAR (10 m, optional)</strong> — radar modality to enrich the multi-modal dataset.</li>
 
-              <li>▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — acceso y procesamiento de todos los datos satelitales en la nube.</li>
+              <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — acceso y procesamiento de todos los datos satelitales en la nube.</li>
+              <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Google Earth Engine</strong> — cloud-based access and processing of all satellite data.</li>
 
               <li data-lang="es">▸ <strong style="color:var(--soil-brown);">Arquitecturas objetivo:</strong> DeepLabV3+, U-Net, SAM — los modelos de segmentación que el dataset habilita por primera vez de forma reproducible.</li>
               <li class="hidden" data-lang="en">▸ <strong style="color:var(--soil-brown);">Target architectures:</strong> DeepLabV3+, U-Net, SAM — the segmentation models the dataset enables reproducibly for the first time.</li>
@@ -784,32 +864,34 @@
         <div class="animate-on-scroll mt-10 p-8 md:p-10 rounded-xl" style="background:var(--soil-dark);">
           <h3 class="font-display text-2xl font-bold mb-4" style="color:var(--soil-cream);" data-lang="es">¿Por qué importa?</h3>
           <h3 class="font-display text-2xl font-bold mb-4 hidden" style="color:var(--soil-cream);" data-lang="en">Why does it matter?</h3>
-          <p class="leading-relaxed" style="color:var(--soil-sand); text-align:justify;" data-lang="es">
-            Cada modelo de deep learning publicado para detección de erosión fue entrenado con <strong style="color:var(--soil-cream);">datos privados e irreprocucibles</strong>. El modelo RUSLE, el estándar dominante, predice susceptibilidad —no presencia real—, y sus predicciones se desvían de mediciones en campo por factores de <strong style="color:var(--soil-cream);">0,04× a 8×</strong>; solo el 41% de los estudios que lo usan validan sus resultados. La detección por deep learning de cárcavas, erosión en masa y erosión laminar requiere etiquetas confirmadas visualmente, no predicciones deterministas. Soil SaveR es la primera infraestructura de datos que hace posible entrenar y comparar modelos de segmentación de erosión de forma abierta y reproducible.
-          </p>
-          <p class="leading-relaxed hidden" style="color:var(--soil-sand); text-align:justify;" data-lang="en">
-            Every published deep learning model for erosion detection was trained on <strong style="color:var(--soil-cream);">private, non-reproducible data</strong>. The dominant standard, RUSLE, predicts susceptibility — not actual presence — and its predictions deviate from field measurements by factors of <strong style="color:var(--soil-cream);">0.04× to 8×</strong>; only 41% of studies using it validate against measured data. Deep learning detection of gullies, mass wasting and sheet erosion requires visually confirmed labels, not deterministic predictions. Soil SaveR is the first data infrastructure that makes it possible to train and compare erosion segmentation models openly and reproducibly.
-          </p>
+          <ul class="leading-relaxed" style="color:var(--soil-sand); list-style:disc; padding-left:1.25rem; margin:0; text-align:left;" data-lang="es">
+            <li style="margin-bottom:0.75rem;">Cada modelo de deep learning publicado para detección de erosión fue entrenado con <strong style="color:var(--soil-cream);">datos privados e irreproducibles</strong>.</li>
+            <li style="margin-bottom:0.75rem;">El estándar dominante, RUSLE, predice susceptibilidad, no presencia real, y sus predicciones se desvían de mediciones en campo por factores de <strong style="color:var(--soil-cream);">0,04× a 8×</strong>; solo el 41% de los estudios validan sus resultados.</li>
+            <li style="margin-bottom:0.75rem;">La detección por deep learning de cárcavas, erosión en masa y erosión laminar requiere etiquetas confirmadas visualmente, no predicciones deterministas.</li>
+            <li><strong style="color:var(--soil-cream);">Soil SaveR</strong> es la primera infraestructura de datos que hace posible entrenar y comparar modelos de segmentación de erosión de forma abierta y reproducible, combinando 10 fuentes de datos distintas.</li>
+          </ul>
+          <ul class="leading-relaxed hidden" style="color:var(--soil-sand); list-style:disc; padding-left:1.25rem; margin:0; text-align:left;" data-lang="en">
+            <li style="margin-bottom:0.75rem;">Every published deep learning model for erosion detection was trained on <strong style="color:var(--soil-cream);">private, non-reproducible data</strong>.</li>
+            <li style="margin-bottom:0.75rem;">The dominant standard, RUSLE, predicts susceptibility, not actual presence, and its predictions deviate from field measurements by factors of <strong style="color:var(--soil-cream);">0.04× to 8×</strong>; only 41% of studies validate against measured data.</li>
+            <li style="margin-bottom:0.75rem;">Deep learning detection of gullies, mass wasting and sheet erosion requires visually confirmed labels, not deterministic predictions.</li>
+            <li><strong style="color:var(--soil-cream);">Soil SaveR</strong> is the first data infrastructure that makes it possible to train and compare erosion segmentation models openly and reproducibly, by combining 10 different data sources.</li>
+          </ul>
         </div>
 
       </div>
     </section>
 
     <!-- ── CTA ────────────────────────────────────────────── -->
-    <section style="background:var(--soil-brown); padding:5rem 1.5rem; text-align:center;">
+    <section id="soil-contact" style="background:var(--soil-brown); padding:5rem 1.5rem; text-align:center;">
       <div class="container mx-auto animate-on-scroll" style="max-width:36rem;">
         <h2 class="font-display mb-4" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="es">
-          ¿Quieres colaborar<br>o usar el dataset?
+          ¿Quieres colaborar o usar el dataset?
         </h2>
         <h2 class="font-display mb-4 hidden" style="font-size:clamp(1.6rem,3.5vw,2.2rem); font-weight:800; color:var(--soil-cream);" data-lang="en">
-          Want to collaborate<br>or use the dataset?
+          Want to collaborate or use the dataset?
         </h2>
-        <p class="mb-8 text-sm leading-relaxed" style="color:rgba(240,222,184,0.75);" data-lang="es">
-          Buscamos colaboraciones de investigación, anotadores expertos y equipos que quieran entrenar o validar modelos de detección de erosión con datos abiertos y reproducibles.
-        </p>
-        <p class="mb-8 text-sm leading-relaxed hidden" style="color:rgba(240,222,184,0.75);" data-lang="en">
-          We are looking for research collaborations, expert annotators, and teams who want to train or validate erosion detection models with open, reproducible data.
-        </p>
+        <p class="mb-8 text-sm leading-relaxed" style="color:rgba(240,222,184,0.75);" data-lang="es">Buscamos colaboraciones de investigación, anotadores expertos y equipos que quieran entrenar o validar modelos de detección de erosión con datos abiertos y reproducibles.</p>
+        <p class="mb-8 text-sm leading-relaxed hidden" style="color:rgba(240,222,184,0.75);" data-lang="en">We are looking for research collaborations, expert annotators, and teams who want to train or validate erosion detection models with open, reproducible data.</p>
         <a href="../../index.html#contact" class="btn-soil" data-lang="es">Contáctanos →</a>
         <a href="../../index.html#contact" class="btn-soil hidden" data-lang="en">Contact Us →</a>
       </div>
@@ -821,7 +903,7 @@
   <footer id="footer" style="padding:3rem 1.5rem; text-align:center;">
     <div class="container mx-auto">
       <a href="../../index.html">
-        <img src="../../assets/brand/logo_darwin.png" alt="Darwin Geospatial" class="h-8 mx-auto mb-4" style="filter:brightness(0) invert(1); opacity:0.55;">
+        <img src="../../assets/brand/logo_darwin.png" alt="Darwin Geospatial" class="h-8 mx-auto mb-4">
       </a>
       <p class="font-mono-accent" style="font-size:0.7rem; letter-spacing:0.15em;">
         © 2025 Darwin Geospatial Labs · Soil SaveR
