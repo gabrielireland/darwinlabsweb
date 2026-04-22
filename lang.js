@@ -104,86 +104,106 @@ document.addEventListener('DOMContentLoaded', () => {
   var C_BASE = '70,99,58';
   var C_MED = '87,111,80';
   var C_ACCENT = '93,113,63';
-  // Extra nature colors
   var C_AMBER = '180,130,40';
   var C_GOLD = '160,120,50';
   var C_TEAL = '60,120,100';
-  var C_WARM = '140,90,50';
   var C_SAGE = '120,140,90';
-  // Butterfly color palettes (wings, body)
-  var BFLY_COLORS = [
-    { wing: C_DARK, body: C_BASE },
-    { wing: C_TEAL, body: C_DARK },
-    { wing: '70,110,160', body: '50,75,120' },
-    { wing: C_ACCENT, body: C_MED },
-    { wing: '130,100,60', body: C_DARK }
-  ];
-  // Bee color palettes (body, stripe, wing)
-  var BEE_COLORS = [
-    { body: C_AMBER, stripe: C_DARK, wing: C_SAGE },
-    { body: C_GOLD, stripe: '80,60,30', wing: C_ACCENT },
-    { body: C_BASE, stripe: C_DARK, wing: C_ACCENT },
-    { body: '150,120,50', stripe: C_DARK, wing: C_MED }
-  ];
 
-  var BIRD_COLORS = [
-    { body: C_DARK, wing: C_TEAL, belly: C_SAGE }
-  ];
+  // Abstract organic element colors
+  var PARTICLE_COLORS = [C_BASE, C_MED, C_ACCENT, C_SAGE, C_TEAL, C_DARK];
 
-  var W, H, dpr, nodes, butterflies, bees, birds, t;
+  var W, H, dpr, nodes, creatures, t;
   var animationId = null;
   var initialized = false;
 
   function mobile() { return window.innerWidth < 768; }
 
-  // Bias random values toward edges (0..0.35 or 0.65..1)
+  // Bias random values toward edges
   function edgeBias() {
     var r = Math.random();
     return r < 0.5 ? r * 0.4 : 0.6 + r * 0.4;
   }
 
-  function makeButterfly(idx) {
-    var colors = BFLY_COLORS[idx % BFLY_COLORS.length];
-    return {
-      x: Math.random() * (W || 800), y: Math.random() * (H || 600),
-      angle: Math.random() * TAU,
-      speed: 0.3 + Math.random() * 0.2,
-      size: 12 + Math.random() * 8,
-      phase: Math.random() * TAU,
-      opacity: 0.2 + Math.random() * 0.1,
-      wingColor: colors.wing,
-      bodyColor: colors.body
-    };
+  // Get wave Y position at a given x for a wave band
+  function waveY(baseYFrac, ampFrac, freq, speedOff, x) {
+    var phase = t * 0.002;
+    var baseY = H * baseYFrac;
+    var amp = H * ampFrac;
+    return baseY + amp * Math.sin((x / W) * TAU * freq + phase * (1 + speedOff * 0.3))
+                 + amp * 0.4 * Math.cos((x / W) * TAU * freq * 0.7 + phase * 1.5 + speedOff);
   }
 
-  function makeBee(idx) {
-    var colors = BEE_COLORS[idx % BEE_COLORS.length];
-    return {
-      x: Math.random() * (W || 800), y: Math.random() * (H || 600),
-      angle: Math.random() * TAU,
-      speed: 0.6 + Math.random() * 0.3,
-      size: 6 + Math.random() * 3,
+  // Create an abstract organic particle that drifts along wave bands
+  // Types: 'spore' (ring/circle), 'seed' (elongated capsule), 'pollen' (small dot cluster)
+  function makeCreature(type, band) {
+    var goRight = (band === 'top');
+    var startX = goRight ? -30 : W + 30;
+    var baseSpeed = W / (960 + Math.random() * 720);
+
+    var color = PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
+
+    var c = {
+      type: type,
+      band: band,
+      x: startX,
+      y: 0,
+      yOffset: (Math.random() - 0.5) * H * 0.06,
+      direction: goRight ? 1 : -1,
+      speed: baseSpeed,
       phase: Math.random() * TAU,
-      opacity: 0.22 + Math.random() * 0.1,
-      bodyColor: colors.body,
-      stripeColor: colors.stripe,
-      wingColor: colors.wing
+      size: 0,
+      maxOpacity: 0,
+      color: color,
+      rotation: Math.random() * TAU,
+      rotSpeed: (Math.random() - 0.5) * 0.008,
+      alive: true
     };
+
+    if (type === 'spore') {
+      // Dandelion spore — thin ring with radiating lines
+      c.size = 4 + Math.random() * 5;
+      c.maxOpacity = 0.18 + Math.random() * 0.1;
+      c.spokes = 5 + Math.floor(Math.random() * 4);
+    } else if (type === 'seed') {
+      // Elongated seed capsule
+      c.size = 3 + Math.random() * 4;
+      c.maxOpacity = 0.2 + Math.random() * 0.1;
+      c.aspect = 2 + Math.random() * 1.5;
+    } else { // pollen
+      // Small cluster of dots
+      c.size = 2 + Math.random() * 2;
+      c.maxOpacity = 0.22 + Math.random() * 0.1;
+      c.dots = [];
+      var numDots = 3 + Math.floor(Math.random() * 4);
+      for (var d = 0; d < numDots; d++) {
+        c.dots.push({
+          ox: (Math.random() - 0.5) * c.size * 2.5,
+          oy: (Math.random() - 0.5) * c.size * 2.5,
+          r: 0.5 + Math.random() * 1.2
+        });
+      }
+    }
+
+    return c;
   }
 
-  function makeBird(idx) {
-    var colors = BIRD_COLORS[idx % BIRD_COLORS.length];
-    return {
-      x: W * 0.2 + Math.random() * W * 0.6,
-      y: Math.random() * H * 0.35,
-      phase: Math.random() * TAU,
-      speed: 0.5 + Math.random() * 0.3,
-      size: 10 + Math.random() * 6,
-      opacity: 0.18 + Math.random() * 0.08,
-      bodyColor: colors.body,
-      wingColor: colors.wing,
-      bellyColor: colors.belly
-    };
+  // Smooth fade in/out at screen edges — creatures materialize and dissolve
+  function edgeFade(x) {
+    var fadeZone = W * 0.2;
+    if (x < fadeZone) return Math.max(0, x / fadeZone);
+    if (x > W - fadeZone) return Math.max(0, (W - x) / fadeZone);
+    return 1;
+  }
+
+  // Get the center Y of a wave band
+  function bandCenterY(band, x) {
+    if (band === 'top') {
+      // Average of top wave cluster (baseY fracs: 0.10, 0.14, 0.18)
+      return (waveY(0.10, 0.08, 1.2, 0, x) + waveY(0.14, 0.07, 1.8, 1.2, x) + waveY(0.18, 0.06, 2.4, 2.5, x)) / 3;
+    } else {
+      // Average of bottom wave cluster (baseY fracs: 0.82, 0.86, 0.90)
+      return (waveY(0.82, 0.08, 1.4, 0.8, x) + waveY(0.86, 0.07, 2.0, 2.0, x) + waveY(0.90, 0.06, 1.6, 3.2, x)) / 3;
+    }
   }
 
   function init() {
@@ -203,12 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
     var m = mobile();
     var edgeNodeCount = m ? 7 : 12;
     var bottomNodeCount = m ? 4 : 6;
-
-    // Node color palettes for variety
     var nodeColors = [C_BASE, C_MED, C_ACCENT, C_SAGE, C_TEAL];
 
     nodes = [];
-    // Edge-biased nodes — skip bottom-right quadrant
     for (var i = 0; i < edgeNodeCount; i++) {
       var nx, ny;
       do {
@@ -225,7 +242,6 @@ document.addEventListener('DOMContentLoaded', () => {
         color: nodeColors[i % nodeColors.length]
       });
     }
-    // Bottom-biased nodes — left/center only (0..65% width)
     for (var ib = 0; ib < bottomNodeCount; ib++) {
       nodes.push({
         x: Math.random() * W * 0.65,
@@ -239,15 +255,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    butterflies = [];
-    for (var b = 0; b < (m ? 1 : 2); b++) butterflies.push(makeButterfly(b));
-
-    bees = [];
-    var bee = makeBee(0);
-    bee.y = Math.random() * H * 0.35;
-    bees.push(bee);
-
-    birds = [];
+    // Spawn initial particles already spread across the screen
+    creatures = [];
+    var types = ['spore', 'seed', 'pollen', 'pollen'];
+    var initialCount = m ? 4 : 10;
+    for (var ci = 0; ci < initialCount; ci++) {
+      var ctype = types[ci % types.length];
+      var cband = ci % 2 === 0 ? 'top' : 'bottom';
+      var cr = makeCreature(ctype, cband);
+      // Spread them across the screen so it's not empty at start
+      var progress = (ci + 0.5) / initialCount;
+      if (cr.direction > 0) {
+        cr.x = progress * W * 0.8; // spread left-to-right
+      } else {
+        cr.x = W - progress * W * 0.8; // spread right-to-left
+      }
+      creatures.push(cr);
+    }
 
     initialized = true;
   }
@@ -256,16 +280,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function drawWaves() {
     var phase = t * 0.002;
-    // Wave definitions: [baseY fraction, amplitude fraction, frequency multiplier, speed offset, color, opacity, lineWidth]
+    // Stronger waves: bigger amplitude, thicker lines
     var waves = [
       // Upper cluster — 3 intertwining waves
-      [0.12, 0.06, 1.2, 0, C_BASE, 0.16, 1.4],
-      [0.16, 0.05, 1.8, 1.2, C_TEAL, 0.11, 1.1],
-      [0.20, 0.04, 2.4, 2.5, C_SAGE, 0.13, 1.0],
+      [0.10, 0.08, 1.2, 0, C_BASE, 0.22, 2.0],
+      [0.14, 0.07, 1.8, 1.2, C_TEAL, 0.16, 1.6],
+      [0.18, 0.06, 2.4, 2.5, C_SAGE, 0.18, 1.3],
       // Lower cluster — 3 intertwining waves
-      [0.80, 0.06, 1.4, 0.8, C_BASE, 0.16, 1.4],
-      [0.84, 0.05, 2.0, 2.0, C_ACCENT, 0.11, 1.1],
-      [0.88, 0.04, 1.6, 3.2, C_TEAL, 0.13, 1.0]
+      [0.82, 0.08, 1.4, 0.8, C_BASE, 0.22, 2.0],
+      [0.86, 0.07, 2.0, 2.0, C_ACCENT, 0.16, 1.6],
+      [0.90, 0.06, 1.6, 3.2, C_TEAL, 0.18, 1.3]
     ];
     for (var w = 0; w < waves.length; w++) {
       var wv = waves[w];
@@ -287,11 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function drawNetwork() {
     var maxDist = Math.min(W, H) * 0.3;
-
-    // Edge colors for variety
     var edgeColors = [C_MED, C_SAGE, C_TEAL, C_ACCENT];
 
-    // Edges
     for (var i = 0; i < nodes.length; i++) {
       for (var j = i + 1; j < nodes.length; j++) {
         var dx = nodes[j].x - nodes[i].x;
@@ -310,7 +331,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Nodes
     for (var k = 0; k < nodes.length; k++) {
       var n = nodes[k];
       var pulse = Math.sin(t * 0.03 + n.pulse) * 0.8;
@@ -333,181 +353,132 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function drawButterfly(b) {
+  function drawSpore(c, opacity) {
     ctx.save();
-    ctx.translate(b.x, b.y);
-    // Gentle tilt based on slow sine — no heading rotation, no spinning
-    var tilt = Math.sin(t * 0.008 + b.phase) * 0.15;
-    ctx.rotate(tilt);
-    var flap = 0.5 + 0.5 * Math.abs(Math.sin(t * 0.04 + b.phase));
-    ctx.scale(flap, 1);
-    var s = b.size;
-    ctx.fillStyle = 'rgba(' + b.wingColor + ',' + b.opacity.toFixed(3) + ')';
-    ctx.beginPath();
-    // Upper left wing
-    ctx.moveTo(0, 0);
-    ctx.bezierCurveTo(-s * 0.6, -s * 0.8, -s * 1.1, -s * 0.4, -s * 0.7, s * 0.05);
-    // Lower left wing
-    ctx.bezierCurveTo(-s * 0.9, s * 0.5, -s * 0.4, s * 0.8, 0, s * 0.3);
-    // Lower right wing
-    ctx.bezierCurveTo(s * 0.4, s * 0.8, s * 0.9, s * 0.5, s * 0.7, s * 0.05);
-    // Upper right wing
-    ctx.bezierCurveTo(s * 1.1, -s * 0.4, s * 0.6, -s * 0.8, 0, 0);
-    ctx.fill();
-    // Wing spots (inner markings)
-    ctx.fillStyle = 'rgba(' + b.bodyColor + ',' + (b.opacity * 0.5).toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.arc(-s * 0.4, -s * 0.15, s * 0.15, 0, TAU);
-    ctx.arc(s * 0.4, -s * 0.15, s * 0.15, 0, TAU);
-    ctx.fill();
-    // Body
-    ctx.fillStyle = 'rgba(' + b.bodyColor + ',' + (b.opacity * 1.4).toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.ellipse(0, s * 0.15, s * 0.07, s * 0.4, 0, 0, TAU);
-    ctx.fill();
-    // Antennae
-    ctx.strokeStyle = 'rgba(' + b.bodyColor + ',' + (b.opacity * 1.0).toFixed(3) + ')';
-    ctx.lineWidth = 0.8;
-    ctx.beginPath();
-    ctx.moveTo(-s * 0.04, -s * 0.2);
-    ctx.quadraticCurveTo(-s * 0.2, -s * 0.55, -s * 0.25, -s * 0.6);
-    ctx.moveTo(s * 0.04, -s * 0.2);
-    ctx.quadraticCurveTo(s * 0.2, -s * 0.55, s * 0.25, -s * 0.6);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  function drawBee(b) {
-    ctx.save();
-    ctx.translate(b.x, b.y);
-    // Gentle wobble, not full heading rotation
-    var wobble = Math.sin(t * 0.02 + b.phase) * 0.2;
-    ctx.rotate(wobble);
-    var s = b.size;
-    // Wings first (behind body) — large and visible
-    var wFlap = 0.7 + 0.3 * Math.sin(t * 0.3 + b.phase);
-    ctx.fillStyle = 'rgba(' + b.wingColor + ',' + (b.opacity * 0.55).toFixed(3) + ')';
-    // Left wing — big teardrop
-    ctx.beginPath();
-    ctx.ellipse(-s * 0.3, -s * 0.55, s * 0.55 * wFlap, s * 0.3, -0.35, 0, TAU);
-    ctx.fill();
-    // Right wing
-    ctx.beginPath();
-    ctx.ellipse(s * 0.3, -s * 0.55, s * 0.55 * wFlap, s * 0.3, 0.35, 0, TAU);
-    ctx.fill();
-    // Wing outline for visibility
-    ctx.strokeStyle = 'rgba(' + b.wingColor + ',' + (b.opacity * 0.3).toFixed(3) + ')';
+    ctx.translate(c.x, c.y);
+    ctx.rotate(c.rotation);
+    var s = c.size;
+    // Thin ring
+    ctx.strokeStyle = 'rgba(' + c.color + ',' + opacity.toFixed(3) + ')';
     ctx.lineWidth = 0.6;
     ctx.beginPath();
-    ctx.ellipse(-s * 0.3, -s * 0.55, s * 0.55 * wFlap, s * 0.3, -0.35, 0, TAU);
+    ctx.arc(0, 0, s, 0, TAU);
     ctx.stroke();
-    ctx.beginPath();
-    ctx.ellipse(s * 0.3, -s * 0.55, s * 0.55 * wFlap, s * 0.3, 0.35, 0, TAU);
-    ctx.stroke();
-    // Body — plump oval
-    ctx.fillStyle = 'rgba(' + b.bodyColor + ',' + b.opacity.toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.ellipse(0, 0, s * 0.45, s * 0.7, 0, 0, TAU);
-    ctx.fill();
-    // Stripes
-    ctx.strokeStyle = 'rgba(' + b.stripeColor + ',' + (b.opacity * 0.7).toFixed(3) + ')';
-    ctx.lineWidth = 1;
-    for (var stripe = -1; stripe <= 1; stripe++) {
+    // Radiating spokes
+    ctx.lineWidth = 0.4;
+    ctx.strokeStyle = 'rgba(' + c.color + ',' + (opacity * 0.7).toFixed(3) + ')';
+    for (var i = 0; i < c.spokes; i++) {
+      var a = (i / c.spokes) * TAU;
       ctx.beginPath();
-      ctx.moveTo(-s * 0.4, stripe * s * 0.24);
-      ctx.lineTo(s * 0.4, stripe * s * 0.24);
+      ctx.moveTo(Math.cos(a) * s * 0.3, Math.sin(a) * s * 0.3);
+      ctx.lineTo(Math.cos(a) * s * 1.6, Math.sin(a) * s * 1.6);
+      ctx.stroke();
+      // Tiny dot at tip
+      ctx.beginPath();
+      ctx.arc(Math.cos(a) * s * 1.6, Math.sin(a) * s * 1.6, 0.6, 0, TAU);
+      ctx.fillStyle = 'rgba(' + c.color + ',' + (opacity * 0.5).toFixed(3) + ')';
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function drawSeed(c, opacity) {
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    ctx.rotate(c.rotation);
+    var s = c.size * 1.2;
+    var len = s * c.aspect;
+    // Leaf shape via bezier curves — pointed tip, rounded base
+    ctx.fillStyle = 'rgba(' + c.color + ',' + (opacity * 0.45).toFixed(3) + ')';
+    ctx.beginPath();
+    ctx.moveTo(0, -len);  // tip
+    ctx.bezierCurveTo(s * 0.8, -len * 0.5, s * 0.9, len * 0.3, 0, len);  // right edge
+    ctx.bezierCurveTo(-s * 0.9, len * 0.3, -s * 0.8, -len * 0.5, 0, -len);  // left edge
+    ctx.fill();
+    // Leaf outline
+    ctx.strokeStyle = 'rgba(' + c.color + ',' + (opacity * 0.7).toFixed(3) + ')';
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+    // Center vein
+    ctx.beginPath();
+    ctx.moveTo(0, -len * 0.9);
+    ctx.lineTo(0, len * 0.8);
+    ctx.strokeStyle = 'rgba(' + c.color + ',' + (opacity * 0.5).toFixed(3) + ')';
+    ctx.lineWidth = 0.4;
+    ctx.stroke();
+    // Side veins
+    ctx.lineWidth = 0.3;
+    ctx.strokeStyle = 'rgba(' + c.color + ',' + (opacity * 0.3).toFixed(3) + ')';
+    for (var v = 0; v < 3; v++) {
+      var vy = -len * 0.5 + (v * len * 0.45);
+      var vx = s * 0.5 * (1 - Math.abs(vy) / len);
+      ctx.beginPath();
+      ctx.moveTo(0, vy);
+      ctx.quadraticCurveTo(vx * 0.6, vy - len * 0.08, vx, vy - len * 0.05);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, vy);
+      ctx.quadraticCurveTo(-vx * 0.6, vy - len * 0.08, -vx, vy - len * 0.05);
       ctx.stroke();
     }
-    // Head
-    ctx.fillStyle = 'rgba(' + b.stripeColor + ',' + (b.opacity * 0.8).toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.arc(0, -s * 0.65, s * 0.2, 0, TAU);
-    ctx.fill();
     ctx.restore();
   }
 
-  function updateButterfly(b) {
-    // Smooth drift with moderate speed — sine/cosine figure-8 path
-    b.x += Math.sin(t * 0.006 + b.phase) * 0.7 + Math.cos(t * 0.003 + b.phase * 1.3) * 0.25;
-    b.y += Math.cos(t * 0.005 + b.phase * 0.7) * 0.6 + Math.sin(t * 0.007 + b.phase * 1.5) * 0.2;
-    // Soft edge bounce
-    if (b.x < W * 0.05) b.x += 0.5;
-    if (b.x > W * 0.95) b.x -= 0.5;
-    if (b.y < H * 0.05) b.y += 0.4;
-    if (b.y > H * 0.95) b.y -= 0.4;
-    b.x = Math.max(0, Math.min(W, b.x));
-    b.y = Math.max(0, Math.min(H, b.y));
-  }
-
-  function updateBee(b) {
-    // Bees: slightly erratic but not spinning
-    b.angle += (Math.random() - 0.5) * 0.05;
-    var margin = 0.1;
-    if (b.x < W * margin) b.angle += 0.03;
-    if (b.x > W * (1 - margin)) b.angle -= 0.03;
-    if (b.y < H * margin) b.angle += 0.03;
-    if (b.y > H * (1 - margin)) b.angle -= 0.03;
-    b.x += Math.cos(b.angle) * b.speed + (Math.random() - 0.5) * 0.3;
-    b.y += Math.sin(b.angle) * b.speed + (Math.random() - 0.5) * 0.3;
-    b.x = Math.max(0, Math.min(W, b.x));
-    b.y = Math.max(0, Math.min(H, b.y));
-  }
-
-  function drawBird(b) {
+  function drawPollen(c, opacity) {
     ctx.save();
-    ctx.translate(b.x, b.y);
-    var tilt = Math.sin(t * 0.005 + b.phase) * 0.12;
-    ctx.rotate(tilt);
-    var s = b.size;
-    var wingBeat = Math.sin(t * 0.05 + b.phase);
-    var wingY = wingBeat * s * 0.4;
-    // Wings — sweeping arcs
-    ctx.strokeStyle = 'rgba(' + b.wingColor + ',' + b.opacity.toFixed(3) + ')';
-    ctx.lineWidth = 1.5;
-    ctx.fillStyle = 'rgba(' + b.wingColor + ',' + (b.opacity * 0.6).toFixed(3) + ')';
-    // Left wing
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.quadraticCurveTo(-s * 0.8, -s * 0.6 + wingY, -s * 1.2, -s * 0.1 + wingY);
-    ctx.quadraticCurveTo(-s * 0.6, s * 0.1, 0, 0);
-    ctx.fill();
-    ctx.stroke();
-    // Right wing
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.quadraticCurveTo(s * 0.8, -s * 0.6 + wingY, s * 1.2, -s * 0.1 + wingY);
-    ctx.quadraticCurveTo(s * 0.6, s * 0.1, 0, 0);
-    ctx.fill();
-    ctx.stroke();
-    // Body
-    ctx.fillStyle = 'rgba(' + b.bodyColor + ',' + (b.opacity * 1.2).toFixed(3) + ')';
-    ctx.beginPath();
-    ctx.ellipse(0, 0, s * 0.12, s * 0.5, 0, 0, TAU);
-    ctx.fill();
-    // Head
-    ctx.beginPath();
-    ctx.arc(0, -s * 0.5, s * 0.13, 0, TAU);
-    ctx.fill();
-    // Tail
-    ctx.beginPath();
-    ctx.moveTo(-s * 0.06, s * 0.45);
-    ctx.lineTo(0, s * 0.75);
-    ctx.lineTo(s * 0.06, s * 0.45);
-    ctx.fill();
+    ctx.translate(c.x, c.y);
+    ctx.rotate(c.rotation);
+    ctx.fillStyle = 'rgba(' + c.color + ',' + opacity.toFixed(3) + ')';
+    for (var i = 0; i < c.dots.length; i++) {
+      var d = c.dots[i];
+      ctx.beginPath();
+      ctx.arc(d.ox, d.oy, d.r, 0, TAU);
+      ctx.fill();
+    }
     ctx.restore();
   }
 
-  function updateBird(b) {
-    // Smooth gliding drift, stays in upper portion
-    b.x += Math.sin(t * 0.003 + b.phase) * 0.55 + Math.cos(t * 0.005 + b.phase * 1.2) * 0.3;
-    b.y += Math.cos(t * 0.004 + b.phase * 0.8) * 0.3 + Math.sin(t * 0.002 + b.phase * 1.6) * 0.15;
-    // Keep in upper half
-    if (b.x < W * 0.05) b.x += 0.5;
-    if (b.x > W * 0.95) b.x -= 0.5;
-    if (b.y < H * 0.03) b.y += 0.4;
-    if (b.y > H * 0.45) b.y -= 0.5;
-    b.x = Math.max(0, Math.min(W, b.x));
-    b.y = Math.max(0, Math.min(H * 0.5, b.y));
+  function updateCreature(c) {
+    c.x += c.direction * c.speed;
+
+    var clampX = Math.max(0, Math.min(W, c.x));
+    var waveCenter = bandCenterY(c.band, clampX);
+    var bob = Math.sin(t * 0.015 + c.phase) * H * 0.005;
+    c.y = waveCenter + c.yOffset + bob;
+
+    // Slow rotation
+    c.rotation += c.rotSpeed;
+
+    if (c.direction > 0 && c.x > W + 40) c.alive = false;
+    if (c.direction < 0 && c.x < -40) c.alive = false;
+  }
+
+  function drawCreature(c) {
+    var fade = edgeFade(c.x);
+    var opacity = c.maxOpacity * fade;
+    if (opacity < 0.01) return;
+
+    if (c.type === 'spore') drawSpore(c, opacity);
+    else if (c.type === 'seed') drawSeed(c, opacity);
+    else drawPollen(c, opacity);
+  }
+
+  // Spawn new creatures periodically
+  var spawnTimer = 0;
+  function maybeSpawn() {
+    spawnTimer++;
+    var m = mobile();
+    var interval = m ? 90 : 60; // ~1-1.5 seconds between spawns
+    if (spawnTimer < interval) return;
+    spawnTimer = 0;
+
+    var maxCreatures = m ? 8 : 16;
+    if (creatures.length >= maxCreatures) return;
+
+    var types = ['spore', 'seed', 'pollen', 'pollen', 'pollen'];
+    var type = types[Math.floor(Math.random() * types.length)];
+    var band = Math.random() < 0.5 ? 'top' : 'bottom';
+    creatures.push(makeCreature(type, band));
   }
 
   function drawVignette() {
@@ -532,16 +503,17 @@ document.addEventListener('DOMContentLoaded', () => {
     drawNetwork();
     updateNodes();
 
-    for (var i = 0; i < butterflies.length; i++) {
-      updateButterfly(butterflies[i]);
-      drawButterfly(butterflies[i]);
+    // Update and draw creatures
+    for (var i = creatures.length - 1; i >= 0; i--) {
+      updateCreature(creatures[i]);
+      if (!creatures[i].alive) {
+        creatures.splice(i, 1);
+      } else {
+        drawCreature(creatures[i]);
+      }
     }
-    for (var j = 0; j < bees.length; j++) {
-      updateBee(bees[j]);
-      // Keep bee in upper part
-      if (bees[j].y > H * 0.45) bees[j].y -= 0.6;
-      drawBee(bees[j]);
-    }
+    maybeSpawn();
+
     drawVignette();
     animationId = requestAnimationFrame(tick);
   }

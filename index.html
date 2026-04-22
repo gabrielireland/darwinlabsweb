@@ -25,7 +25,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" href="./assets/hero/hero_1.png" as="image"/>
 
   <style>
@@ -99,7 +99,7 @@
       background-size: cover;
       background-position: center;
       opacity: 0;
-      filter: brightness(0.7);
+      filter: brightness(0.7) blur(4px);
       animation: kenBurnsCrossfade 40s infinite;
     }
 
@@ -227,6 +227,17 @@
       animation: bounceSlow 2s ease-in-out infinite;
     }
 
+    .animate-marquee {
+      animation: marqueeScroll 30s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     .service-card {
       cursor: pointer;
       background-color: #1B373F;
@@ -250,22 +261,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    @keyframes bugFloat {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(3px, -4px) rotate(3deg); }
-      50% { transform: translate(-2px, -6px) rotate(-2deg); }
-      75% { transform: translate(4px, -2px) rotate(2deg); }
-    }
-    .service-bug {
-      position: absolute;
-      pointer-events: none;
-      z-index: 2;
-      animation: bugFloat 6s ease-in-out infinite;
-      opacity: 0.7;
-      transition: opacity 0.3s;
-    }
-    .service-card:hover .service-bug { opacity: 0.9; }
 
     /* ── Darwin Maps transition overlay ─────────────────── */
     #maps-overlay {
@@ -365,8 +360,8 @@
         <!-- <a href="#partners" class="text-slate-600 hover:text-primary transition" data-lang="es">Partners</a>
         <a href="#partners" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Partners</a> -->
 
-        <a href="#contact" class="text-slate-600 hover:text-primary transition" data-lang="es">Contacto</a>
-        <a href="#contact" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Contact</a>
+        <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm" data-lang="es">Contacto</a>
+        <a href="#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm hidden" data-lang="en">Contact</a>
       </nav>
 
       <div class="flex items-center">
@@ -404,8 +399,8 @@
       <!-- <a href="#partners" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Partners</a>
       <a href="#partners" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Partners</a> -->
 
-      <a href="#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
-      <a href="#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
+      <a href="#contact" class="block py-2 mt-2 bg-primary text-white text-center px-5 py-2.5 rounded-full font-semibold hover:bg-primary-dark transition text-sm" data-lang="es">Contacto</a>
+      <a href="#contact" class="block py-2 mt-2 bg-primary text-white text-center px-5 py-2.5 rounded-full font-semibold hover:bg-primary-dark transition text-sm hidden" data-lang="en">Contact</a>
     </div>
   </header>
 
@@ -423,65 +418,73 @@
 
     <!-- Hero Content -->
     <div class="text-center px-6 animate-on-scroll z-10">
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6" data-lang="es">
+      <p class="text-sm md:text-base tracking-[0.3em] uppercase font-light text-white/80 mb-3" data-lang="es">Somos</p>
+      <p class="text-sm md:text-base tracking-[0.3em] uppercase font-light text-white/80 mb-3 hidden" data-lang="en">We are</p>
+      <p class="text-6xl md:text-8xl lg:text-9xl uppercase leading-none mb-1" style="font-family:'Bebas Neue',sans-serif; color:#46633A; text-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5), 0 0 120px rgba(0,0,0,0.3);">Darwin</p>
+      <p class="text-3xl md:text-5xl lg:text-6xl uppercase tracking-[0.35em] mb-3" style="font-family:'Bebas Neue',sans-serif; color:#576F50; text-shadow: 0 0 40px rgba(0,0,0,0.8), 0 0 80px rgba(0,0,0,0.5), 0 0 120px rgba(0,0,0,0.3);">Geospatial</p>
+      <h1 class="text-[0.75rem] md:text-[0.75rem] lg:text-[0.75rem] tracking-[0.2em] uppercase font-light leading-tight mb-10" data-lang="es">
         Llevando Imágenes Satelitales al Siguiente Nivel
       </h1>
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 hidden" data-lang="en">
+      <h1 class="text-[0.75rem] md:text-[0.75rem] lg:text-[0.75rem] tracking-[0.2em] uppercase font-light leading-tight mb-10 hidden" data-lang="en">
         Taking Satellite Imagery to The Next Level
       </h1>
-      <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10" data-lang="es">
-        Usamos datos geoespaciales e inteligencia artificial para transformar la manera en que sistemas naturales son estudiados, monitoreados y gestionados.
-      </p>
-      <p class="text-lg md:text-xl max-w-3xl mx-auto text-white/90 mb-10 hidden" data-lang="en">
-        We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored, and managed.
-      </p>
-      <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300" data-lang="es">
-        <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Descubre Más</span>
-        <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-        </svg>
-      </a>
-      <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300 hidden" data-lang="en">
-        <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Discover More</span>
-        <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-        </svg>
-      </a>
+      <div class="mt-8">
+        <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300" data-lang="es">
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Descubre Más</span>
+          <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
+        <a href="#about" class="group inline-flex flex-col items-center gap-3 text-white no-underline hover:no-underline transition-all duration-300 hidden" data-lang="en">
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500">Discover More</span>
+          <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
   </section>
 
   <main>
     <!-- About -->
-    <section id="about" class="py-28 lg:py-40 overflow-hidden min-h-screen flex items-center relative">
+    <section id="about" class="py-28 lg:py-40 overflow-hidden min-h-screen flex flex-col justify-center relative">
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
-      <div class="container mx-auto px-6" style="position:relative;z-index:1;">
-        <div class="max-w-3xl mx-auto text-center animate-on-scroll">
-            <h2 class="font-bold text-primary mb-6" style="font-size:clamp(1.1rem,3.2vw,1.875rem);" data-lang="es">Nuestra Misión: Entender la naturaleza para gestionarla mejor.</h2>
-            <h2 class="font-bold text-primary mb-6 hidden" style="font-size:clamp(1.1rem,3.2vw,1.875rem);" data-lang="en">Our Mission: Understand nature to manage it better.</h2>
-            <p class="text-primary font-semibold text-lg md:text-xl" data-lang="es">Utilizando las últimas técnicas de inteligencia artificial, transformamos cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
-            <p class="text-primary font-semibold text-lg md:text-xl hidden" data-lang="en">Using the latest artificial intelligence techniques, we transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
-
-            <!-- Arrow to Services -->
-            <a href="#services" class="inline-flex flex-col items-center gap-2 mt-4 text-primary no-underline hover:no-underline group">
-              <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Servicios</span>
-              <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Services</span>
-              <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-              </svg>
-            </a>
+      <div class="flex-grow flex flex-col items-center justify-center px-6" style="position:relative;z-index:1;">
+        <div class="text-center animate-on-scroll mb-6">
+            <h2 class="tracking-[0.15em] uppercase font-bold text-primary" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="es">Nuestra Misión — Entender la naturaleza para gestionarla mejor.</h2>
+            <h2 class="tracking-[0.15em] uppercase font-bold text-primary hidden" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="en">Our Mission — Understand nature to manage it better.</h2>
         </div>
+        <div class="text-center animate-on-scroll max-w-2xl">
+            <p class="text-sm md:text-base font-normal text-primary/80 leading-relaxed" data-lang="es">Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
+            <p class="text-sm md:text-base font-normal text-primary/80 leading-relaxed hidden" data-lang="en">We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored, and managed, from forests and rural landscapes to urban environments.</p>
+        </div>
+      </div>
+      <!-- Arrow to Services — pinned to bottom -->
+      <div class="text-center pb-8" style="position:relative;z-index:1;">
+        <a href="#services" class="group inline-flex flex-col items-center gap-3 text-primary no-underline hover:no-underline transition-all duration-300">
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500" data-lang="es">Nuestros Servicios</span>
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500 hidden" data-lang="en">Our Services</span>
+          <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 
     <!-- Services -->
-    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-screen flex items-center relative">
-      <div class="container mx-auto px-6">
+    <section id="services" class="bg-white py-28 lg:py-40 overflow-hidden min-h-screen flex flex-col justify-center relative">
+      <div class="container mx-auto px-6 flex-grow flex flex-col justify-center">
         <div class="text-center mb-16 animate-on-scroll">
-          <span class="text-primary font-bold text-2xl" data-lang="es">Nuestros Servicios</span>
-          <span class="text-primary font-bold text-2xl hidden" data-lang="en">Our Services</span>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2" data-lang="es">Lo que hacemos</h2>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">What We Do</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary mb-2" data-lang="es">Lo que hacemos</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary mb-2 hidden" data-lang="en">What We Do</h2>
+          <span class="inline-flex items-center gap-3">
+            <a href="#contact" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition" data-lang="es">Contacta al Equipo</a>
+            <a href="#contact" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition hidden" data-lang="en">Contact the Team</a>
+            <span class="text-primary/40">·</span>
+            <a href="./services.html" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition" data-lang="es">Ver Todos los Servicios</a>
+            <a href="./services.html" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition hidden" data-lang="en">See All Services</a>
+          </span>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-0 max-w-7xl mx-auto" style="grid-template-rows: auto 1fr;">
@@ -489,12 +492,7 @@
           <!-- Data Foundation -->
           <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/about/dashboard_s.png" alt="Data Foundation" class="w-full h-full object-cover object-bottom transition-transform duration-700 group-hover:scale-105"/>
-              <!-- Butterfly -->
-              <svg class="service-bug" style="top:12px;right:14px;width:28px;height:28px;animation-delay:0s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#46633A" fill-opacity="0.8"/>
-                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
-              </svg>
+              <img src="./assets/services/fire_analytics_cropped.png" alt="Data Foundation" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
             </div>
             <div class="p-5 flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Datos</h3>
@@ -520,16 +518,7 @@
           <!-- AI Intelligence -->
           <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 100ms;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/services/intelligence.png" alt="AI Intelligence" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-              <!-- Bee -->
-              <svg class="service-bug" style="bottom:16px;left:12px;width:22px;height:22px;animation-delay:-1.5s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="20" cy="22" rx="7" ry="10" fill="#b48228" fill-opacity="0.85"/>
-                <line x1="13" y1="18" x2="27" y2="18" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="22" x2="27" y2="22" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="26" x2="27" y2="26" stroke="#395935" stroke-width="1.2" stroke-opacity="0.6"/>
-                <ellipse cx="13" cy="13" rx="5" ry="3.5" transform="rotate(-25 13 13)" fill="#5D713F" fill-opacity="0.45"/>
-                <ellipse cx="27" cy="13" rx="5" ry="3.5" transform="rotate(25 27 13)" fill="#5D713F" fill-opacity="0.45"/>
-              </svg>
+              <img src="./assets/services/intelligence_new.png" alt="AI Intelligence" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
             </div>
             <div class="p-5 flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Inteligencia IA</h3>
@@ -555,12 +544,7 @@
           <!-- Analytics -->
           <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 200ms;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/services/analysis.png" alt="Analytics" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
-              <!-- Butterfly (warm teal) -->
-              <svg class="service-bug" style="top:10px;left:16px;width:26px;height:26px;animation-delay:-3s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20 20C16 14 8 12 10 20C8 26 16 30 20 24C24 30 32 26 30 20C32 12 24 14 20 20Z" fill="#3c7864" fill-opacity="0.8"/>
-                <ellipse cx="20" cy="22" rx="1.2" ry="5" fill="#395935" fill-opacity="0.9"/>
-              </svg>
+              <img src="./assets/services/analysis_cropped.png" alt="Analytics" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: 50% 15%;"/>
             </div>
             <div class="p-5 flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Analítica</h3>
@@ -586,16 +570,7 @@
           <!-- Software Engineering -->
           <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 300ms;">
             <div class="relative h-56 overflow-hidden">
-              <img src="./assets/services/software.svg" alt="Software Engineering" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"/>
-              <!-- Bee (golden) -->
-              <svg class="service-bug" style="top:14px;right:16px;width:20px;height:20px;animation-delay:-4.5s;" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="20" cy="22" rx="7" ry="10" fill="#a07832" fill-opacity="0.85"/>
-                <line x1="13" y1="18" x2="27" y2="18" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="22" x2="27" y2="22" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
-                <line x1="13" y1="26" x2="27" y2="26" stroke="#503c18" stroke-width="1.2" stroke-opacity="0.6"/>
-                <ellipse cx="13" cy="13" rx="5" ry="3.5" transform="rotate(-25 13 13)" fill="#5D713F" fill-opacity="0.45"/>
-                <ellipse cx="27" cy="13" rx="5" ry="3.5" transform="rotate(25 27 13)" fill="#5D713F" fill-opacity="0.45"/>
-              </svg>
+              <img src="./assets/services/software_new.png" alt="Software Engineering" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" style="object-position: 50% 85%;"/>
             </div>
             <div class="p-5 flex flex-col">
               <h3 class="text-xl font-bold mb-2" data-lang="es">Ingeniería de Software</h3>
@@ -620,31 +595,48 @@
 
         </div>
 
-        <!-- See All Services — right-aligned below cards -->
-        <div class="max-w-7xl mx-auto text-right mt-3">
-          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline transition" data-lang="es">
-            Ver todos los servicios
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
-          <a href="./services.html" class="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:underline transition hidden" data-lang="en">
-            See all services
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-            </svg>
-          </a>
+        <!-- Trusted By — scrolling partner logos -->
+        <div class="mt-8 mb-24 text-center animate-on-scroll">
+          <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5" data-lang="es">Confían en nosotros</p>
+          <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5 hidden" data-lang="en">Trusted by</p>
+          <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
+            <div class="flex items-center gap-12 w-max animate-marquee">
+              <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-12 partner-logo">
+              <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-12 partner-logo">
+              <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-12 partner-logo">
+              <img src="./assets/partners/csic.png" alt="CSIC" class="h-12 partner-logo">
+              <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-12 partner-logo">
+              <img src="./assets/partners/upwork.png" alt="Upwork" class="h-8 partner-logo">
+              <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 partner-logo">
+              <img src="./assets/partners/quercy.png" alt="Quercy" class="h-12 partner-logo">
+              <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-12 partner-logo">
+              <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-12 partner-logo">
+              <img src="./assets/partners/urjc.png" alt="URJC" class="h-12 partner-logo">
+              <!-- Duplicate for seamless loop -->
+              <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-12 partner-logo">
+              <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-12 partner-logo">
+              <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-12 partner-logo">
+              <img src="./assets/partners/csic.png" alt="CSIC" class="h-12 partner-logo">
+              <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-12 partner-logo">
+              <img src="./assets/partners/upwork.png" alt="Upwork" class="h-8 partner-logo">
+              <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 partner-logo">
+              <img src="./assets/partners/quercy.png" alt="Quercy" class="h-12 partner-logo">
+              <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-12 partner-logo">
+              <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-12 partner-logo">
+              <img src="./assets/partners/urjc.png" alt="URJC" class="h-12 partner-logo">
+            </div>
+          </div>
         </div>
-        <!-- Arrow to Projects -->
-        <div class="text-center mt-4">
-          <a href="#projects-hero" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Proyectos</span>
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Projects</span>
-            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-            </svg>
-          </a>
-        </div>
+      </div>
+      <!-- Arrow to Projects — pinned to bottom -->
+      <div class="text-center pt-8 pb-8">
+        <a href="#projects-hero" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Proyectos</span>
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Projects</span>
+          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -660,10 +652,8 @@
       <div class="relative container mx-auto px-6 py-20 md:py-28">
         <!-- Title + blurb -->
         <div class="text-center max-w-3xl mx-auto mb-12 md:mb-16 animate-on-scroll">
-          <span class="text-white font-bold text-2xl" data-lang="es">Nuestros Proyectos</span>
-          <span class="text-white font-bold text-2xl hidden" data-lang="en">Our Projects</span>
-          <h2 class="text-2xl md:text-3xl font-semibold text-white mt-2 mb-4" data-lang="es">Orgullosos de nuestro trabajo</h2>
-          <h2 class="text-2xl md:text-3xl font-semibold text-white mt-2 mb-4 hidden" data-lang="en">Proud of our work</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-white mb-4" data-lang="es">Orgullosos de nuestro trabajo</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-white mb-4 hidden" data-lang="en">Proud of our work</h2>
         </div>
 
         <!-- Cards on top of background -->
@@ -796,16 +786,24 @@
           </article>
 
         </div>
-        <!-- Arrow to Sectors -->
-        <div class="text-center mt-4">
-          <a href="#sectors" class="inline-flex flex-col items-center gap-2 text-white no-underline hover:no-underline group">
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Sectores</span>
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Sectors</span>
-            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-            </svg>
-          </a>
+        <!-- Mid-funnel CTA -->
+        <div class="text-center mt-12 mb-8 animate-on-scroll">
+          <p class="text-white/80 text-lg mb-4" data-lang="es">¿Listo para transformar tus datos?</p>
+          <p class="text-white/80 text-lg mb-4 hidden" data-lang="en">Ready to transform your data?</p>
+          <a href="#contact" class="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg" data-lang="es">Agenda una Consulta</a>
+          <a href="#contact" class="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg hidden" data-lang="en">Book a Consultation</a>
         </div>
+
+      </div>
+      <!-- Arrow to Sectors — pinned to bottom -->
+      <div class="text-center pb-8 mt-8">
+        <a href="#sectors" class="inline-flex flex-col items-center gap-2 text-white no-underline hover:no-underline group">
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Sectores</span>
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Sectors</span>
+          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -813,10 +811,8 @@
     <section id="sectors" class="py-20 lg:py-32 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="text-center mb-16 animate-on-scroll">
-          <span class="text-primary font-bold text-2xl" data-lang="es">Sectores de Actuación</span>
-          <span class="text-primary font-bold text-2xl hidden" data-lang="en">Sectors of Action</span>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2" data-lang="es">Soluciones para Personas y el Planeta</h2>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">Solutions for People and the Planet</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary" data-lang="es">Soluciones para Personas y el Planeta</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary hidden" data-lang="en">Solutions for People and the Planet</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-10">
@@ -878,16 +874,16 @@
             </ul>
           </div>
         </div>
-        <!-- Arrow to Values -->
-        <div class="text-center mt-4">
-          <a href="#values" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Valores</span>
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Values</span>
-            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-            </svg>
-          </a>
-        </div>
+      </div>
+      <!-- Arrow to Values — pinned to bottom -->
+      <div class="text-center pb-8 mt-8">
+        <a href="#values" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Valores</span>
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Values</span>
+          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -895,10 +891,8 @@
     <section id="values" class="py-12 lg:py-20 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="text-center mb-10 animate-on-scroll">
-          <span class="text-primary font-bold text-2xl" data-lang="es">Nuestros Valores</span>
-          <span class="text-primary font-bold text-2xl hidden" data-lang="en">Our Values</span>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2" data-lang="es">Principios que guían nuestro trabajo</h2>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">Principles That Guide Our Work</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary" data-lang="es">Principios que guían nuestro trabajo</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary hidden" data-lang="en">Principles That Guide Our Work</h2>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -914,11 +908,12 @@
           </div>
           <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay:150ms;">
             <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="18" cy="5" r="3"/>
-              <circle cx="6" cy="12" r="3"/>
-              <circle cx="18" cy="19" r="3"/>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              <circle cx="6.5" cy="17" r="2"/>
+              <circle cx="17" cy="17" r="3"/>
+              <path d="M8.5 17h5.5"/>
+              <path d="M3 15v-3h3l2-4h5l2 4h2"/>
+              <path d="M8 8V6"/>
+              <path d="M5 12h3"/>
             </svg>
             <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Sinergias entre Sectores</h3>
             <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Synergies with Sectors</h3>
@@ -936,16 +931,16 @@
             <p class="text-slate-600 hidden" data-lang="en">We develop and train our own AI models to ensure they truly understand the natural systems we work with.</p>
           </div>
         </div>
-        <!-- Arrow to Team -->
-        <div class="text-center mt-4">
-          <a href="#team" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestro Equipo</span>
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Team</span>
-            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-            </svg>
-          </a>
-        </div>
+      </div>
+      <!-- Arrow to Team — pinned to bottom -->
+      <div class="text-center pb-8 mt-8">
+        <a href="#team" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestro Equipo</span>
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Team</span>
+          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -953,10 +948,8 @@
     <section id="team" class="bg-white py-20 lg:py-32 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="text-center mb-12 animate-on-scroll">
-          <span class="text-primary font-bold text-2xl" data-lang="es">Nuestro Equipo</span>
-          <span class="text-primary font-bold text-2xl hidden" data-lang="en">Our Team</span>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2" data-lang="es">Expertos en Naturaleza y Tecnología</h2>
-          <h2 class="text-2xl md:text-3xl font-semibold text-slate-900 mt-2 hidden" data-lang="en">Experts in Nature and Technology</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary" data-lang="es">Expertos en Naturaleza y Tecnología</h2>
+          <h2 class="text-lg md:text-xl lg:text-2xl tracking-[0.2em] uppercase font-light text-primary hidden" data-lang="en">Experts in Nature and Technology</h2>
         </div>
 
         <div class="flex flex-col gap-4 max-w-5xl mx-auto">
@@ -1164,53 +1157,16 @@
 
         </div>
 
-        <!-- Arrow to Contact -->
-        <div class="text-center mt-4">
-          <a href="#contact" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Contacto</span>
-            <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Contact</span>
-            <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-            </svg>
-          </a>
-        </div>
       </div>
-    </section>
-
-    <!-- Partners -->
-    <section id="partners" class="py-20 lg:py-32">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16 animate-on-scroll">
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900" data-lang="es">Nuestros Clientes y Partners</h2>
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 hidden" data-lang="en">Our Clients & Partners</h2>
-        </div>
-
-        <div class="animate-on-scroll">
-          <div class="flex flex-wrap justify-center items-center gap-x-16 gap-y-10">
-            <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/kompass.jpg" alt="Kompass Logo" class="h-12 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/160x48/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/universidad_avila.jpg" alt="UCAV Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x56/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/urjc.png" alt="URJC Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/csic.png" alt="CSIC Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/quercy.png" alt="Quercy Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/google_partner.png" alt="Google Partner Logo" class="h-20 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-            <img src="./assets/partners/upwork.png" alt="Upwork Logo" class="h-10 partner-logo"
-                 onerror="this.onerror=null;this.src='https://placehold.co/192x64/e2e8f0/46633A?text=Logo';">
-          </div>
-        </div>
+      <!-- Arrow to Contact — pinned to bottom -->
+      <div class="text-center pb-8 mt-8">
+        <a href="#contact" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Contacto</span>
+          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Contact</span>
+          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
+          </svg>
+        </a>
       </div>
     </section>
 

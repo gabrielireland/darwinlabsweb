@@ -69,6 +69,28 @@
     .category-header {
       background: linear-gradient(135deg, var(--darwin-green-base) 0%, var(--darwin-green-dark) 100%);
     }
+
+    .partner-logo { filter: grayscale(100%); opacity: .7; transition: all .3s ease; }
+    .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      width: max-content;
+      animation: marquee-scroll 35s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
@@ -934,6 +956,42 @@
       </div>
 
     </div>
+
+    <!-- Partners Marquee -->
+    <section class="py-16 overflow-hidden bg-white border-t border-slate-100">
+      <div class="text-center mb-10 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-slate-900" data-lang="es">Nuestros Clientes y Partners</h2>
+        <h2 class="text-2xl font-bold text-slate-900 hidden" data-lang="en">Our Clients & Partners</h2>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 object-contain partner-logo">
+          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/urjc.png" alt="URJC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/csic.png" alt="CSIC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-9 object-contain partner-logo">
+          <!-- Duplicate set for seamless loop -->
+          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 object-contain partner-logo">
+          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/urjc.png" alt="URJC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/csic.png" alt="CSIC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-9 object-contain partner-logo">
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- Footer -->
