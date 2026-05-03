@@ -89,10 +89,14 @@
     .lang-btn:hover:not(.active) { color: var(--darwin-green-base); }
 
     .testimonial-card {
+      background-color: var(--darwin-green-light);
       border-left: 3px solid var(--darwin-green-base);
-      transition: background-color .2s;
+      transition: background-color .2s, border-color .2s;
     }
-    .testimonial-card:hover { background-color: var(--darwin-green-light); }
+    .testimonial-card:hover {
+      background-color: #e6ece4;
+      border-left-color: var(--darwin-green-dark);
+    }
 
     /* Research timeline */
     .research-timeline-line {
@@ -598,7 +602,7 @@
       <h2 class="text-xl font-bold text-gray-900 mb-5 hidden" style="font-family: 'DM Sans', sans-serif;" data-lang="en">What colleagues say</h2>
       <div class="space-y-5">
 
-        <div class="testimonial-card bg-white rounded-lg p-5">
+        <div class="testimonial-card rounded-lg p-5">
           <p class="text-gray-600 text-sm leading-relaxed italic" data-lang="es">
             "Gabriel es un científico de datos excepcional. Aporta gran entusiasmo y energía al equipo, con una actitud positiva y resolutiva, y es un placer trabajar con él tanto como compañero como reporte directo. Trae ideas sólidas y un impulso por añadir valor, y se involucra profundamente en entender los problemas de negocio y encontrar soluciones creativas que aprovechan los datos y técnicas avanzadas de data science."
           </p>
@@ -614,7 +618,7 @@
           </div>
         </div>
 
-        <div class="testimonial-card bg-white rounded-lg p-5">
+        <div class="testimonial-card rounded-lg p-5">
           <p class="text-gray-600 text-sm leading-relaxed italic" data-lang="es">
             "Tuve el placer de trabajar con Gabriel desde las etapas iniciales del desarrollo de nuestro equipo. Su rápida comprensión de nuestros problemas y sus soluciones técnicas tuvieron un impacto significativo. Gabriel es un autodidacta dedicado que rápidamente asumió el rol de nuestro líder técnico. Su experiencia, liderazgo y dedicación le convierten en un activo excepcional para cualquier equipo."
           </p>
