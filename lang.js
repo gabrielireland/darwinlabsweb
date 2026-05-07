@@ -81,7 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Trigger sequential mission animation
+            const parts = entry.target.querySelectorAll('.mission-part');
+            parts.forEach(part => {
+              const delay = parseInt(part.dataset.delay, 10) || 0;
+              setTimeout(() => part.classList.add('pop-in'), delay);
+            });
+            // Word-by-word reveal
+            const words = entry.target.querySelectorAll('.mission-word');
+            words.forEach(word => {
+              const delay = parseInt(word.dataset.delay, 10) || 0;
+              setTimeout(() => word.classList.add('pop-in'), delay);
+            });
+            obs.unobserve(entry.target);
+          }
         });
       }, {threshold: 0.1}).observe(el);
     } else { el.classList.add('is-visible'); }
@@ -221,8 +236,8 @@ document.addEventListener('DOMContentLoaded', () => {
     t = 0;
 
     var m = mobile();
-    var edgeNodeCount = m ? 7 : 12;
-    var bottomNodeCount = m ? 4 : 6;
+    var edgeNodeCount = m ? 10 : 18;
+    var bottomNodeCount = m ? 6 : 10;
     var nodeColors = [C_BASE, C_MED, C_ACCENT, C_SAGE, C_TEAL];
 
     nodes = [];
@@ -236,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
         x: nx, y: ny,
         vx: (Math.random() - 0.5) * 0.12,
         vy: (Math.random() - 0.5) * 0.12,
-        r: 2.5 + Math.random() * 2.5,
-        opacity: 0.3 + Math.random() * 0.2,
+        r: 3.5 + Math.random() * 3.5,
+        opacity: 0.5 + Math.random() * 0.25,
         pulse: Math.random() * TAU,
         color: nodeColors[i % nodeColors.length]
       });
@@ -248,8 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
         y: H * 0.6 + Math.random() * H * 0.38,
         vx: (Math.random() - 0.5) * 0.09,
         vy: (Math.random() - 0.5) * 0.06,
-        r: 2 + Math.random() * 2,
-        opacity: 0.22 + Math.random() * 0.18,
+        r: 3 + Math.random() * 3,
+        opacity: 0.4 + Math.random() * 0.25,
         pulse: Math.random() * TAU,
         color: nodeColors[ib % nodeColors.length]
       });
@@ -310,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function drawNetwork() {
-    var maxDist = Math.min(W, H) * 0.3;
+    var maxDist = Math.min(W, H) * 0.38;
     var edgeColors = [C_MED, C_SAGE, C_TEAL, C_ACCENT];
 
     for (var i = 0; i < nodes.length; i++) {
@@ -319,13 +334,13 @@ document.addEventListener('DOMContentLoaded', () => {
         var dy = nodes[j].y - nodes[i].y;
         var d = Math.sqrt(dx * dx + dy * dy);
         if (d < maxDist) {
-          var eo = 0.28 * (1 - d / maxDist);
+          var eo = 0.45 * (1 - d / maxDist);
           var ec = edgeColors[(i + j) % edgeColors.length];
           ctx.beginPath();
           ctx.moveTo(nodes[i].x, nodes[i].y);
           ctx.lineTo(nodes[j].x, nodes[j].y);
           ctx.strokeStyle = 'rgba(' + ec + ',' + eo.toFixed(3) + ')';
-          ctx.lineWidth = 1.0;
+          ctx.lineWidth = 1.5;
           ctx.stroke();
         }
       }
@@ -333,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (var k = 0; k < nodes.length; k++) {
       var n = nodes[k];
-      var pulse = Math.sin(t * 0.03 + n.pulse) * 0.8;
+      var pulse = Math.sin(t * 0.03 + n.pulse) * 1.2;
       ctx.beginPath();
       ctx.arc(n.x, n.y, Math.max(0.5, n.r + pulse), 0, TAU);
       ctx.fillStyle = 'rgba(' + n.color + ',' + n.opacity.toFixed(3) + ')';

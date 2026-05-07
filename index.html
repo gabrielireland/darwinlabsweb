@@ -76,6 +76,69 @@
       filter:blur(0);
     }
 
+    /* Mission text sequential jump-in animation */
+    .mission-part{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(50px) scale(0.3);
+      filter:blur(10px);
+      transition:opacity .7s cubic-bezier(0.34,1.56,0.64,1),
+                 transform .7s cubic-bezier(0.34,1.56,0.64,1),
+                 filter .5s ease-out;
+    }
+    .mission-part.pop-in{
+      opacity:1;
+      transform:translateY(0) scale(1);
+      filter:blur(0);
+    }
+    /* Hand-drawn SVG arrow */
+    .mission-arrow{
+      display:inline-block;
+      vertical-align:middle;
+      width:1.8em;
+      height:0.9em;
+      position:relative;
+      margin:0 0.1em;
+    }
+    .mission-arrow svg{
+      position:absolute;
+      top:0; left:0;
+      width:100%; height:100%;
+      overflow:visible;
+    }
+    .mission-arrow svg path{
+      fill:none;
+      stroke:var(--darwin-green-base);
+      stroke-width:2.5;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:200;
+      stroke-dashoffset:200;
+    }
+    .mission-arrow.pop-in svg path{
+      animation:draw-stroke 0.8s cubic-bezier(0.25,0.1,0.25,1) forwards;
+    }
+    @keyframes draw-stroke{
+      0%{stroke-dashoffset:200;}
+      100%{stroke-dashoffset:0;}
+    }
+
+    /* Word-by-word reveal for subtitle */
+    .mission-word{
+      display:inline-block;
+      opacity:0;
+      transform:translateY(14px);
+      filter:blur(6px);
+      transition:opacity .6s cubic-bezier(0.22,1,0.36,1),
+                 transform .6s cubic-bezier(0.22,1,0.36,1),
+                 filter .5s ease-out;
+    }
+    .mission-word.pop-in{
+      opacity:1;
+      transform:translateY(0);
+      filter:blur(0);
+    }
+
     /* Language switcher */
     .lang-switcher button.active{color:var(--darwin-green-base); font-weight:700;}
 
@@ -452,8 +515,8 @@
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
       <div class="flex-grow flex flex-col items-center justify-center px-6" style="position:relative;z-index:1;">
         <div class="text-center animate-on-scroll mb-6">
-            <h2 class="tracking-[0.15em] uppercase font-bold text-primary" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="es">Nuestra Misión → Entender la naturaleza para gestionarla mejor.</h2>
-            <h2 class="tracking-[0.15em] uppercase font-bold text-primary hidden" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="en">Our Mission → Understand nature to manage it better.</h2>
+            <h2 class="tracking-[0.15em] uppercase font-bold text-primary mission-headline" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="es"><span class="mission-part" data-delay="0">Nuestra Misión</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">Entender</span> <span class="mission-word" data-delay="1500">la</span> <span class="mission-word" data-delay="1800">naturaleza</span> <span class="mission-word" data-delay="2100">para</span> <span class="mission-word" data-delay="2400">gestionarla</span> <span class="mission-word" data-delay="2700">mejor.</span></h2>
+            <h2 class="tracking-[0.15em] uppercase font-bold text-primary mission-headline hidden" style="font-size:clamp(0.7rem, 2.2vw, 1.5rem);" data-lang="en"><span class="mission-part" data-delay="0">Our Mission</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">Understand</span> <span class="mission-word" data-delay="1500">nature</span> <span class="mission-word" data-delay="1800">to</span> <span class="mission-word" data-delay="2100">manage</span> <span class="mission-word" data-delay="2400">it</span> <span class="mission-word" data-delay="2700">better.</span></h2>
         </div>
         <div class="text-center animate-on-scroll max-w-2xl">
             <p class="text-sm md:text-base font-normal text-primary/80 leading-relaxed" data-lang="es">Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales, desde bosques y paisajes rurales hasta entornos urbanos.</p>
@@ -461,10 +524,10 @@
         </div>
       </div>
       <!-- Arrow to Services — pinned to bottom -->
-      <div class="text-center pb-8" style="position:relative;z-index:1;">
+      <div class="text-center pb-28" style="position:relative;z-index:1;">
         <a href="#services" class="group inline-flex flex-col items-center gap-3 text-primary no-underline hover:no-underline transition-all duration-300">
-          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500" data-lang="es">Nuestros Servicios</span>
-          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500 hidden" data-lang="en">Our Services</span>
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500" data-lang="es">Lo Que Hacemos</span>
+          <span class="text-lg md:text-xl tracking-[0.35em] uppercase font-light opacity-90 group-hover:opacity-100 group-hover:tracking-[0.5em] transition-all duration-500 hidden" data-lang="en">What We Do</span>
           <svg class="w-6 h-6 opacity-80 group-hover:opacity-100 animate-bounce-slow transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
           </svg>
